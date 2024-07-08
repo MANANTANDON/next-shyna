@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 export const MiddleCont = () => {
@@ -45,9 +46,16 @@ export const MiddleCont = () => {
           </Typography>
           <Typography sx={{ color: "#1A5319", fontSize: "30px", my: 100 }}>
             bs yeh smj le ab aur koi bhi{" "}
-            <span style={{ borderBottom: "3px solid green" }}>
+            <Link
+              href="https://www.shynagupta.com/"
+              style={{
+                borderBottom: "3px solid green",
+                textDecoration: "none",
+                color: "#1A5319",
+              }}
+            >
               shynagupta.com
-            </span>{" "}
+            </Link>{" "}
             kbhi bhi aquire nhi kr pyega...
           </Typography>
           <Typography
