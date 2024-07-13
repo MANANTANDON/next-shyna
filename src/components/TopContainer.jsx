@@ -24,7 +24,7 @@ export const TopContainer = () => {
             WELCOME
           </Typography>
           <Typography sx={{ color: "#3FA2F6", fontSize: "50px" }}>
-            SHINING STAR 💫
+            Shyna
           </Typography>
           <Typography
             sx={{
