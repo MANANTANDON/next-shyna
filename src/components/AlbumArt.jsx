@@ -9,14 +9,18 @@ export const AlbumArt = () => {
     <>
       <Container
         maxWidth="lg"
-        sx={{ display: "flex", flexDirection: "row", gap: 2 }}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          gap: 2,
+        }}
       >
         <Box
           sx={{
             position: "relative",
             overflow: "hidden",
-            height: "400px",
-            width: "400px",
+            height: { xs: "300px", sm: "400px" },
+            width: { xs: "300px", sm: "400px" },
             borderRadius: "3px",
           }}
         >
