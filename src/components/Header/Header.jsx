@@ -13,7 +13,7 @@ export const Header = () => {
           p: 1,
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: { xs: "center", sm: "space-between" },
           alignItems: "center",
         }}
       >
@@ -34,7 +34,7 @@ export const Header = () => {
             />
           </Box>
         </Link>
-        <Box sx={{ display: "flex", gap: 5 }}>
+        {/* <Box sx={{ display: "flex", gap: 5 }}>
           {menus.map((item, key) => (
             <Link
               key={key}
@@ -44,7 +44,7 @@ export const Header = () => {
               <Typography>{item}</Typography>
             </Link>
           ))}
-        </Box>
+        </Box> */}
       </Container>
     </>
   );

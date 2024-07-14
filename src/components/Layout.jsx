@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { Header } from "./Header/Header";
+import { Footer } from "./Footer/footer";
 
 export const Layout = ({ children }) => {
   return (
@@ -14,14 +15,13 @@ export const Layout = ({ children }) => {
         </Box>
         <Box
           sx={{
-            height: "150vh",
             mx: -1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
           }}
         >
           {children}
+        </Box>
+        <Box>
+          <Footer />
         </Box>
       </Box>
     </>
