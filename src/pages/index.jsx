@@ -1,5 +1,8 @@
 import { AlbumArt } from "@/components/AlbumArt";
+import { Articles } from "@/components/Articles";
+import { Compositions } from "@/components/Compositions";
 import { Layout } from "@/components/Layout";
+import { TopContainer } from "@/components/TopContainer";
 import Head from "next/head";
 
 export default function Home() {
@@ -16,7 +19,9 @@ export default function Home() {
       </Head>
       <>
         <Layout>
-          <AlbumArt />
+          <TopContainer />
+          <Articles />
+          <Compositions />
         </Layout>
       </>
     </>
