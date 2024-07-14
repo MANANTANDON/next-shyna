@@ -76,8 +76,8 @@ export const TopContainer = () => {
                 }}
               >
                 <Image
-                  src="/shyna.JPG"
-                  blurDataURL="/shyna.JPG"
+                  src="/shyna.jpeg"
+                  blurDataURL="/shyna.jpeg"
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"
