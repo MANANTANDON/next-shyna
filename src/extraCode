@@ -1,0 +1,79 @@
+<Head>
+            <title>Latest & Breaking News Today - News Arena India</title>
+            <link rel="canonical" href="https://newsarenaindia.com/" />
+            <meta
+               property="og:title"
+               content="Latest & Breaking News Today - News Arena India"
+            />
+            <meta property="og:url" content="https://newsarenaindia.com" />
+            <meta
+               name="description"
+               content="Discover the latest news on national, international, politics, economy, sports and more at News Arena India. Your one-stop for diverse news coverage."
+            />
+            <meta
+               name="image"
+               property="og:image"
+               content="https://newsarenaindia.com/logo.png"
+            />
+            <meta property="og:image:alt" content="logo" />
+            <meta property="og:type" content="website" />
+            <meta
+               property="og:description"
+               content="Discover the latest news on national, international, politics, economy, sports and more at News Arena India. Your one-stop for diverse news coverage."
+            />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="@newsarenaindia" />
+            <meta
+               name="twitter:title"
+               content="Latest & Breaking News Today - News Arena India"
+            />
+            <meta
+               name="twitter:description"
+               content="Discover the latest news on national, international, politics, economy, sports and more at News Arena India. Your one-stop for diverse news coverage."
+            />
+            <meta
+               name="twitter:image"
+               content="https://newsarenaindia.com/logo.svg"
+            ></meta>
+            <script
+               type="application/ld+json"
+               dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                     '@context': 'https://schema.org',
+                     '@type': 'BreadcrumbList',
+                     itemListElement: [
+                        {
+                           '@type': 'ListItem',
+                           position: 1,
+                           name: 'News Arena India',
+                           item: 'https://newsarenaindia.com/',
+                        },
+                        {
+                           '@type': 'ListItem',
+                           position: 2,
+                           name: 'Nation',
+                           item: 'https://newsarenaindia.com/category/nation',
+                        },
+                        {
+                           '@type': 'ListItem',
+                           position: 3,
+                           name: 'Region',
+                           item: 'https://newsarenaindia.com/category/region',
+                        },
+                        {
+                           '@type': 'ListItem',
+                           position: 4,
+                           name: 'International',
+                           item: 'https://newsarenaindia.com/category/international',
+                        },
+                        {
+                           '@type': 'ListItem',
+                           position: 5,
+                           name: 'Politics',
+                           item: 'https://newsarenaindia.com/category/politics',
+                        },
+                     ],
+                  }),
+               }}
+            />
+         </Head>
