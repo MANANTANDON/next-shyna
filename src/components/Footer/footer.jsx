@@ -7,7 +7,7 @@ import React from "react";
 export const Footer = () => {
   return (
     <>
-      <Box sx={{ bgcolor: "white", py: 4, mb: -2, mx: -2, mt: 10 }}>
+      <Box sx={{ bgcolor: "white", py: 4, mb: -2, mx: -1, mt: 10 }}>
         <Container maxWidth="lg">
           <Box sx={{ px: 2, borderBottom: "1.5px solid grey", pb: 2 }}>
             <Grid container>

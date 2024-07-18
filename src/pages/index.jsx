@@ -1,4 +1,3 @@
-import { AlbumArt } from "@/components/AlbumArt";
 import { Articles } from "@/components/Articles";
 import { Compositions } from "@/components/Compositions";
 import { Layout } from "@/components/Layout";
