@@ -9,12 +9,20 @@ export default function Home() {
     <>
       <Head>
         <title>Shyna</title>
+        <link rel="canonical" href="https://shynagupta.com/" />
+        <link rel="icon" href="/shyna.ico" />
+        <meta property="og:title" content="Shyna" />
+        <meta property="og:url" content="https://shynagupta.com" />
         <meta
           name="description"
           content="Join Shyna, an author and journalist, as she explores the latest trends in economics and information technology. Discover insightful articles and fresh perspectives that inform and inspire."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/shyna.ico" />
+        <meta property="og:image:alt" content="logo" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:description"
+          content="Join Shyna, an author and journalist, as she explores the latest trends in economics and information technology. Discover insightful articles and fresh perspectives that inform and inspire."
+        />
       </Head>
       <>
         <Layout>
