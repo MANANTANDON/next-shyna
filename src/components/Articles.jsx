@@ -51,7 +51,7 @@ export const Articles = () => {
               rowGap: "25px",
             }}
           >
-            {Array.from(Array(4)).map((item) => (
+            {Array.from(Array(1)).map((item) => (
               <Box sx={{ width: { xs: "100%", sm: "270px" } }}>
                 <NewsCard color="#ff9933" />
               </Box>
