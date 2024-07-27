@@ -28,7 +28,7 @@ export default function Home() {
         <Layout>
           <TopContainer />
           <Articles />
-          <Compositions />
+          {/* <Compositions /> */}
         </Layout>
       </>
     </>
