@@ -59,8 +59,7 @@ export const NewsCard = () => {
                 fontSize="1rem"
                 fontWeight="bold"
               >
-                Navigating Political Polarization: A Global Analysis of Divisive
-                Trends
+                LATEST STATEMENT IN GOVERNANCE
               </Typography>
             </a>
             <Typography

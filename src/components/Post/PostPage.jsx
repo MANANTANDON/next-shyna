@@ -13,7 +13,7 @@ export const PostPage = () => {
         sx={{ mt: 5, mb: 2 }}
         textAlign="center"
       >
-        Navigating Political Polarization: A Global Analysis of Divisive Trends
+        LATEST STATEMENT IN GOVERNANCE
       </Typography>
       {/*SUBHEADING*/}
       <Typography
