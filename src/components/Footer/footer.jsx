@@ -13,21 +13,23 @@ export const Footer = () => {
             <Grid container>
               <Grid item md={6} sm={12}>
                 <Box>
-                  <Box
-                    sx={{
-                      position: "relative",
-                      overflow: "hidden",
-                      height: "54px",
-                      width: "150px",
-                    }}
-                  >
-                    <Image
-                      src="/shynaSignature.png"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </Box>
+                  <a href="/">
+                    <Box
+                      sx={{
+                        position: "relative",
+                        overflow: "hidden",
+                        height: "54px",
+                        width: "150px",
+                      }}
+                    >
+                      <Image
+                        src="/shynaSignature.png"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
+                      />
+                    </Box>
+                  </a>
                   <Box
                     sx={{
                       display: "flex",
@@ -88,16 +90,22 @@ export const Footer = () => {
               © 2024 shynagupta.com All Right Reserved.
             </Typography>
             <Box sx={{ display: "flex", gap: 2, mt: { xs: 2, sm: 0 } }}>
-              <Link href="/" style={{ textDecoration: "none" }}>
-                <Typography fontSize="12px" sx={{ color: "#6087b5" }}>
+              <a href="/privacy-policy" style={{ textDecoration: "none" }}>
+                <Typography
+                  fontSize="12px"
+                  sx={{ color: "#6087b5", "&:hover": { color: "#6087b590" } }}
+                >
                   Privacy Policy
                 </Typography>
-              </Link>
-              <Link href="/" style={{ textDecoration: "none" }}>
-                <Typography fontSize="12px" sx={{ color: "#6087b5" }}>
+              </a>
+              <a href="/terms-and-condition" style={{ textDecoration: "none" }}>
+                <Typography
+                  fontSize="12px"
+                  sx={{ color: "#6087b5", "&:hover": { color: "#6087b590" } }}
+                >
                   Terms & Condition
                 </Typography>
-              </Link>
+              </a>
             </Box>
           </Box>
         </Container>

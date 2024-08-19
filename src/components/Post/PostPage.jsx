@@ -86,6 +86,7 @@ export const PostPage = ({ data }) => {
           lineHeight="45px"
           sx={{ mt: 5, mb: 2 }}
           textAlign="center"
+          variant="h1"
         >
           {data?.data?.title}
         </Typography>
