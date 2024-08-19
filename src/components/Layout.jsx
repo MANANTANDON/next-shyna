@@ -7,12 +7,12 @@ export const Layout = ({ children }) => {
   return (
     <>
       <Box>
-        {/* <Box
+        <Box
           sx={{ mx: -1, mt: -1, position: "sticky", top: 0, zIndex: 10 }}
           className="glass"
         >
           <Header />
-        </Box> */}
+        </Box>
         <Box
           sx={{
             mx: -1,
