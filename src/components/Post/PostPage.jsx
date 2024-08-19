@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
+import { SharingButton } from "../Sharing/SharingButton";
 
 export const PostPage = ({ data }) => {
   const slug = `${INIT_URL}${data?.data?.slug}`;
@@ -97,12 +98,22 @@ export const PostPage = ({ data }) => {
           {data?.data?.meta?.subheading}
         </Typography>
         {/* BY USER */}
-        <Typography
-          textAlign="center"
-          sx={{ mb: 5, mt: 2, color: "#6087B5" }}
-        >{`${data?.data?.byLiner?.name} | ${formatDateToDayMonth(
-          data?.data?.createdAt
-        )} `}</Typography>
+        <Typography textAlign="center" sx={{ mt: 2, color: "#6087B5" }}>{`${
+          data?.data?.byLiner?.name
+        } | ${formatDateToDayMonth(data?.data?.createdAt)} `}</Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            mb: 5,
+            mt: 2,
+          }}
+        >
+          <SharingButton slug={slug} text={data?.data?.meta?.title} />
+        </Box>
 
         {/*IMAGE*/}
         <Box
