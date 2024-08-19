@@ -1,6 +1,5 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 export const Header = () => {
@@ -17,7 +16,7 @@ export const Header = () => {
           alignItems: "center",
         }}
       >
-        <Link href="/">
+        <a href="/">
           <Box
             sx={{
               position: "relative",
@@ -33,7 +32,7 @@ export const Header = () => {
               objectPosition="center"
             />
           </Box>
-        </Link>
+        </a>
         {/* <Box sx={{ display: "flex", gap: 5 }}>
           {menus.map((item, key) => (
             <Link

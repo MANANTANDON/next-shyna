@@ -1,8 +1,10 @@
+import { IMG_URI } from "@/constant";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
-export const NewsCard = () => {
+export const NewsCard = ({ data }) => {
+  console.log(data, "article");
   return (
     <>
       <Card variant="outlined" sx={{ borderRadius: "0px", border: "none" }}>
@@ -23,7 +25,7 @@ export const NewsCard = () => {
             }}
           >
             <Image
-              src="/images/img1.png"
+              src={`${IMG_URI}/${data?.featureImg}`}
               layout="fill"
               objectFit="cover"
               objectPosition="center"
@@ -36,10 +38,10 @@ export const NewsCard = () => {
               fontSize="10px"
               fontWeight="bolder"
             >
-              OPINION
+              {data?.category[0]?.name.toUpperCase()}
             </Typography>
             <a
-              href="/latest-statement-in-governance"
+              href={`${data?.slug}`}
               style={{ textDecoration: "none", color: "black" }}
             >
               <Typography
@@ -59,7 +61,7 @@ export const NewsCard = () => {
                 fontSize="1rem"
                 fontWeight="bold"
               >
-                LATEST STATEMENT IN GOVERNANCE
+                {data?.title}
               </Typography>
             </a>
             <Typography
@@ -76,8 +78,7 @@ export const NewsCard = () => {
               textAlign="center"
               fontSize="0.7rem"
             >
-              Exploring the Rising Divide in U.S., Indian, and European
-              Politics: Impacts and Implications
+              {data?.meta?.subheading}
             </Typography>
           </Box>
         </CardContent>

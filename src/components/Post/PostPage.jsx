@@ -1,235 +1,137 @@
+import { IMG_URI, INIT_URL } from "@/constant";
+import { formatDateToDayMonth } from "@/hooks/formatDate";
 import { Box, Typography } from "@mui/material";
+import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 
-export const PostPage = () => {
+export const PostPage = ({ data }) => {
+  const slug = `${INIT_URL}${data?.data?.slug}`;
+  const imgUrl = `${IMG_URI}${data?.data?.featureImg}`;
   return (
-    <Box sx={{ bgcolor: "white", p: 2, my: 2, borderRadius: "7px" }}>
-      {/* HEADING */}
-      <Typography
-        fontSize="35px"
-        fontWeight="bold"
-        lineHeight="45px"
-        sx={{ mt: 5, mb: 2 }}
-        textAlign="center"
-      >
-        LATEST STATEMENT IN GOVERNANCE
-      </Typography>
-      {/*SUBHEADING*/}
-      <Typography
-        fontSize="16px"
-        textAlign="center"
-        sx={{ color: "grey", mt: 2, mb: 5 }}
-      >
-        Exploring the Rising Divide in U.S., Indian, and European Politics:
-        Impacts and Implications
-      </Typography>
+    <>
+      <Head>
+        <title>{data?.data?.meta?.title || data?.data?.title}</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        ></meta>
+        <link rel="icon" href="/shyna.ico" />
+        <meta
+          http-equiv="Content-Type"
+          content="text/html; charset=utf-8"
+        ></meta>
 
-      {/*IMAGE*/}
+        <meta property="og:site_name" content="Shyna" />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:title"
+          content={data?.data?.meta?.title || data?.data?.title}
+        />
+        <meta
+          name="description"
+          content={data?.data?.meta?.description || data?.data?.title}
+        />
+        <meta
+          property="og:description"
+          content={data?.data?.meta?.description || data?.data?.title}
+        />
+        <link rel="canonical" href={`${INIT_URL}/${data?.data?.slug}`} />
+        <meta name="tweetmeme-title" content={slug} />
+
+        <meta name="image" property="og:image" content={imgUrl} />
+
+        <meta
+          name="title"
+          content={data?.data?.meta?.title || data?.data?.title}
+        />
+        <meta name="twitter:image" content={imgUrl} />
+
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:alt" content={data?.data?.title} />
+        <meta property="og:url" content={slug} />
+        <meta
+          property="article:published_time"
+          content={data?.data?.createdAt}
+        />
+        <meta
+          property="article:modified_time"
+          content={data?.data?.updatedAt}
+        />
+        <meta
+          itemprop="name"
+          content={data?.data?.meta?.title || data?.data?.title}
+        />
+        <meta
+          itemprop="description"
+          content={data?.data?.meta?.description || data?.data?.title}
+        />
+      </Head>
       <Box
         sx={{
-          position: "relative",
-          overflow: "hidden",
-          height: { xs: "200px", sm: "500px" },
-          width: "100%",
-          borderRadius: "10px",
+          bgcolor: "white",
+          p: 2,
           my: 2,
+          borderRadius: "5px",
+          mx: -1,
         }}
       >
-        <Image
-          src="/images/img1.png"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
+        {/* HEADING */}
+        <Typography
+          fontSize="35px"
+          fontWeight="bold"
+          lineHeight="45px"
+          sx={{ mt: 5, mb: 2 }}
+          textAlign="center"
+        >
+          {data?.data?.title}
+        </Typography>
+        {/*SUBHEADING*/}
+        <Typography
+          fontSize="16px"
+          textAlign="center"
+          sx={{ color: "grey", mt: 2 }}
+        >
+          {data?.data?.meta?.subheading}
+        </Typography>
+        {/* BY USER */}
+        <Typography
+          textAlign="center"
+          sx={{ mb: 5, mt: 2, color: "#6087B5" }}
+        >{`${data?.data?.byLiner?.name} | ${formatDateToDayMonth(
+          data?.data?.createdAt
+        )} `}</Typography>
+
+        {/*IMAGE*/}
+        <Box
+          sx={{
+            position: "relative",
+            overflow: "hidden",
+            height: { xs: "200px", sm: "500px" },
+            width: "100%",
+            borderRadius: "10px",
+            my: 2,
+          }}
+        >
+          <Image
+            src={`${IMG_URI}/${data?.data?.featureImg}`}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            alt={data?.data?.meta?.alt}
+            title={data?.data?.meta?.title}
+          />
+        </Box>
+        {/* CONTENT */}
+        <Box>
+          <div
+            className="blogRootContainer"
+            dangerouslySetInnerHTML={{ __html: data?.data?.content }}
+          />
+        </Box>
       </Box>
-      <Typography>
-        <span style={{ fontSize: "30px" }} lineHeight="28px">
-          P
-        </span>
-        olitical polarization has always been the hottest trend in pattern, and
-        the chambers are the places to be. Forget about engaging in meaningful
-        conversations with differing viewpoints, these days- it’s all about
-        retreating into your bubble, cancelling anyone who dares to disagree and
-        building ideological walls higher than ever before.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Political leaders worldwide are mastering the art of ignoring valid
-        opinions, preferring instead to dismiss arguments that don’t fit their
-        narratives.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        The governance challenges accompanied by contentious campaigns as the
-        backdrop, the stage is set for a drama of epic proportions where no one
-        listens, and everyone yells.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Social media is becoming the fairy godmother to this havoc, turning
-        platforms like Twitter, Facebook and Instagram into tailor-made
-        chambers.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        We are all becoming experts in ignoring anything that doesn’t fit into
-        our pre-existing beliefs.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        It is the very own <span style={{ fontWeight: "bold" }}>“us”</span> vs
-        <span style={{ fontWeight: "bold" }}>“them”</span> mentality.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Let’s look at the Partisan circus across countries:
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        If you’re looking for a prime example of political polarization, look no
-        further than the United States.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        The current spectacle involves former president Donald trump and
-        president Joe Biden, whose lives are now akin to a soap opera.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Trump, currently juggling multiple indictments ranging from mishandling
-        classified documents to allegedly trying to overturn the 2020 election
-        results, remains as polarizing as ever.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        His legal woes have done nothing to diminish his star power within the
-        Republican party. If anything, they’ve only amplified his status as the
-        victim of a supposed “deep state conspiracy”.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        On the flip side, Biden’s administration is stumbling through it’s own
-        set of crises. Recent footage of Biden’s “malfunctions” and his infamous
-        gibberish speeches have given critics endless fodder.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Let’s not forget the media’s role in all this, Conservatives love to
-        highlight Trump’s legal battles and recent shooting incident as proof of
-        a biased justice system. Meanwhile, liberal networks like CNN can’t get
-        enough of calling for accountability and denouncing political violence.
-      </Typography>
-      <Typography
-        sx={{
-          mt: 6,
-          fontSize: "28px",
-          fontWeight: "bold",
-        }}
-      >
-        The Indian way
-      </Typography>
-      {/*IMAGE*/}
-      <Box
-        sx={{
-          position: "relative",
-          overflow: "hidden",
-          height: { xs: "200px", sm: "400px" },
-          width: "100%",
-          borderRadius: "10px",
-          mb: 2,
-          mt: 1,
-        }}
-      >
-        <Image
-          src="/images/img2.png"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="bottom"
-        />
-      </Box>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        In one corner, we have the{" "}
-        <span style={{ fontWeight: "bold" }}>Bharatiya Janata Party (BJP)</span>
-        , led by{" "}
-        <span style={{ fontWeight: "bold" }}>Prime Minister Narendra Modi</span>
-        , who’s been accused of turning the dial up on Hindu nationalism to
-        eleven.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        The BJP’s policies like the Citizenship Amendment Act(CAA) and the
-        revocation of Article 370 are being slammed by critics as delightfully
-        exclusionary.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Apparently, making laws that favor one religious over another is the
-        latest fashion statement in Indian politics. On the other hand, we have
-        the INC and other opposition parties who have donned their capes to save
-        secularism and minority rights.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        This discourse, however has become vitriolic, with little room for
-        nuanced debate or middle ground.
-      </Typography>
-      <Typography
-        sx={{
-          mt: 6,
-          fontSize: "28px",
-          fontWeight: "bold",
-        }}
-      >
-        The European Context
-      </Typography>
-      {/*IMAGE*/}
-      <Box
-        sx={{
-          position: "relative",
-          overflow: "hidden",
-          height: { xs: "200px", sm: "400px" },
-          width: "100%",
-          borderRadius: "10px",
-          mb: 2,
-          mt: 1,
-        }}
-      >
-        <Image
-          src="/images/img3.png"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
-      </Box>
-      <Typography sx={{ my: 3 }}>
-        Europe is not immune to these trends either.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        The 2024 elections for the European parliament have highlighted deep
-        divisions between pro- European Union(EU) parties and Eurosceptic
-        factions (being opposed to increasing powers of EU).
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        In countries, like Italy and Hungary, populist leaders such as{" "}
-        <b>Giorgia Meloni</b> and <b>Viktor Orban</b> have rallied against EU
-        regulations and immigration policies, tapping into nationalist
-        sentiments.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Conversely, pro-EU leaders like <b>Macron of France</b> and{" "}
-        <b>Olaf Scholz</b> of Germany advocate for greater European integration
-        and possess liberal democratic values.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        Well, the consequences of political polarization are troubling.
-        Governance becomes increasingly difficult due to the erosion of
-        bipartisan cooperation.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        The 2024 elections around the world highlight the deepening effect of
-        polarization that poses significant challenges to democratic governance.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        So in thought, political polarization is not a result of differing
-        opinions, but rather failing to respect and engage with those
-        differences.
-      </Typography>
-      <Typography sx={{ my: 3 }} lineHeight="28px">
-        And this too reminds me of a leader’s words that how{" "}
-        <span style={{ fontWeight: "bold" }}>
-          “we must learn to live together as brothers or perish together as
-          fools”
-        </span>
-      </Typography>
-      <Typography sx={{ mt: 6 }}>
-        Well, the choice is ultimately ours!
-      </Typography>
-    </Box>
+    </>
   );
 };
