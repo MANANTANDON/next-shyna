@@ -1,4 +1,4 @@
-import helperAPI from "./Index";
+import helperAPI from "./index";
 
 const GetDataBySlug = async (slug) => {
   try {
