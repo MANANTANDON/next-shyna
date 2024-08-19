@@ -2,9 +2,11 @@ import { Articles } from "@/components/Articles";
 import { Compositions } from "@/components/Compositions";
 import { Layout } from "@/components/Layout";
 import { TopContainer } from "@/components/TopContainer";
+import { SearchPost } from "@/utils/common";
 import Head from "next/head";
 
-export default function Home() {
+export default function Home({ articleData }) {
+  console.log(articleData, "Shyna");
   return (
     <>
       <Head>
@@ -27,10 +29,26 @@ export default function Home() {
       <>
         <Layout>
           <TopContainer />
-          <Articles />
+          <Articles data={articleData} />
           {/* <Compositions /> */}
         </Layout>
       </>
     </>
   );
+}
+
+export async function getServerSideProps({}) {
+  const response = await SearchPost(
+    {
+      visiblity: "DRAFT",
+    },
+    { page: 1, size: 4 }
+  );
+  const articleData = response.data;
+
+  return {
+    props: {
+      articleData,
+    },
+  };
 }

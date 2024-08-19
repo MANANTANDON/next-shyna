@@ -3,7 +3,7 @@ import React from "react";
 import { NewsCard } from "./Cards/NewsCard";
 import { ArrowForwardIosRounded } from "@mui/icons-material";
 
-export const Articles = () => {
+export const Articles = ({ data }) => {
   return (
     <>
       <Container maxWidth="lg">
@@ -46,14 +46,15 @@ export const Articles = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
+              gap: 2,
+              alignItems: "center",
               flexWrap: "wrap",
-              justifyContent: "space-between",
               rowGap: "25px",
             }}
           >
-            {Array.from(Array(1)).map((item) => (
-              <Box sx={{ width: { xs: "100%", sm: "270px" } }}>
-                <NewsCard color="#ff9933" />
+            {data?.data?.rows?.map((item, key) => (
+              <Box sx={{ width: { xs: "100%", sm: "270px" } }} key={key}>
+                <NewsCard data={item} />
               </Box>
             ))}
           </Box>
