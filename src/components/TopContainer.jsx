@@ -33,9 +33,12 @@ export const TopContainer = () => {
                 <span style={{ fontWeight: "bolder" }}>INDIA </span>
               </Typography>
               <Typography fontSize="14px" sx={{ color: "#6087b5", my: 4 }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
+                So you want to read about the latest world events? The little
+                nuggets of history we are still repeating, but are bored
+                scrolling the conventional wisdoms.. Perhaps you'd prefer some
+                poetic musings, strong opinions, and a few real- life tales
+                thrown in? Well, you are at the right place. Welcome to my
+                space!
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <Link
