@@ -25,28 +25,20 @@ export const TopContainer = () => {
               item
               sx={{ display: { xs: "none", md: "block" } }}
             >
-              <Typography fontSize="30px">
-                <span style={{ fontWeight: "lighter" }}>Hey! </span>
-                <span style={{ fontWeight: "bolder" }}>I'm Shyna, </span>
-                <span style={{ fontWeight: "lighter" }}>A</span>
-              </Typography>
-              <Typography fontSize="30px">
-                <span style={{ fontWeight: "lighter" }}>Based out of</span>
-                <span style={{ fontWeight: "bolder" }}> New Delhi, India.</span>
-              </Typography>
-              <Typography fontSize="30px">
-                <span style={{ fontWeight: "lighter" }}>I write about </span>
-                <span style={{ fontWeight: "bolder" }}>
-                  politics, social issues and international{" "}
-                </span>
-                <span style={{ fontWeight: "lighter" }}>affairs.</span>
+              <Typography fontWeight="light">Hey! I'm Shyna,</Typography>
+              <Typography fontWeight="light">
+                based out of New Delhi, India. I write about politics, social
+                issues and international affairs.
               </Typography>
               <Typography sx={{ my: 1 }}>
-                <span style={{ fontWeight: "lighter" }}>
+                <span style={{ fontWeight: "light" }}>
                   I can be reached at:{" "}
                 </span>
                 <span
-                  style={{ fontWeight: "bolder", textDecoration: "underline" }}
+                  style={{
+                    fontWeight: "bolder",
+                    borderBottom: "2px solid #000",
+                  }}
                 >
                   shyna20012@gmail.com
                 </span>
