@@ -7,7 +7,7 @@ import React from "react";
 export const TopContainer = () => {
   return (
     <>
-      <Box sx={{ bgcolor: "#ffffff40", py: 5 }}>
+      <Box sx={{ py: 5 }}>
         <Container maxWidth="lg">
           <Grid
             container
