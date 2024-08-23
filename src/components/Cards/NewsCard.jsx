@@ -38,7 +38,7 @@ export const NewsCard = ({ data }) => {
               fontSize="10px"
               fontWeight="bolder"
             >
-              {data?.category[0]?.name.toUpperCase()}
+              {data?.category?.name.toUpperCase()}
             </Typography>
             <a
               href={`${data?.slug}`}

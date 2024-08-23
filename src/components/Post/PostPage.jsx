@@ -9,6 +9,8 @@ import { SharingButton } from "../Sharing/SharingButton";
 export const PostPage = ({ data }) => {
   const slug = `${INIT_URL}${data?.data?.slug}`;
   const imgUrl = `${IMG_URI}${data?.data?.featureImg}`;
+
+  console.log(data);
   return (
     <>
       <Head>
@@ -99,9 +101,12 @@ export const PostPage = ({ data }) => {
           {data?.data?.meta?.subheading}
         </Typography>
         {/* BY USER */}
-        <Typography textAlign="center" sx={{ mt: 2, color: "#6087B5" }}>{`${
-          data?.data?.byLiner?.name
-        } | ${formatDateToDayMonth(data?.data?.createdAt)} `}</Typography>
+        <Typography
+          textAlign="center"
+          sx={{ mt: 2, color: "#6087B5" }}
+        >{`Shyna Gupta | ${formatDateToDayMonth(
+          data?.data?.createdAt
+        )} `}</Typography>
 
         <Box
           sx={{
