@@ -9,6 +9,7 @@ const nextConfig = {
       "api.newsarenaindia.com",
       "devapi.newsarenaindia.com",
       "dev.newsarenaindia.com",
+      "devqa.newsarenaindia.com",
     ], // Add your image domains here
   },
 };
