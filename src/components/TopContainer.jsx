@@ -43,14 +43,6 @@ export const TopContainer = () => {
                   shyna20012@gmail.com
                 </span>
               </Typography>
-              <Typography fontSize="14px" sx={{ color: "#6087b5", my: 4 }}>
-                So you want to read about the latest world events? The little
-                nuggets of history we are still repeating, but are bored
-                scrolling the conventional wisdoms.. Perhaps you'd prefer some
-                poetic musings, strong opinions, and a few real- life tales
-                thrown in? Well, you are at the right place. Welcome to my
-                space!
-              </Typography>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <Link
                   href="https://www.instagram.com/shyna.co/"
@@ -83,10 +75,10 @@ export const TopContainer = () => {
                 sx={{
                   position: "relative",
                   overflow: "hidden",
-                  height: "300px",
-                  width: "300px",
+                  height: "200px",
+                  width: "200px",
                   borderRadius: "50%",
-                  border: "10px solid #6087b550",
+                  border: "6px solid #6087b550",
                 }}
               >
                 <Image
@@ -116,14 +108,6 @@ export const TopContainer = () => {
                 >
                   shyna20012@gmail.com
                 </span>
-              </Typography>
-              <Typography fontSize="14px" sx={{ color: "#6087b5", my: 4 }}>
-                So you want to read about the latest world events? The little
-                nuggets of history we are still repeating, but are bored
-                scrolling the conventional wisdoms.. Perhaps you'd prefer some
-                poetic musings, strong opinions, and a few real- life tales
-                thrown in? Well, you are at the right place. Welcome to my
-                space!
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <Link
