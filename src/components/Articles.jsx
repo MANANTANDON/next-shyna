@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { NewsCard } from "./Cards/NewsCard";
-import { ArrowForwardIosRounded } from "@mui/icons-material";
+import { ArrowForwardIosRounded, Category } from "@mui/icons-material";
 import { SearchPost } from "@/utils/common";
 import { ArticleCard } from "@/skeleton/ArticleCard";
 
