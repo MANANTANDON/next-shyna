@@ -135,4 +135,4 @@ export const TopContainer = () => {
   );
 };
 
-// I can be reached at: Shyna20012@gmail.com
+// Manan <3 Shyna
