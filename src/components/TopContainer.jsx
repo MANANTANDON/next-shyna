@@ -87,6 +87,8 @@ export const TopContainer = () => {
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"
+                  alt="Shyna Gupta"
+                  title="Shyna Gupta"
                 />
               </Box>
             </Grid>
