@@ -10,7 +10,6 @@ export const PostPage = ({ data }) => {
   const slug = `${INIT_URL}${data?.data?.slug}`;
   const imgUrl = `${IMG_URI}${data?.data?.featureImg}`;
 
-  console.log(data);
   return (
     <>
       <Head>
