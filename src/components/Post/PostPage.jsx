@@ -117,7 +117,10 @@ export const PostPage = ({ data }) => {
             mt: 2,
           }}
         >
-          <SharingButton slug={slug} text={data?.data?.meta?.title} />
+          <SharingButton
+            slug={slug}
+            text={data?.data?.meta?.title || data?.data?.title}
+          />
         </Box>
 
         {/*IMAGE*/}
