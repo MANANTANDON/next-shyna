@@ -74,7 +74,7 @@ export const Articles = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
-              gap: 2,
+              gap: 1.5,
               alignItems: "center",
               flexWrap: "wrap",
               rowGap: "25px",

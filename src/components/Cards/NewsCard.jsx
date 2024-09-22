@@ -4,7 +4,6 @@ import Image from "next/image";
 import React from "react";
 
 export const NewsCard = ({ data }) => {
-  console.log(data, "article");
   return (
     <>
       <Card variant="outlined" sx={{ borderRadius: "0px", border: "none" }}>
