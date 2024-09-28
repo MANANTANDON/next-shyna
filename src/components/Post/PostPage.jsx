@@ -149,6 +149,23 @@ export const PostPage = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: data?.data?.content }}
           />
         </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            mb: 2,
+            mt: 5,
+          }}
+        >
+          <Typography>Share This Article</Typography>
+          <SharingButton
+            slug={slug}
+            text={data?.data?.meta?.title || data?.data?.title}
+          />
+        </Box>
       </Box>
     </>
   );
