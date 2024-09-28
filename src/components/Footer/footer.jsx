@@ -57,7 +57,7 @@ export const Footer = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid
+              {/* <Grid
                 item
                 md={6}
                 xs={12}
@@ -74,7 +74,7 @@ export const Footer = () => {
                     Lets Catch Up
                   </Typography>
                 </Box>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Box>
           <Box

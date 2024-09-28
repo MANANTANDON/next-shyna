@@ -95,14 +95,14 @@ export const PostPage = ({ data }) => {
         <Typography
           fontSize="16px"
           textAlign="center"
-          sx={{ color: "grey", mt: 2 }}
+          sx={{ color: "grey", mt: 1 }}
         >
           {data?.data?.meta?.subheading}
         </Typography>
         {/* BY USER */}
         <Typography
           textAlign="center"
-          sx={{ mt: 2, color: "#6087B5" }}
+          sx={{ mt: 1, color: "#6087B5" }}
         >{`Shyna Gupta | ${formatDateToDayMonth(
           data?.data?.createdAt
         )} `}</Typography>
@@ -113,8 +113,8 @@ export const PostPage = ({ data }) => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
-            mb: 5,
-            mt: 2,
+            mb: 2,
+            mt: 1,
           }}
         >
           <SharingButton
@@ -131,7 +131,6 @@ export const PostPage = ({ data }) => {
             height: { xs: "200px", sm: "500px" },
             width: "100%",
             borderRadius: "10px",
-            my: 2,
           }}
         >
           <Image
@@ -144,7 +143,7 @@ export const PostPage = ({ data }) => {
           />
         </Box>
         {/* CONTENT */}
-        <Box>
+        <Box sx={{ mt: 2 }}>
           <div
             className="blogRootContainer"
             dangerouslySetInnerHTML={{ __html: data?.data?.content }}
