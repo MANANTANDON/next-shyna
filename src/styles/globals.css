@@ -1,6 +1,11 @@
 body {
   background-color: #e4edf7;
 }
+
+a {
+  text-decoration: none;
+  color: #000;
+}
 .glass {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(12px);

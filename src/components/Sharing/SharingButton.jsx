@@ -14,7 +14,7 @@ export const SharingButton = ({ slug, text }) => {
         }}
       >
         <a
-          href={`https://api.whatsapp.com/send?text=${text}&url=${slug}`}
+          href={`https://api.whatsapp.com/send?text=${text} ${slug}`}
           style={{
             padding: "10px",
             borderRadius: "4px",

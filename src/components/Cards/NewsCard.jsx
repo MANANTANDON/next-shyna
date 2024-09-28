@@ -15,21 +15,25 @@ export const NewsCard = ({ data }) => {
             },
           }}
         >
-          <Box
-            sx={{
-              position: "relative",
-              overflow: "hidden",
-              width: "100%",
-              height: "200px",
-            }}
-          >
-            <Image
-              src={`${IMG_URI}/${data?.featureImg}`}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
-          </Box>
+          <a href={`${data?.slug}`}>
+            <Box
+              sx={{
+                position: "relative",
+                overflow: "hidden",
+                width: "100%",
+                height: "200px",
+              }}
+            >
+              <Image
+                src={`${IMG_URI}/${data?.featureImg}`}
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+                alt={data?.meta?.alt}
+                title={data?.meta?.title}
+              />
+            </Box>
+          </a>
           <Box sx={{ bgcolor: `#6087b520`, height: "180px", py: 1 }}>
             <Typography
               sx={{ px: 2, color: "#6087b5" }}
@@ -39,10 +43,7 @@ export const NewsCard = ({ data }) => {
             >
               {data?.category?.name.toUpperCase()}
             </Typography>
-            <a
-              href={`${data?.slug}`}
-              style={{ textDecoration: "none", color: "black" }}
-            >
+            <a href={`${data?.slug}`}>
               <Typography
                 sx={{
                   px: 2,
