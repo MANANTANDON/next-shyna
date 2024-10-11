@@ -1,15 +1,9 @@
+import React from "react";
 import { Layout } from "@/components/Layout";
-import { BorderAll, Home } from "@mui/icons-material";
+import { Home } from "@mui/icons-material";
 // import { LocationBreadcrumb } from "@/components/extras/LocationBreadcrumb";
-
 import { Box, Container, Typography } from "@mui/material";
-import dynamic from "next/dynamic";
 import Head from "next/head";
-import React, { Suspense } from "react";
-
-const DynamicFooter = dynamic(() =>
-  import("@/components/footer/Footer").then((mod) => mod.Footer)
-);
 
 function Index() {
   //   const datacat = {
