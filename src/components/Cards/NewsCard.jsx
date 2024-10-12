@@ -1,9 +1,9 @@
-import { IMG_URI } from "@/constant";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
 export const NewsCard = ({ data }) => {
+  console.log(data, "");
   return (
     <>
       <Card variant="outlined" sx={{ borderRadius: "0px", border: "none" }}>
@@ -15,7 +15,7 @@ export const NewsCard = ({ data }) => {
             },
           }}
         >
-          <a href={`${data?.slug}`}>
+          <a href={`/${data?.properties?.slug?.rich_text[0]?.plain_text}`}>
             <Box
               sx={{
                 position: "relative",
@@ -25,12 +25,14 @@ export const NewsCard = ({ data }) => {
               }}
             >
               <Image
-                src={`${IMG_URI}/${data?.featureImg}`}
+                src={data?.properties?.featureImg?.files[0]?.file?.url}
+                blurDataURL={data?.properties?.featureImg?.files[0]?.file?.url}
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
                 alt={data?.meta?.alt}
                 title={data?.meta?.title}
+                quality={8}
               />
             </Box>
           </a>
@@ -41,9 +43,9 @@ export const NewsCard = ({ data }) => {
               fontSize="10px"
               fontWeight="bolder"
             >
-              {data?.category?.name.toUpperCase()}
+              OPINION
             </Typography>
-            <a href={`${data?.slug}`}>
+            <a href={`/${data?.properties?.slug?.rich_text[0]?.plain_text}`}>
               <Typography
                 sx={{
                   px: 2,
@@ -61,7 +63,7 @@ export const NewsCard = ({ data }) => {
                 fontSize="1rem"
                 fontWeight="bold"
               >
-                {data?.title}
+                {data?.properties?.Name?.title[0]?.plain_text}
               </Typography>
             </a>
             <Typography
@@ -78,7 +80,7 @@ export const NewsCard = ({ data }) => {
               textAlign="center"
               fontSize="0.7rem"
             >
-              {data?.meta?.subheading}
+              {data?.properties?.subHeading?.rich_text[0]?.plain_text}
             </Typography>
           </Box>
         </CardContent>
