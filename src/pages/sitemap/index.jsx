@@ -6,6 +6,57 @@ import { Box, Container, Typography } from "@mui/material";
 import Head from "next/head";
 
 function Index() {
+  //   const datacat = {
+  //     data: {
+  //       categories: [
+  //         {
+  //           id: 6,
+  //           name: "Nation",
+  //           slug: "nation",
+  //         },
+  //         {
+  //           id: 8,
+  //           name: "States",
+  //           slug: "states",
+  //         },
+  //         {
+  //           id: 5,
+  //           name: "International",
+  //           slug: "international",
+  //         },
+  //         {
+  //           id: 4,
+  //           name: "Politics",
+  //           slug: "politics",
+  //         },
+  //         {
+  //           id: 9,
+  //           name: "Opinion",
+  //           slug: "opinion",
+  //         },
+  //         {
+  //           id: 37,
+  //           name: "Economy",
+  //           slug: "economy",
+  //         },
+  //         {
+  //           id: 21,
+  //           name: "Sports",
+  //           slug: "sports",
+  //         },
+  //         {
+  //           id: 23,
+  //           name: "Technology",
+  //           slug: "technology",
+  //         },
+  //         {
+  //           id: 31,
+  //           name: "Entertainment",
+  //           slug: "entertainment",
+  //         },
+  //       ],
+  //     },
+  //   };
   return (
     <>
       <Head>

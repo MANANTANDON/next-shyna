@@ -10,7 +10,6 @@ const nextConfig = {
       "devapi.newsarenaindia.com",
       "dev.newsarenaindia.com",
       "devqa.newsarenaindia.com",
-      "prod-files-secure.s3.us-west-2.amazonaws.com",
     ], // Add your image domains here
   },
 };

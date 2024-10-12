@@ -1,9 +1,37 @@
 import { Box, Container, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NewsCard } from "./Cards/NewsCard";
-import { ArrowForwardIosRounded } from "@mui/icons-material";
+import { ArrowForwardIosRounded, Category } from "@mui/icons-material";
+import { SearchPost } from "@/utils/common";
+import { ArticleCard } from "@/skeleton/ArticleCard";
 
-export const Articles = ({ articles }) => {
+export const Articles = () => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const getData = async () => {
+    setLoading(true);
+    try {
+      const response = await SearchPost(
+        {
+          visiblity: "DRAFT",
+        },
+        { page: 1, size: 4 }
+      );
+      setData(response?.data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (loading) {
+    return <ArticleCard />;
+  }
+
   return (
     <>
       <Container maxWidth="lg">
@@ -52,7 +80,7 @@ export const Articles = ({ articles }) => {
               rowGap: "25px",
             }}
           >
-            {articles.map((item, key) => (
+            {data?.data?.rows?.map((item, key) => (
               <Box sx={{ width: { xs: "100%", sm: "270px" } }} key={key}>
                 <NewsCard data={item} />
               </Box>

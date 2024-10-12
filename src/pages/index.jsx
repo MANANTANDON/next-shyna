@@ -1,11 +1,11 @@
 import { Articles } from "@/components/Articles";
+import { Compositions } from "@/components/Compositions";
 import { Layout } from "@/components/Layout";
 import { TopContainer } from "@/components/TopContainer";
-import { fetchHomePageArticles } from "@/lib/notion";
 import Head from "next/head";
+import { Suspense } from "react";
 
-export default function Home({ articlesRes }) {
-  console.log(articlesRes, "Articles");
+export default function Home() {
   return (
     <>
       <Head>
@@ -28,20 +28,10 @@ export default function Home({ articlesRes }) {
       <>
         <Layout>
           <TopContainer />
-          <Articles articles={articlesRes} />
+          <Articles />
           {/* <Compositions /> */}
         </Layout>
       </>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  const articles = await fetchHomePageArticles();
-  const articlesRes = articles?.results;
-
-  // const notionSlug = await fetchBySlug("marvel-s-hawkeye");
-  // console.log(notionSlug, "slug data");
-
-  return { props: { articlesRes } };
 }
