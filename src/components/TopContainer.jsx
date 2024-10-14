@@ -27,8 +27,7 @@ export const TopContainer = () => {
             >
               <Typography fontWeight="light">Hey! I'm Shyna,</Typography>
               <Typography fontWeight="light">
-                based out of New Delhi, India. I write about politics, social
-                issues and international affairs.
+                I write about politics, social issues and international affairs.
               </Typography>
               <Typography sx={{ my: 1 }}>
                 <span style={{ fontWeight: "light" }}>
