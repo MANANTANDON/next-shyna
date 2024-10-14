@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export const TopContainer = () => {
+export const TopContainer = ({ info }) => {
   return (
     <>
       <Box sx={{ py: 5 }}>
@@ -25,9 +25,11 @@ export const TopContainer = () => {
               item
               sx={{ display: { xs: "none", md: "block" } }}
             >
-              <Typography fontWeight="light">Hey! I'm Shyna,</Typography>
               <Typography fontWeight="light">
-                I write about politics, social issues and international affairs.
+                {info[0]?.paragraph?.rich_text[0]?.plain_text}
+              </Typography>
+              <Typography fontWeight="light">
+                {info[1]?.paragraph?.rich_text[0]?.plain_text}
               </Typography>
               <Typography sx={{ my: 1 }}>
                 <span style={{ fontWeight: "light" }}>
@@ -92,10 +94,11 @@ export const TopContainer = () => {
               </Box>
             </Grid>
             <Grid xs={12} md={6} item sx={{ display: { md: "none" } }}>
-              <Typography fontWeight="light">Hey! I'm Shyna,</Typography>
               <Typography fontWeight="light">
-                based out of New Delhi, India. I write about politics, social
-                issues and international affairs.
+                {info[0]?.paragraph?.rich_text[0]?.plain_text}
+              </Typography>
+              <Typography fontWeight="light">
+                {info[1]?.paragraph?.rich_text[0]?.plain_text}
               </Typography>
               <Typography sx={{ my: 1 }}>
                 <span style={{ fontWeight: "light" }}>

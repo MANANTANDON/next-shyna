@@ -8,6 +8,18 @@ export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
+export const fetchInfo = () => {
+  return notion.databases.query({
+    database_id: process.env.NOTION_DB_ID!,
+    filter: {
+      property: "info",
+      status: {
+        equals: "True",
+      },
+    },
+  });
+};
+
 export const fetchPages = () => {
   return notion.databases.query({
     database_id: process.env.NOTION_DB_ID!,

@@ -1,11 +1,18 @@
 import { Articles } from "@/components/Articles";
 import { Layout } from "@/components/Layout";
 import { TopContainer } from "@/components/TopContainer";
-import { fetchHomePageArticles } from "@/lib/notion";
+import {
+  fetchBySlug,
+  fetchHomePageArticles,
+  fetchPageBlocks,
+  notion,
+} from "@/lib/notion";
+import bookmarkPlugin from "@notion-render/bookmark-plugin";
+import { NotionRenderer } from "@notion-render/client";
+import hljsPlugin from "@notion-render/hljs-plugin";
 import Head from "next/head";
 
-export default function Home({ articlesRes }) {
-  console.log(articlesRes, "Articles");
+export default function Home({ infoData, articlesRes }) {
   return (
     <>
       <Head>
@@ -27,7 +34,7 @@ export default function Home({ articlesRes }) {
       </Head>
       <>
         <Layout>
-          <TopContainer />
+          <TopContainer info={infoData} />
           <Articles articles={articlesRes} />
           {/* <Compositions /> */}
         </Layout>
@@ -37,11 +44,22 @@ export default function Home({ articlesRes }) {
 }
 
 export async function getServerSideProps() {
+  const info = await fetchBySlug("landing-page-deets");
+
+  const infoData = await fetchPageBlocks(info?.id);
+  console.log(infoData);
+
+  const renderer = new NotionRenderer({
+    client: notion,
+  });
+
+  renderer.use(hljsPlugin({}));
+  renderer.use(bookmarkPlugin(undefined));
+
+  const infoContent = await renderer.render(...infoData);
+
   const articles = await fetchHomePageArticles();
   const articlesRes = articles?.results;
 
-  // const notionSlug = await fetchBySlug("marvel-s-hawkeye");
-  // console.log(notionSlug, "slug data");
-
-  return { props: { articlesRes } };
+  return { props: { infoContent, infoData, articlesRes } };
 }

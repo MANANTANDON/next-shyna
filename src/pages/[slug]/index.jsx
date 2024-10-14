@@ -205,7 +205,6 @@ export async function getServerSideProps({ query }) {
   const post = await fetchBySlug(query.slug);
 
   const postData = await fetchPageBlocks(post?.id);
-  console.log(postData, "fetchPageBlocks");
 
   const renderer = new NotionRenderer({
     client: notion,
