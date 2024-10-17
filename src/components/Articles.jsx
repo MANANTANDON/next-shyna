@@ -29,15 +29,21 @@ export const Articles = ({ articles }) => {
               },
             }}
           >
-            <Typography
-              fontWeight="bolder"
-              fontSize="25px"
-              sx={{
-                my: 2,
-              }}
-            >
-              ARTICLES
-            </Typography>
+            <a href="/articles">
+              <Typography
+                fontWeight="bolder"
+                fontSize="25px"
+                sx={{
+                  my: 2,
+                  "&:hover": {
+                    cursor: "pointer",
+                    color: "#6087b5",
+                  },
+                }}
+              >
+                ARTICLES
+              </Typography>
+            </a>
             <Box>
               <ArrowForwardIosRounded />
             </Box>

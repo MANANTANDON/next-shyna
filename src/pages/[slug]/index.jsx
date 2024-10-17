@@ -90,7 +90,7 @@ function Index({ post, postContent }) {
             mt={2}
             sx={{
               bgcolor: "#fff",
-              mr: { xs: -1, md: 0 },
+              mx: { xs: -1, md: 0 },
               p: 2,
               borderRadius: "2px",
             }}

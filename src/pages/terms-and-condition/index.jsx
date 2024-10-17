@@ -16,7 +16,9 @@ export default function Index() {
             }}
           >
             <Typography variant="overline" fontSize="12px">
-              <h1>Terms and Conditions</h1>
+              <h1 style={{ fontSize: "28px", fontWeight: "700" }}>
+                Terms and Conditions
+              </h1>
               <p>Last updated: September 28, 2024</p>
               <p>
                 Please read these terms and conditions carefully before using

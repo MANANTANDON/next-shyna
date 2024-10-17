@@ -7,7 +7,7 @@ import React from "react";
 export const Footer = () => {
   return (
     <>
-      <Box sx={{ bgcolor: "white", py: 4, mb: -2, mx: -1, mt: 10 }}>
+      <Box sx={{ bgcolor: "white", py: 4, mb: -2, mt: 10 }}>
         <Container maxWidth="lg">
           <Box sx={{ px: 2, borderBottom: "1.5px solid grey", pb: 2 }}>
             <Grid container>
@@ -87,7 +87,8 @@ export const Footer = () => {
             }}
           >
             <Typography fontSize="12px">
-              © 2024 shynagupta.com All Right Reserved.
+              © 2024 <a href="https://www.shynagupta.com/">shynagupta.com</a>{" "}
+              All Right Reserved.
             </Typography>
             <Box sx={{ display: "flex", gap: 2, mt: { xs: 2, sm: 0 } }}>
               <a href="/privacy-policy" style={{ textDecoration: "none" }}>
