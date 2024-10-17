@@ -54,6 +54,18 @@ export const fetchHomePageArticles = () => {
   });
 };
 
+export const fetchAllArticles = () => {
+  return notion.databases.query({
+    database_id: process.env.NOTION_DB_ID!,
+    filter: {
+      property: "status",
+      status: {
+        equals: "Published",
+      },
+    },
+  });
+};
+
 export const fetchBySlug = async (slug: string) => {
   const res = await notion.databases.query({
     database_id: process.env.NOTION_DB_ID!,

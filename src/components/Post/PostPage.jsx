@@ -77,7 +77,6 @@ export const PostPage = ({ data }) => {
           p: 2,
           my: 2,
           borderRadius: "5px",
-          mx: -1,
         }}
       >
         {/* HEADING */}

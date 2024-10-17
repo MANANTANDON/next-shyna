@@ -25,7 +25,7 @@ export const TopContainer = ({ info }) => {
               item
               sx={{ display: { xs: "none", md: "block" } }}
             >
-              <Typography fontWeight="light">
+              <Typography fontWeight="light" variant="h1" fontSize="16px">
                 {info[0]?.paragraph?.rich_text[0]?.plain_text}
               </Typography>
               <Typography fontWeight="light">

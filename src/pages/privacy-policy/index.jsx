@@ -16,7 +16,9 @@ export default function Index() {
             }}
           >
             <Typography variant="overline" fontSize="12px">
-              <h1>Privacy Policy</h1>
+              <h1 style={{ fontSize: "28px", fontWeight: "700" }}>
+                Privacy Policy
+              </h1>
               <p>Last updated: September 28, 2024</p>
               <p>
                 This Privacy Policy describes Our policies and procedures on the
