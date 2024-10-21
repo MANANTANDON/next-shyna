@@ -2,8 +2,8 @@ import { Articles } from "@/components/Articles";
 import { Layout } from "@/components/Layout";
 import { TopContainer } from "@/components/TopContainer";
 import {
+  fetchAllArticles,
   fetchBySlug,
-  fetchHomePageArticles,
   fetchPageBlocks,
   notion,
 } from "@/lib/notion";
@@ -47,7 +47,6 @@ export async function getServerSideProps() {
   const info = await fetchBySlug("landing-page-deets");
 
   const infoData = await fetchPageBlocks(info?.id);
-  console.log(infoData);
 
   const renderer = new NotionRenderer({
     client: notion,
@@ -58,7 +57,8 @@ export async function getServerSideProps() {
 
   const infoContent = await renderer.render(...infoData);
 
-  const articles = await fetchHomePageArticles();
+  let startCursor = undefined;
+  const articles = await fetchAllArticles(startCursor, 4);
   const articlesRes = articles?.results;
 
   return { props: { infoContent, infoData, articlesRes } };

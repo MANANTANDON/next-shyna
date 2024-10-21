@@ -29,7 +29,9 @@ export default function Articles({ articlesRes }) {
 }
 
 export async function getServerSideProps() {
-  const articles = await fetchAllArticles();
+  let startCursor = undefined;
+  const articles = await fetchAllArticles(startCursor, 20);
+  console.log(articles);
   const articlesRes = articles?.results;
 
   return { props: { articlesRes } };

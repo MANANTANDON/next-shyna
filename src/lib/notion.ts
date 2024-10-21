@@ -8,17 +8,17 @@ export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export const fetchInfo = () => {
-  return notion.databases.query({
-    database_id: process.env.NOTION_DB_ID!,
-    filter: {
-      property: "info",
-      status: {
-        equals: "True",
-      },
-    },
-  });
-};
+// export const fetchInfo = () => {
+//   return notion.databases.query({
+//     database_id: process.env.NOTION_DB_ID!,
+//     filter: {
+//       property: "info",
+//       status: {
+//         equals: "True",
+//       },
+//     },
+//   });
+// };
 
 export const fetchPages = () => {
   return notion.databases.query({
@@ -32,29 +32,7 @@ export const fetchPages = () => {
   });
 };
 
-export const fetchHomePageArticles = () => {
-  return notion.databases.query({
-    database_id: process.env.NOTION_DB_ID!,
-    filter: {
-      and: [
-        {
-          property: "homePage",
-          status: {
-            equals: "Show",
-          },
-        },
-        {
-          property: "status",
-          status: {
-            equals: "Published",
-          },
-        },
-      ],
-    },
-  });
-};
-
-export const fetchAllArticles = () => {
+export const fetchAllArticles = (startCursor, size) => {
   return notion.databases.query({
     database_id: process.env.NOTION_DB_ID!,
     filter: {
@@ -63,6 +41,8 @@ export const fetchAllArticles = () => {
         equals: "Published",
       },
     },
+    start_cursor: startCursor,
+    page_size: size,
   });
 };
 

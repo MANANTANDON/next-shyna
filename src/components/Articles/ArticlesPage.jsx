@@ -1,7 +1,6 @@
 import { Box, Typography, Container } from "@mui/material";
 import React, { useEffect } from "react";
 import { NewsCard } from "../Cards/NewsCard";
-import { fetchAllArticles } from "@/lib/notion";
 
 export const ArticlesPage = ({ articles }) => {
   return (
