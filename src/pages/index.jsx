@@ -58,7 +58,7 @@ export async function getServerSideProps() {
   const infoContent = await renderer.render(...infoData);
 
   let startCursor = undefined;
-  const articles = await fetchAllArticles(startCursor, 4);
+  const articles = await fetchAllArticles(startCursor, 6);
   const articlesRes = articles?.results;
 
   return { props: { infoContent, infoData, articlesRes } };
