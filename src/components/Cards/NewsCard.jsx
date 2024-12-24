@@ -5,12 +5,19 @@ import React from "react";
 export const NewsCard = ({ data }) => {
   return (
     <>
-      <Card variant="outlined" sx={{ borderRadius: "0px", border: "none" }}>
+      <Card
+        variant="outlined"
+        sx={{
+          bgcolor: "#eaf0f7",
+          border: "2px solid #E0E9F5",
+          borderRadius: "4px",
+        }}
+      >
         <CardContent
           sx={{
-            padding: 0,
+            padding: 1.6,
             "&:last-child": {
-              paddingBottom: 0,
+              paddingBottom: 4,
             },
           }}
         >
@@ -21,6 +28,7 @@ export const NewsCard = ({ data }) => {
                 overflow: "hidden",
                 width: "100%",
                 height: "200px",
+                borderRadius: "2px",
               }}
             >
               <Image
@@ -35,11 +43,18 @@ export const NewsCard = ({ data }) => {
               />
             </Box>
           </a>
-          <Box sx={{ bgcolor: `#6087b520`, height: "180px", py: 1 }}>
+          <Box sx={{ height: "180px", py: 1.8 }}>
             <Typography
-              sx={{ px: 2, color: "#6087b5" }}
-              textAlign="center"
-              fontSize="10px"
+              sx={{
+                color: "#3E73B9",
+                bgcolor: "#E0E9F5",
+                borderRadius: "2px",
+                width: "fit-content",
+                py: "4px",
+                px: "6px",
+              }}
+              textAlign="left"
+              fontSize="14px"
               fontWeight="bolder"
             >
               OPINION
@@ -47,19 +62,16 @@ export const NewsCard = ({ data }) => {
             <a href={`/${data?.properties?.slug?.rich_text[0]?.plain_text}`}>
               <Typography
                 sx={{
-                  px: 2,
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   display: "-webkit-box",
                   WebkitLineClamp: "2",
                   WebkitBoxOrient: "vertical",
-                  my: 1,
-                  "&:hover": {
-                    color: "#6087b5",
-                  },
+                  my: 1.8,
+                  color: "#14263D",
                 }}
-                textAlign="center"
-                fontSize="1rem"
+                textAlign="left"
+                fontSize="18px"
                 fontWeight="bold"
               >
                 {data?.properties?.Name?.title[0]?.plain_text}
@@ -67,17 +79,17 @@ export const NewsCard = ({ data }) => {
             </a>
             <Typography
               sx={{
-                px: 2,
-                color: "#686D76",
+                color: "#6E85A4",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 display: "-webkit-box",
-                WebkitLineClamp: "4",
+                WebkitLineClamp: "3",
                 WebkitBoxOrient: "vertical",
-                my: 1,
+                my: 1.8,
+                height: "76px",
               }}
-              textAlign="center"
-              fontSize="0.7rem"
+              textAlign="left"
+              fontSize="16px"
             >
               {data?.properties?.subHeading?.rich_text[0]?.plain_text}
             </Typography>

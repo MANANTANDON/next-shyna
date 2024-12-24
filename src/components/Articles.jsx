@@ -1,7 +1,7 @@
-import { Box, Container, Typography } from "@mui/material";
 import React from "react";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { NewsCard } from "./Cards/NewsCard";
-import { ArrowForwardIosRounded } from "@mui/icons-material";
+import { KeyboardArrowRight } from "@mui/icons-material";
 
 export const Articles = ({ articles }) => {
   return (
@@ -9,60 +9,49 @@ export const Articles = ({ articles }) => {
       <Container maxWidth="lg">
         <Box
           sx={{
-            bgcolor: "#ffffff90",
-            py: 2,
-            px: 2,
-            borderRadius: "10px",
             my: 2,
           }}
         >
+          <Grid
+            container
+            gap={4.2}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {articles?.map((item, key) => (
+              <Grid item xs={12} sm={5.72} md={3.72} lg={3.76} key={key}>
+                <NewsCard data={item} />
+              </Grid>
+            ))}
+          </Grid>
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
               alignItems: "center",
-              gap: 1,
-              width: "fit-content",
-              "&:hover": {
-                cursor: "pointer",
-                color: "#6087b5",
-              },
+              justifyContent: "center",
+              my: 5,
             }}
           >
             <a href="/articles">
-              <Typography
-                fontWeight="bolder"
-                fontSize="25px"
+              <Box
                 sx={{
-                  my: 2,
-                  "&:hover": {
-                    cursor: "pointer",
-                    color: "#6087b5",
-                  },
+                  borderRadius: "4px",
+                  color: "#6E85A4",
+                  bgcolor: "#E9F0F8",
+                  border: "1px solid #E0E9F5",
+                  display: "flex",
+                  p: 1.5,
                 }}
               >
-                ARTICLES
-              </Typography>
-            </a>
-            <Box>
-              <ArrowForwardIosRounded />
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 1.5,
-              alignItems: "center",
-              flexWrap: "wrap",
-              rowGap: "25px",
-            }}
-          >
-            {articles.map((item, key) => (
-              <Box sx={{ width: { xs: "100%", sm: "270px" } }} key={key}>
-                <NewsCard data={item} />
+                <Typography fontWeight="bolder" fontSize="17px">
+                  More Articles
+                </Typography>
+                <KeyboardArrowRight />
               </Box>
-            ))}
+            </a>
           </Box>
         </Box>
       </Container>
