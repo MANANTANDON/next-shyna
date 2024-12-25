@@ -1,10 +1,41 @@
-import { Instagram, LinkedIn } from "@mui/icons-material";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {
+  ContentCopyRounded,
+  CopyrightRounded,
+  Instagram,
+  LinkedIn,
+} from "@mui/icons-material";
+import {
+  Alert,
+  Box,
+  Container,
+  Grid,
+  Slide,
+  Snackbar,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 export const TopContainer = ({ info }) => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const SlideTransition = (props) => {
+    return <Slide {...props} direction={open ? "down" : "up"} />;
+  };
   return (
     <>
       <Box sx={{ py: 5 }}>
@@ -14,37 +45,74 @@ export const TopContainer = ({ info }) => {
             sx={{
               px: 2,
               display: "flex",
-              flexDirection: "row",
+              flexDirection: { xs: "column-reverse", md: "row" },
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "space-between",
             }}
           >
-            <Grid
-              xs={12}
-              md={6}
-              item
-              sx={{ display: { xs: "none", md: "block" } }}
-            >
-              <Typography fontWeight="light" variant="h1" fontSize="16px">
+            <Grid xs={12} md={6} item>
+              {/* <a href="/">
+                <Box
+                  sx={{
+                    position: "relative",
+                    overflow: "hidden",
+                    height: "54px",
+                    width: "150px",
+                    display: { xs: "none", md: "flex" },
+                  }}
+                >
+                  <Image
+                    src="/shynaSignature.png"
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                  />
+                </Box>
+              </a> */}
+              <Typography
+                fontSize="18px"
+                letterSpacing={1}
+                sx={{ color: "#6E85A4", mb: 0.5 }}
+              >
                 {info[0]?.paragraph?.rich_text[0]?.plain_text}
               </Typography>
-              <Typography fontWeight="light">
+              <Typography
+                fontSize="18px"
+                letterSpacing={1}
+                sx={{ color: "#6E85A4", my: 0.5 }}
+              >
                 {info[1]?.paragraph?.rich_text[0]?.plain_text}
               </Typography>
-              <Typography sx={{ my: 1 }}>
-                <span style={{ fontWeight: "light" }}>
+              <Typography fontSize="18px" letterSpacing={1}>
+                <span style={{ color: "#6E85A4", my: 0.5 }}>
                   I can be reached at:{" "}
                 </span>
                 <span
                   style={{
-                    fontWeight: "bolder",
-                    borderBottom: "2px solid #000",
+                    fontWeight: "400",
+                    borderBottom: "2px dotted #3E73B9",
+                    color: "#3E73B9",
                   }}
                 >
                   shyna20012@gmail.com
                 </span>
+                <span style={{ marginLeft: "10px" }}>
+                  <CopyToClipboard text="shyna20012@gmail.com">
+                    <ContentCopyRounded
+                      onClick={handleClick}
+                      sx={{
+                        cursor: "pointer",
+                        "&:hover": {
+                          color: "#3e73b9",
+                        },
+                      }}
+                    />
+                  </CopyToClipboard>
+                </span>
               </Typography>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <Box
+                sx={{ display: "flex", alignItems: "center", gap: 2, mt: 1 }}
+              >
                 <Link
                   href="https://www.instagram.com/shyna.co/"
                   className="links"
@@ -61,14 +129,15 @@ export const TopContainer = ({ info }) => {
                 </Link>
               </Box>
             </Grid>
+
             <Grid
               xs={12}
-              md={6}
+              md={4}
               item
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: { xs: "center", md: "flex-end" },
                 my: { xs: 3, sm: 0 },
               }}
             >
@@ -79,7 +148,7 @@ export const TopContainer = ({ info }) => {
                   height: "200px",
                   width: "200px",
                   borderRadius: "50%",
-                  border: "6px solid #6087b550",
+                  border: "2px solid #6087b550",
                 }}
               >
                 <Image
@@ -93,14 +162,14 @@ export const TopContainer = ({ info }) => {
                 />
               </Box>
             </Grid>
-            <Grid xs={12} md={6} item sx={{ display: { md: "none" } }}>
-              <Typography fontWeight="light">
+            {/* <Grid xs={12} md={6} item sx={{ display: { md: "none" } }}>
+              <Typography fontWeight="light" sx={{ color: "#6E85A4" }}>
                 {info[0]?.paragraph?.rich_text[0]?.plain_text}
               </Typography>
               <Typography fontWeight="light">
                 {info[1]?.paragraph?.rich_text[0]?.plain_text}
               </Typography>
-              <Typography sx={{ my: 1 }}>
+              <Typography>
                 <span style={{ fontWeight: "light" }}>
                   I can be reached at:{" "}
                 </span>
@@ -129,10 +198,26 @@ export const TopContainer = ({ info }) => {
                   <LinkedIn />
                 </Link>
               </Box>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>
+
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        key={"top" + "center"}
+        TransitionComponent={SlideTransition}
+      >
+        <Alert
+          severity="success"
+          sx={{ bgcolor: "#E9F0F8", border: "1px solid #E0E9F5", p: 0, px: 2 }}
+        >
+          email copied :)
+        </Alert>
+      </Snackbar>
     </>
   );
 };
