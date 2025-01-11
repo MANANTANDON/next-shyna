@@ -21,16 +21,18 @@ export default function Home({ infoData, articlesRes }) {
         <link rel="icon" href="/shyna.ico" />
         <meta property="og:title" content="Shyna" />
         <meta property="og:url" content="https://shynagupta.com" />
+        <meta property="og:image" content="/shynaSignature.png" />
+        <meta property="og:image:alt" content="Shyna Gupta" />
+        <meta property="og:type" content="website" />
         <meta
           name="description"
           content="Join Shyna, an author and journalist, as she explores the latest trends in economics and information technology. Discover insightful articles and fresh perspectives that inform and inspire."
         />
-        <meta property="og:image:alt" content="logo" />
-        <meta property="og:type" content="website" />
         <meta
           property="og:description"
           content="Join Shyna, an author and journalist, as she explores the latest trends in economics and information technology. Discover insightful articles and fresh perspectives that inform and inspire."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />{" "}
       </Head>
       <>
         <Layout>

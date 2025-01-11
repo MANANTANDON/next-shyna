@@ -8,11 +8,13 @@ export const Layout = ({ children }) => {
     <>
       <Box>
         <Box
-          sx={{
-            position: "sticky",
-            top: 0,
-            zIndex: 10,
-          }}
+          sx={
+            {
+              // position: "sticky",
+              // top: 0,
+              // zIndex: 10,
+            }
+          }
           className="glass"
         >
           <Header />

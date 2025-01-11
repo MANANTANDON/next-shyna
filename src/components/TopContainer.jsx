@@ -38,7 +38,7 @@ export const TopContainer = ({ info }) => {
   };
   return (
     <>
-      <Box sx={{ py: 5 }}>
+      <Box sx={{ py: { xs: 0, md: 5 }, pb: { xs: 5, md: 0 } }}>
         <Container maxWidth="lg">
           <Grid
             container
