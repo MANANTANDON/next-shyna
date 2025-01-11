@@ -92,6 +92,7 @@ function Index({ post, postContent }) {
               bgcolor: "#fff",
               mx: { xs: -1, md: 0 },
               p: 2,
+              mb: 10,
               borderRadius: "2px",
             }}
           >

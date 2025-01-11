@@ -21,8 +21,8 @@ export const Header = () => {
             sx={{
               position: "relative",
               overflow: "hidden",
-              height: "54px",
-              width: "150px",
+              height: { xs: "50px", md: "54px" },
+              width: { xs: "140px", md: "150px" },
             }}
           >
             <Image

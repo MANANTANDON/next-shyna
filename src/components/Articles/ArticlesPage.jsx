@@ -1,5 +1,5 @@
-import { Box, Typography, Container } from "@mui/material";
-import React, { useEffect } from "react";
+import { Box, Typography, Container, Grid } from "@mui/material";
+import React from "react";
 import { NewsCard } from "../Cards/NewsCard";
 
 export const ArticlesPage = ({ articles }) => {
@@ -7,9 +7,9 @@ export const ArticlesPage = ({ articles }) => {
     <Container maxWidth="lg">
       <Box
         sx={{
-          bgcolor: "#ffffff90",
-          py: 2,
-          px: 2,
+          pt: { xs: 0, md: 2 },
+          pb: 5,
+          px: { xs: 0, md: 2 },
           borderRadius: "10px",
           my: 2,
         }}
@@ -26,7 +26,7 @@ export const ArticlesPage = ({ articles }) => {
           <Typography
             fontWeight="bolder"
             variant="h1"
-            fontSize="25px"
+            fontSize="30px"
             sx={{
               my: 2,
               "&:hover": {
@@ -38,22 +38,21 @@ export const ArticlesPage = ({ articles }) => {
             ARTICLES
           </Typography>
         </Box>
-        <Box
+        <Grid
+          container
+          gap={4.2}
           sx={{
             display: "flex",
-            flexDirection: "row",
-            gap: 1.5,
             alignItems: "center",
-            flexWrap: "wrap",
-            rowGap: "25px",
+            justifyContent: "left",
           }}
         >
           {articles?.map((item, key) => (
-            <Box sx={{ width: { xs: "100%", sm: "270px" } }} key={key}>
+            <Grid item xs={12} sm={5.72} md={3.71} lg={3.76} key={key}>
               <NewsCard data={item} />
-            </Box>
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Box>
     </Container>
   );

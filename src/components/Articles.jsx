@@ -22,7 +22,7 @@ export const Articles = ({ articles }) => {
             }}
           >
             {articles?.map((item, key) => (
-              <Grid item xs={12} sm={5.72} md={3.72} lg={3.76} key={key}>
+              <Grid item xs={12} sm={5.72} md={3.71} lg={3.76} key={key}>
                 <NewsCard data={item} />
               </Grid>
             ))}
