@@ -204,6 +204,16 @@ function Index({ post, postContent }) {
 
 export async function getServerSideProps({ query }) {
   const post = await fetchBySlug(query.slug);
+  console.log(post, "Need to check");
+
+  if (post === undefined) {
+    return {
+      redirect: {
+        destination: `/404?id=${query.slug}&type=post`,
+        permanent: false,
+      },
+    };
+  }
 
   const postData = await fetchPageBlocks(post?.id);
 
