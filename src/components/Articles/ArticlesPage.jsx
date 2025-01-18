@@ -45,6 +45,9 @@ export const ArticlesPage = ({ articles }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "left",
+            borderTop: "2px dashed #CBDBF0",
+            borderBottom: "2px dashed #CBDBF0",
+            py: 3,
           }}
         >
           {articles?.map((item, key) => (

@@ -9,7 +9,6 @@ export const Footer = () => {
         <Container
           maxWidth="lg"
           sx={{
-            borderTop: "2px dashed #CBDBF0",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
