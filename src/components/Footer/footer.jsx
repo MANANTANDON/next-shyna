@@ -29,7 +29,7 @@ export const Footer = () => {
             <Typography textAlign="center" sx={{ color: "#3E73B9", mt: 2 }}>
               <span>
                 <a
-                  href="/t&c"
+                  href="/terms-and-condition"
                   style={{
                     color: "#3E73B9",
                     borderBottom: "1px dotted #3E73B9",
