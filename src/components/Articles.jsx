@@ -9,7 +9,9 @@ export const Articles = ({ articles }) => {
       <Container maxWidth="lg">
         <Box
           sx={{
-            my: 2,
+            borderTop: "2px dashed #CBDBF0",
+            borderBottom: "2px dashed #CBDBF0",
+            py: { xs: 4, md: 6 },
           }}
         >
           <Grid
