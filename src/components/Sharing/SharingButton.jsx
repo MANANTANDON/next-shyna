@@ -88,19 +88,19 @@ export const SharingButton = ({ slug, text }) => {
     );
   }
 
-  // return (
-  //   <IconButton
-  //     onClick={() => {
-  //       navigator
-  //         .share({
-  //           title: text,
-  //           slug,
-  //         })
-  //         .then(() => console.log("Successful share"))
-  //         .catch(() => console.log("Error sharing"));
-  //     }}
-  //   >
-  //     <IosShareRounded fontSize="small" sx={{ color: "#000" }} />
-  //   </IconButton>
-  // );
+  return (
+    <IconButton
+      onClick={() => {
+        navigator
+          .share({
+            title: text,
+            slug,
+          })
+          .then(() => console.log("Successful share"))
+          .catch(() => console.log("Error sharing"));
+      }}
+    >
+      <IosShareRounded fontSize="small" sx={{ color: "#000" }} />
+    </IconButton>
+  );
 };
