@@ -81,3 +81,8 @@ a {
 .blogRootContainer strong {
   font-family: 700 !important;
 }
+
+.prose {
+  max-width: 100% !important;
+  text-align: left !important;
+}
