@@ -68,10 +68,13 @@ export const Footer = () => {
                   }}
                 >
                   <Image
+                    unoptimized
                     src="/shynaSignature.png"
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
+                    alt=""
+                    title=""
                   />
                 </Box>
               </a>

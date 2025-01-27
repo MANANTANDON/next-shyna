@@ -12,7 +12,7 @@ export const Header = () => {
           p: 1,
           display: "flex",
           flexDirection: "row",
-          justifyContent: { xs: "center", sm: "space-between" },
+          justifyContent: "flex-start",
           alignItems: "center",
         }}
       >
@@ -21,8 +21,8 @@ export const Header = () => {
             sx={{
               position: "relative",
               overflow: "hidden",
-              height: { xs: "50px", md: "54px" },
-              width: { xs: "140px", md: "150px" },
+              height: { xs: "40px", md: "54px" },
+              width: { xs: "110px", md: "150px" },
             }}
           >
             <Image
@@ -30,20 +30,12 @@ export const Header = () => {
               layout="fill"
               objectFit="cover"
               objectPosition="center"
+              alt="shynagutpa.com"
+              title="shynagupta.com"
+              unoptimized
             />
           </Box>
         </a>
-        {/* <Box sx={{ display: "flex", gap: 5 }}>
-          {menus.map((item, key) => (
-            <Link
-              key={key}
-              href="/"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <Typography>{item}</Typography>
-            </Link>
-          ))}
-        </Box> */}
       </Container>
     </>
   );

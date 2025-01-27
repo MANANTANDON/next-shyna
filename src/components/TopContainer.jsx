@@ -152,6 +152,7 @@ export const TopContainer = ({ info }) => {
                 }}
               >
                 <Image
+                  unoptimized
                   src="/manan.jpg"
                   blurDataURL="/manan.jpg"
                   layout="fill"

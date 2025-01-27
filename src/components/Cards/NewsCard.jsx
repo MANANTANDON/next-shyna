@@ -32,6 +32,7 @@ export const NewsCard = ({ data }) => {
               }}
             >
               <Image
+                unoptimized
                 src={data?.properties?.featureImg?.files[0]?.file?.url}
                 blurDataURL={data?.properties?.featureImg?.files[0]?.file?.url}
                 layout="fill"
