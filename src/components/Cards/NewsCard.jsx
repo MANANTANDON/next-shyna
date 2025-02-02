@@ -34,12 +34,13 @@ export const NewsCard = ({ data }) => {
               <Image
                 unoptimized
                 src={data?.properties?.featureImg?.files[0]?.file?.url}
+                placeholder="blur"
                 blurDataURL={data?.properties?.featureImg?.files[0]?.file?.url}
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
-                alt={data?.meta?.alt}
-                title={data?.meta?.title}
+                alt=""
+                title=""
                 quality={8}
               />
             </Box>
