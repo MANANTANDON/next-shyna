@@ -99,6 +99,7 @@ export const TopContainer = ({ info }) => {
                   href="https://www.instagram.com/shyna.co/"
                   className="links"
                   target="_blank"
+                  aria-label="Shyna Gupta Instagram Link"
                 >
                   <Instagram />
                 </Link>
@@ -106,6 +107,7 @@ export const TopContainer = ({ info }) => {
                   href="https://in.linkedin.com/in/shyna-gupta-053016210"
                   target="_blank"
                   className="links"
+                  aria-label="Shyna Gupta LinkeIn Link"
                 >
                   <LinkedIn />
                 </Link>

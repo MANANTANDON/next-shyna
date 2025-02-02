@@ -21,7 +21,10 @@ export const NewsCard = ({ data }) => {
             },
           }}
         >
-          <a href={`/${data?.properties?.slug?.rich_text[0]?.plain_text}`}>
+          <a
+            href={`/${data?.properties?.slug?.rich_text[0]?.plain_text}`}
+            aria-label={data?.properties?.Name?.title[0]?.plain_text}
+          >
             <Box
               sx={{
                 position: "relative",
@@ -39,8 +42,8 @@ export const NewsCard = ({ data }) => {
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
-                alt=""
-                title=""
+                alt={data?.properties?.Name?.title[0]?.plain_text}
+                title={data?.properties?.Name?.title[0]?.plain_text}
                 quality={8}
               />
             </Box>
