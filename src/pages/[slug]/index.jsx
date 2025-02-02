@@ -1,52 +1,33 @@
 import React from "react";
 import { Layout } from "@/components/Layout";
-import { fetchBySlug, fetchPageBlocks, notion } from "@/lib/notion";
+import {
+  fetchAllArticles,
+  fetchBySlug,
+  fetchPageBlocks,
+  notion,
+} from "@/lib/notion";
 import { NotionRenderer } from "@notion-render/client";
 import hljsPlugin from "@notion-render/hljs-plugin";
 import bookmarkPlugin from "@notion-render/bookmark-plugin";
-import {
-  Box,
-  Container,
-  Grid,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { formatDateToDayMonth } from "@/hooks/formatDate";
 import { SharingButton } from "@/components/Sharing/SharingButton";
 import { INIT_URL, UIColor } from "@/constant";
 import Head from "next/head";
-import { IosShare } from "@mui/icons-material";
 import { calculateReadingTime } from "@/hooks/calculateReadingTime";
 
 function Index({ post, postContent }) {
   const slug = `${INIT_URL}${post?.properties?.slug?.rich_text[0]?.plain_text}`;
   const tags = post?.properties?.tags?.multi_select;
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   return (
     <>
       <Head>
-        <title> {post?.properties?.Name?.title[0]?.plain_text}</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
+        <title>{post?.properties?.Name?.title[0]?.plain_text} | Shyna</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/shyna.ico" />
-        <meta
-          http-equiv="Content-Type"
-          content="text/html; charset=utf-8"
-        ></meta>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <meta property="og:site_name" content="Shyna" />
         <meta property="og:type" content="article" />
@@ -56,11 +37,17 @@ function Index({ post, postContent }) {
         />
         <meta
           name="description"
-          content={post?.properties?.subHeading?.rich_text[0]?.plain_text}
+          content={
+            post?.properties?.subHeading?.rich_text[0]?.plain_text ||
+            "Default description"
+          }
         />
         <meta
           property="og:description"
-          content={post?.properties?.subHeading?.rich_text[0]?.plain_text}
+          content={
+            post?.properties?.subHeading?.rich_text[0]?.plain_text ||
+            "Default description"
+          }
         />
         <link
           rel="canonical"
@@ -73,7 +60,6 @@ function Index({ post, postContent }) {
           property="og:image"
           content={post?.cover?.file?.url}
         />
-
         <meta
           name="title"
           content={post?.properties?.Name?.title[0]?.plain_text}
@@ -104,6 +90,33 @@ function Index({ post, postContent }) {
           itemprop="description"
           content={post?.properties?.subHeading?.rich_text[0]?.plain_text}
         />
+
+        {/* Structured Data (JSON-LD) for Article */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "http://schema.org",
+              "@type": "Article",
+              "headline": "${post?.properties?.Name?.title[0]?.plain_text}",
+              "image": "${post?.cover?.file?.url}",
+              "datePublished": "${post?.properties?.createdTime?.created_time}",
+              "dateModified": "${post?.properties?.updatedTime?.created_time}",
+              "author": {
+                "@type": "Person",
+                "name": "Shyna"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Shyna",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "/shyna.ico"
+                }
+              },
+              "description": "${post?.properties?.subHeading?.rich_text[0]?.plain_text}"
+            }
+          `}
+        </script>
       </Head>
       <Layout>
         <Container maxWidth="lg" sx={{ my: 2 }}>
@@ -126,8 +139,6 @@ function Index({ post, postContent }) {
               quality={60}
               alt=""
               title=""
-              // alt={data?.data?.meta?.alt}
-              // title={data?.data?.meta?.title}
             />
           </Box>
         </Container>
@@ -143,7 +154,7 @@ function Index({ post, postContent }) {
           >
             {post?.properties?.Name?.title[0]?.plain_text}
           </Typography>
-          {/* SUBHEADING */}
+          {/* Subheading */}
           <Typography
             fontSize="16px"
             textAlign="left"
@@ -151,24 +162,23 @@ function Index({ post, postContent }) {
           >
             {post?.properties?.subHeading?.rich_text[0]?.plain_text}
           </Typography>
-          {/*Reading, time + sharing*/}
+          {/* Reading time + Sharing */}
           <Grid container display="flex" alignItems="center" sx={{ mt: 2 }}>
-            <Grid xs={6}>
-              <Typography
-                sx={{ color: UIColor }}
-                fontSize="14px"
-              >{`${calculateReadingTime(postContent)} • ${formatDateToDayMonth(
-                post?.properties?.createdTime?.created_time
-              )} `}</Typography>
+            <Grid item xs={6}>
+              <Typography sx={{ color: UIColor }} fontSize="14px">
+                {`${calculateReadingTime(postContent)} • ${formatDateToDayMonth(
+                  post?.properties?.createdTime?.created_time
+                )} `}
+              </Typography>
             </Grid>
-            <Grid xs={6} display="flex" justifyContent="flex-end">
+            <Grid item xs={6} display="flex" justifyContent="flex-end">
               <SharingButton
                 slug={slug}
                 text={post?.properties?.Name?.title[0]?.plain_text}
               />
             </Grid>
           </Grid>
-          {/* CONTENT */}
+          {/* Content */}
           <Box
             sx={{
               my: 4,
@@ -179,10 +189,7 @@ function Index({ post, postContent }) {
           >
             <div
               className="prose"
-              style={{
-                width: "300%",
-                marginBottom: "50px",
-              }}
+              style={{ width: "300%", marginBottom: "50px" }}
               dangerouslySetInnerHTML={{ __html: postContent }}
             />
             {/* Sharing Button */}
@@ -194,20 +201,15 @@ function Index({ post, postContent }) {
                 justifyContent: "center",
               }}
             >
-              <Typography
-                sx={{
-                  color: UIColor,
-                }}
-              >
+              <Typography sx={{ color: UIColor }}>
                 Share This Article:
-              </Typography>{" "}
+              </Typography>
               <SharingButton
                 slug={slug}
                 text={post?.properties?.Name?.title[0]?.plain_text}
               />
             </Box>
           </Box>
-
           <Box sx={{ borderBottom: "2px dashed #CBDBF0", pb: 4 }}>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
               {tags?.map((item, key) => (
@@ -233,109 +235,42 @@ function Index({ post, postContent }) {
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const post = await fetchBySlug(query.slug);
-  console.log(post, "Need to check");
+export async function getStaticPaths() {
+  // Fetch all slugs
+  const articles = await fetchAllArticles();
+  const paths = articles?.results?.map((article) => ({
+    params: { slug: article?.properties?.slug?.rich_text[0]?.plain_text },
+  }));
 
-  if (post === undefined) {
+  return {
+    paths,
+    fallback: "blocking", // Pre-render the missing ones during the request
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const post = await fetchBySlug(params.slug);
+
+  if (post === undefined || !post) {
     return {
       redirect: {
-        destination: `/404?id=${query.slug}&type=post`,
+        destination: `/404?id=${params.slug}&type=post`,
         permanent: false,
       },
     };
   }
 
-  const postData = await fetchPageBlocks(post?.id);
-
-  const renderer = new NotionRenderer({
-    client: notion,
-  });
-
+  const postData = await fetchPageBlocks(post.id);
+  const renderer = new NotionRenderer({ client: notion });
   renderer.use(hljsPlugin({}));
   renderer.use(bookmarkPlugin(undefined));
 
   const postContent = await renderer.render(...postData);
 
-  return { props: { post, postContent } };
+  return {
+    props: { post, postContent },
+    revalidate: 60, // Revalidate every 60 seconds for fresh data
+  };
 }
 
 export default Index;
-
-{
-  /* <Container maxWidth="md">
-<Box
-  mt={2}
-  sx={{
-    bgcolor: "#fff",
-    mx: { xs: -1, md: 0 },
-    p: 2,
-    mb: 10,
-    borderRadius: "2px",
-  }}
->
-  {/* BY USER 
-  <Typography
-    textAlign="center"
-    sx={{ mt: 1, color: "#6087B5" }}
-  >{`Shyna Gupta | ${formatDateToDayMonth(
-    post?.properties?.createdTime?.created_time
-  )} `}</Typography>
-  {/* Sharing Button
-  <Box
-    sx={{
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      mb: 2,
-      mt: 1,
-    }}
-  >
-    <SharingButton
-      slug={slug}
-      text={post?.properties?.Name?.title[0]?.plain_text}
-    />
-  </Box>
-
-  <Box
-    sx={{
-      // border: "2px solid red",
-      mt: 2,
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <div
-      className="prose"
-      style={{
-        width: "300%",
-        marginBottom: "50px",
-        // border: "2px solid green",
-      }}
-      dangerouslySetInnerHTML={{ __html: postContent }}
-    />
-  </Box>
-
-
-  <Box
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      mb: 2,
-      mt: 5,
-    }}
-  >
-    <Typography>Share This Article</Typography>
-    <SharingButton
-      slug={slug}
-      text={post?.properties?.Name?.title[0]?.plain_text}
-    />
-  </Box>
-</Box>
-</Container> */
-}
