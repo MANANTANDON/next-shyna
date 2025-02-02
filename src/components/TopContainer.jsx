@@ -51,37 +51,19 @@ export const TopContainer = ({ info }) => {
             }}
           >
             <Grid xs={12} md={6} item>
-              {/* <a href="/">
-                <Box
-                  sx={{
-                    position: "relative",
-                    overflow: "hidden",
-                    height: "54px",
-                    width: "150px",
-                    display: { xs: "none", md: "flex" },
-                  }}
-                >
-                  <Image
-                    src="/shynaSignature.png"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                  />
-                </Box>
-              </a> */}
               <Typography
                 fontSize="18px"
                 letterSpacing={1}
                 sx={{ color: "#6E85A4", mb: 0.5 }}
               >
-                {info[0]?.paragraph?.rich_text[0]?.plain_text}
+                Hey! I'm Shyna,
               </Typography>
               <Typography
                 fontSize="18px"
                 letterSpacing={1}
                 sx={{ color: "#6E85A4", my: 0.5 }}
               >
-                {info[1]?.paragraph?.rich_text[0]?.plain_text}
+                I write about politics, social issues and international affairs
               </Typography>
               <Typography fontSize="18px" letterSpacing={1}>
                 <span style={{ color: "#6E85A4", my: 0.5 }}>
