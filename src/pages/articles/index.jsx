@@ -1,26 +1,102 @@
 import { ArticlesPage } from "@/components/Articles/ArticlesPage";
 import { Layout } from "@/components/Layout";
+import { INIT_URL } from "@/constant";
+import { formatDateToDayMonth } from "@/hooks/formatDate";
 import { fetchAllArticles } from "@/lib/notion";
+import Head from "next/head";
 import React from "react";
 
 export default function Articles({ articlesRes }) {
+  console.log(
+    articlesRes?.map((item) => item?.properties),
+    "articles"
+  );
   return (
     <>
-      <title>Articles</title>
-      <link rel="canonical" href="https://shynagupta.com/articles" />
-      <link rel="icon" href="/shyna.ico" />
-      <meta property="og:title" content="Shyna" />
-      <meta property="og:url" content="https://shynagupta.com/articles" />
-      <meta
-        name="description"
-        content="Join Shyna, an author and journalist, as she explores the latest trends in economics and information technology. Discover insightful articles and fresh perspectives that inform and inspire."
-      />
-      <meta property="og:image:alt" content="logo" />
-      <meta property="og:type" content="website" />
-      <meta
-        property="og:description"
-        content="Join Shyna, an author and journalist, as she explores the latest trends in economics and information technology. Discover insightful articles and fresh perspectives that inform and inspire."
-      />
+      <Head>
+        <title>Latest Articles | Shyna Gupta</title>
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Shyna Gupta" />
+        <link rel="canonical" href="https://shynagupta.com/articles" />
+        <link rel="icon" href="/shyna.ico" />
+
+        {/* Open Graph Meta Tags for Social Sharing */}
+        <meta property="og:title" content="Latest Articles | Shyna Gupta" />
+        <meta property="og:url" content="https://shynagupta.com/articles" />
+        <meta
+          property="og:image"
+          content="https://shynagupta.com/shynaSignature.png"
+        />
+        <meta property="og:image:alt" content="Shyna Gupta Logo" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:description"
+          content="Read the latest articles by Shyna, an expert journalist covering trends in economics and information technology."
+        />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Latest Articles | Shyna Gupta" />
+        <meta
+          name="twitter:description"
+          content="Explore the latest insights in economics and technology."
+        />
+        <meta
+          name="twitter:image"
+          content="https://shynagupta.com/shynaSignature.png"
+        />
+
+        {/* SEO Meta Description */}
+        <meta
+          name="description"
+          content="Read the latest articles by Shyna, an expert journalist covering trends in economics and information technology. Stay informed with insightful articles and fresh perspectives."
+        />
+
+        {/* Structured Data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Shyna Gupta Articles",
+            url: "https://shynagupta.com/articles",
+            author: {
+              "@type": "Person",
+              name: "Shyna Gupta",
+              url: "https://shynagupta.com",
+            },
+            description:
+              "Read the latest articles by Shyna, an expert journalist covering trends in economics and information technology.",
+          })}
+        </script>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": `${INIT_URL}`,
+              },
+              url: `${INIT_URL}articles`,
+              numberOfItems: "13",
+              itemListOrder: "https://schema.org/ItemListOrderAscending",
+              itemListElement: articlesRes?.map((item, key) => ({
+                "@type": "ListItem",
+                position: `${key + 1}`,
+                url: `${INIT_URL}${item?.properties?.slug?.rich_text[0]?.plain_text}`,
+                name: `${item?.properties?.Name?.title[0]?.plain_text}`,
+                description: `${item?.properties?.subHeading?.rich_text[0]?.plain_text}`,
+                publish: formatDateToDayMonth(
+                  item?.properties?.createdTime?.created_time
+                ),
+              })),
+            }),
+          }}
+        />
+      </Head>
+
       <Layout>
         <ArticlesPage articles={articlesRes} />
       </Layout>
@@ -28,11 +104,13 @@ export default function Articles({ articlesRes }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let startCursor = undefined;
   const articles = await fetchAllArticles(startCursor, 20);
-  console.log(articles);
   const articlesRes = articles?.results;
 
-  return { props: { articlesRes } };
+  return {
+    props: { articlesRes },
+    revalidate: 600, // Revalidate every 10 minutes
+  };
 }
