@@ -10,8 +10,11 @@ export default function Home({ articlesRes }) {
     "@type": "Person",
     name: "Shyna Gupta",
     url: "https://shynagupta.com",
-    sameAs: ["https://twitter.com/shyna", "https://www.linkedin.com/in/shyna"],
-    jobTitle: "Author & Journalist",
+    sameAs: [
+      "https://x.com/shyna20012",
+      "https://www.linkedin.com/in/shyna-gupta-053016210/",
+    ],
+    jobTitle: "Writer | International affairs",
     worksFor: {
       "@type": "Organization",
       name: "Shyna's Publications",
@@ -58,6 +61,29 @@ export default function Home({ articlesRes }) {
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Shyna Gupta",
+                  item: "https://www.shynagupta.com/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Articles",
+                  item: "https://www.shynagupta.com/articles",
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <Layout>
