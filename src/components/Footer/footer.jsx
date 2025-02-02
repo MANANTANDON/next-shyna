@@ -57,7 +57,7 @@ export const Footer = () => {
               </span>
             </Typography>
             <Box sx={{ mt: 4 }}>
-              <a href="/">
+              <a href="/" aria-label="Home">
                 <Box
                   sx={{
                     position: "relative",
