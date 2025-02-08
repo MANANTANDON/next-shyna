@@ -9,8 +9,7 @@ import {
 import { NotionRenderer } from "@notion-render/client";
 import hljsPlugin from "@notion-render/hljs-plugin";
 import bookmarkPlugin from "@notion-render/bookmark-plugin";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import { formatDateToDayMonth } from "@/hooks/formatDate";
 import { SharingButton } from "@/components/Sharing/SharingButton";
 import { INIT_URL, UIColor } from "@/constant";
@@ -18,6 +17,9 @@ import Head from "next/head";
 import { calculateReadingTime } from "@/hooks/calculateReadingTime";
 
 function Index({ post, postContent }) {
+  const isLaptop = useMediaQuery("(max-width:1024px)");
+  const smallLaptop = useMediaQuery("(max-width:768px)");
+  const ismobile = useMediaQuery("(max-width:430px)");
   const slug = `${INIT_URL}${post?.properties?.slug?.rich_text[0]?.plain_text}`;
   const tags = post?.properties?.tags?.multi_select;
 
@@ -122,23 +124,25 @@ function Index({ post, postContent }) {
         <Container maxWidth="lg" sx={{ my: 2 }}>
           <Box
             sx={{
-              position: "relative",
-              overflow: "hidden",
-              height: { xs: "200px", sm: "450px", md: "550px", lg: "650px" },
-              width: "100%",
               boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
             }}
           >
-            <Image
-              unoptimized
+            <img
               src={post?.cover?.file?.url}
-              blurDataURL={post?.cover?.file?.url}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              quality={60}
-              alt=""
-              title=""
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+                width: "100%",
+                height: ismobile
+                  ? "220px"
+                  : smallLaptop
+                  ? "450px"
+                  : isLaptop
+                  ? "550px"
+                  : "650px",
+              }}
+              alt={post?.properties?.Name?.title[0]?.plain_text}
+              title={post?.properties?.Name?.title[0]?.plain_text}
             />
           </Box>
         </Container>
