@@ -128,7 +128,7 @@ function Index({ post, postContent }) {
             }}
           >
             <img
-              src={post?.cover?.file?.url}
+              src={post?.properties?.featureImg?.files[0]?.file?.url}
               style={{
                 objectFit: "cover",
                 objectPosition: "center",

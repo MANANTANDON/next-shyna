@@ -6,6 +6,16 @@ async function generateSiteMap() {
     <lastmod>2025-02-02</lastmod>
     <priority>0.9</priority>
     </url>
+    <url>
+    <loc>${INIT_URL}privacy-policy</loc>
+    <lastmod>2025-02-02</lastmod>
+    <priority>0.9</priority>
+    </url>
+    <url>
+    <loc>${INIT_URL}terms-and-condition</loc>
+    <lastmod>2025-02-02</lastmod>
+    <priority>0.9</priority>
+    </url>
 </urlset>`;
 }
 

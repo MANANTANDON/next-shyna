@@ -5,6 +5,9 @@ async function generateSiteMap() {
       <loc>${INIT_URL}api/pages-sitemap.xml</loc>
    </sitemap>
     <sitemap>
+      <loc>${INIT_URL}api/latest-news-sitemap.xml</loc>
+   </sitemap>
+    <sitemap>
      <loc>${INIT_URL}articles</loc>
    </sitemap>
 </sitemapindex>`;
