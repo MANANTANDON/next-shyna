@@ -38,7 +38,7 @@ export const NewsCard = ({ data }) => {
                 unoptimized
                 src={data?.properties?.featureImg?.files[0]?.file?.url}
                 placeholder="blur"
-                blurDataURL={data?.properties?.featureImg?.files[0]?.file?.url}
+                blurDataURL="/shynaSignature.png"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
