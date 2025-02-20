@@ -18,7 +18,7 @@ export const Footer = () => {
         >
           <Box>
             <Typography textAlign="center" sx={{ color: "#6E85A4" }}>
-              © 2024{" "}
+              © 2025{" "}
               <span>
                 <a href="/" style={{ color: "#6E85A4" }}>
                   shynagupta.com
@@ -52,9 +52,39 @@ export const Footer = () => {
                   }}
                 >
                   {" "}
-                  Privacy Policy
+                  Privacy Policy{" "}
                 </a>
               </span>
+            </Typography>
+            <Typography textAlign="center" sx={{ color: "#3E73B9", mt: 2 }}>
+              <span>
+                <a
+                  href="/sitemap"
+                  style={{
+                    color: "#3E73B9",
+                    borderBottom: "1px dotted #3E73B9",
+                    paddingBottom: "2px",
+                    marginRight: "10px",
+                  }}
+                >
+                  Sitemap{" "}
+                </a>
+              </span>
+              {/* •
+              <span>
+                <a
+                  href="/privacy-policy"
+                  style={{
+                    color: "#3E73B9",
+                    borderBottom: "1px dotted #3E73B9",
+                    paddingBottom: "2px",
+                    marginLeft: "10px",
+                  }}
+                >
+                  {" "}
+                  rss feed{" "}
+                </a>
+              </span> */}
             </Typography>
             <Box sx={{ mt: 4 }}>
               <a href="/" aria-label="Home">

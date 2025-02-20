@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "@/components/Layout";
-import { Home } from "@mui/icons-material";
+import { ArticleRounded, Home } from "@mui/icons-material";
 // import { LocationBreadcrumb } from "@/components/extras/LocationBreadcrumb";
 import { Box, Container, Typography } from "@mui/material";
 import Head from "next/head";
@@ -67,6 +67,24 @@ function Index() {
                 >
                   <Home />
                   <Typography sx={{ mt: 0.8 }}>Home</Typography>
+                </Box>
+              </a>
+            </Box>
+            <Box textAlign="center" sx={{ my: 2 }}>
+              <a href="/articles">
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: 0.8,
+                    "&:hover": {
+                      color: "#6087b5",
+                    },
+                  }}
+                >
+                  <ArticleRounded />
+                  <Typography sx={{ mt: 0.8 }}>Articles</Typography>
                 </Box>
               </a>
             </Box>
