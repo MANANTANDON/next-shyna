@@ -7,10 +7,6 @@ import Head from "next/head";
 import React from "react";
 
 export default function Articles({ articlesRes }) {
-  console.log(
-    articlesRes?.map((item) => item?.properties),
-    "articles"
-  );
   return (
     <>
       <Head>
@@ -20,7 +16,7 @@ export default function Articles({ articlesRes }) {
         <link rel="canonical" href="https://shynagupta.com/articles" />
         <link rel="icon" href="/shyna.ico" />
 
-        {/* Open Graph Meta Tags for Social Sharing */}
+        {/* Open Graph Meta Tags */}
         <meta property="og:title" content="Latest Articles | Shyna Gupta" />
         <meta property="og:url" content="https://shynagupta.com/articles" />
         <meta
@@ -52,23 +48,7 @@ export default function Articles({ articlesRes }) {
           content="Read the latest articles by Shyna, an expert journalist covering trends in economics and information technology. Stay informed with insightful articles and fresh perspectives."
         />
 
-        {/* Structured Data for SEO */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            name: "Shyna Gupta Articles",
-            url: "https://shynagupta.com/articles",
-            author: {
-              "@type": "Person",
-              name: "Shyna Gupta",
-              url: "https://shynagupta.com",
-            },
-            description:
-              "Read the latest articles by Shyna, an expert journalist covering trends in economics and information technology.",
-          })}
-        </script>
-
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -80,9 +60,9 @@ export default function Articles({ articlesRes }) {
                 "@id": `${INIT_URL}`,
               },
               url: `${INIT_URL}articles`,
-              numberOfItems: "13",
+              numberOfItems: articlesRes.length,
               itemListOrder: "https://schema.org/ItemListOrderAscending",
-              itemListElement: articlesRes?.map((item, key) => ({
+              itemListElement: articlesRes.map((item, key) => ({
                 "@type": "ListItem",
                 position: `${key + 1}`,
                 url: `${INIT_URL}${item?.properties?.slug?.rich_text[0]?.plain_text}`,
@@ -104,13 +84,35 @@ export default function Articles({ articlesRes }) {
   );
 }
 
+const getActualImageUrl = (url) => {
+  if (!url) return "";
+  if (url.startsWith("https://www.notion.so/image/")) {
+    const matched = url.match(/image\/(.*?)\?/);
+    if (matched && matched[1]) {
+      return decodeURIComponent(matched[1]);
+    }
+  }
+  return url;
+};
+
 export async function getStaticProps() {
   let startCursor = undefined;
   const articles = await fetchAllArticles(startCursor, 20);
   const articlesRes = articles?.results;
 
+  const processedArticles = articlesRes.map((article) => {
+    const coverUrl =
+      article?.cover?.external?.url || article?.cover?.file?.url || "";
+    const fixedCover = getActualImageUrl(coverUrl);
+
+    return {
+      ...article,
+      coverImage: fixedCover, // ✅ Added fixed image key
+    };
+  });
+
   return {
-    props: { articlesRes },
-    revalidate: 600, // Revalidate every 10 minutes
+    props: { articlesRes: processedArticles },
+    revalidate: 600,
   };
 }
