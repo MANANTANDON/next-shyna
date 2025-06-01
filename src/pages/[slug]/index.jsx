@@ -60,7 +60,7 @@ function Index({ post, postContent }) {
         <meta
           name="image"
           property="og:image"
-          content={post?.cover?.file?.url}
+          content={`/images/${post?.properties?.slug?.rich_text[0]?.plain_text}.jpeg`}
         />
         <meta
           name="title"
@@ -128,7 +128,7 @@ function Index({ post, postContent }) {
             }}
           >
             <img
-              src={post?.properties?.featureImg?.files[0]?.file?.url}
+              src={`/images/${post?.properties?.slug?.rich_text[0]?.plain_text}.jpeg`}
               style={{
                 objectFit: "cover",
                 objectPosition: "center",
