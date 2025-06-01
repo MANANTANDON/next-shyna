@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import { NewsCard } from "./Cards/NewsCard";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { KeyboardArrowRight } from "@mui/icons-material";
+import { NewNewsCard } from "./Cards/NewNewsCard";
 
 export const Articles = ({ articles }) => {
   return (
@@ -25,7 +25,7 @@ export const Articles = ({ articles }) => {
           >
             {articles?.map((item, key) => (
               <Grid item xs={12} sm={5.72} md={3.71} lg={3.76} key={key}>
-                <NewsCard data={item} />
+                <NewNewsCard data={item} />
               </Grid>
             ))}
           </Grid>
