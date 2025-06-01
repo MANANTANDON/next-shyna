@@ -1,6 +1,7 @@
 import { Box, Typography, Container, Grid } from "@mui/material";
 import React from "react";
 import { NewsCard } from "../Cards/NewsCard";
+import { NewNewsCard } from "../Cards/NewNewsCard";
 
 export const ArticlesPage = ({ articles }) => {
   return (
@@ -52,7 +53,7 @@ export const ArticlesPage = ({ articles }) => {
         >
           {articles?.map((item, key) => (
             <Grid item xs={12} sm={5.72} md={3.71} lg={3.76} key={key}>
-              <NewsCard data={item} />
+              <NewNewsCard data={item} />
             </Grid>
           ))}
         </Grid>

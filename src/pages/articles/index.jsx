@@ -84,35 +84,12 @@ export default function Articles({ articlesRes }) {
   );
 }
 
-const getActualImageUrl = (url) => {
-  if (!url) return "";
-  if (url.startsWith("https://www.notion.so/image/")) {
-    const matched = url.match(/image\/(.*?)\?/);
-    if (matched && matched[1]) {
-      return decodeURIComponent(matched[1]);
-    }
-  }
-  return url;
-};
-
 export async function getStaticProps() {
   let startCursor = undefined;
   const articles = await fetchAllArticles(startCursor, 20);
   const articlesRes = articles?.results;
 
-  const processedArticles = articlesRes.map((article) => {
-    const coverUrl =
-      article?.cover?.external?.url || article?.cover?.file?.url || "";
-    const fixedCover = getActualImageUrl(coverUrl);
-
-    return {
-      ...article,
-      coverImage: fixedCover, // ✅ Added fixed image key
-    };
-  });
-
   return {
-    props: { articlesRes: processedArticles },
-    revalidate: 600,
+    props: { articlesRes },
   };
 }
