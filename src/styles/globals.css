@@ -1,6 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --pearl-bush: rgb(227, 225, 214);
+  --dark-grey: #353535;
+  --grenadier: #d74108;
+  --foggy-grey: #cbc8b9;
+}
+
+@font-face {
+  font-family: "IbarraRealNova-Bold";
+  src: url("/fonts/IbarraRealNova-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IbarraRealNova-BoldItalic";
+  src: url("/fonts/iba/IbarraRealNova-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "IbarraRealNova-SemiBold";
+  src: url("/fonts/iba/IbarraRealNova-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "IbarraRealNova-SemiBoldItalic";
+  src: url("/fonts/iba/IbarraRealNova-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "IbarraRealNova-Medium";
+  src: url("/fonts/iba/IbarraRealNova-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "IbarraRealNova-MediumItalic";
+  src: url("/fonts/iba/IbarraRealNova-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "IbarraRealNova-Regular";
+  src: url("/fonts/iba/IbarraRealNova-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "IbarraRealNova-Italic";
+  src: url("/fonts/iba/IbarraRealNova-Italic.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Helvetica Regular";
+  src: url("/fonts/hel/Helvetica.ttf") format("truetype");
+  font-weight: 400;
+}
 
 body {
   background-color: #f2f6fb;
@@ -11,6 +68,24 @@ a {
   text-decoration: none;
   color: #000;
 }
+
+.font-700 {
+  font-family: "IbarraRealNova-Bold";
+}
+
+.font-700i {
+  font-family: "IbarraRealNova-BoldItalic";
+}
+
+.font-400 {
+  font-family: "IbarraRealNova-Regular";
+}
+
+.font-hel-400 {
+  font-family: "Helvetica Regular";
+  color: var(--dark-grey);
+}
+
 .glass {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(12px);
