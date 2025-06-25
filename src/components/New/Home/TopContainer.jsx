@@ -6,6 +6,7 @@ import React from "react";
 
 export const TopContainer = ({ articles }) => {
   //Custom Designs
+  console.log(articles, "Manan Tandon");
   return (
     <>
       <Box sx={{ mt: 2 }}>
@@ -27,7 +28,7 @@ export const TopContainer = ({ articles }) => {
                 sx={{ fontSize: "28px", lineHeight: "35px" }}
                 className="font-700"
               >
-                {articles[0]?.properties?.Name?.title[0]?.plain_text}
+                {articles?.data[0]?.title}
               </Typography>
               <Box
                 sx={{
@@ -39,15 +40,15 @@ export const TopContainer = ({ articles }) => {
                   color: "rgb(155,155,145)",
                 }}
               >
-                <Typography sx={{ fontSize: "14px" }}>OPINION</Typography>
+                <Typography sx={{ fontSize: "14px" }}>
+                  {articles?.data[0]?.categories[0]?.name}
+                </Typography>
                 <FlareRounded
                   fontSize="small"
                   sx={{ color: "rgb(163,80,59)" }}
                 />
                 <Typography sx={{ fontSize: "14px" }}>
-                  {formatDateToDayMonth(
-                    articles[0]?.properties?.createdTime?.created_time
-                  )}
+                  {formatDateToDayMonth(articles?.data[0]?.date)}
                 </Typography>
               </Box>
             </Box>
@@ -58,33 +59,38 @@ export const TopContainer = ({ articles }) => {
                 width: "100%",
                 height: "230px",
                 borderRadius: "2px",
-                my: 2,
+                my: 1,
               }}
             >
               <Image
                 unoptimized
-                src={`/images/${articles[0]?.properties?.slug?.rich_text[0]?.plain_text}.jpeg`}
+                src={articles?.data[0]?.featured_image}
                 placeholder="blur"
                 blurDataURL="/shynaSignature.png"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
-                alt={articles[0]?.properties?.Name?.title[0]?.plain_text}
-                title={articles[0]?.properties?.Name?.title[0]?.plain_text}
+                alt={articles?.data[0]?.title}
+                title={articles?.data[0]?.title}
                 quality={8}
               />
             </Box>
-            <Typography
-              sx={{
-                my: 1,
+            <div
+              style={{
                 fontSize: "15px",
                 lineHeight: 1.3,
+                display: "-webkit-box",
+                WebkitLineClamp: 11,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
               className="font-hel-400"
               fontSize="16px"
-            >
-              {articles[0]?.properties?.subHeading?.rich_text[0]?.plain_text}
-            </Typography>
+              dangerouslySetInnerHTML={{
+                __html: articles?.data[0]?.content,
+              }}
+            />
           </Grid>
           {/* Middle Sector*/}
           <Grid
@@ -101,12 +107,14 @@ export const TopContainer = ({ articles }) => {
                 sx={{ fontSize: "50px", lineHeight: "55px" }}
                 className="font-700"
               >
-                {articles[1]?.properties?.Name?.title[0]?.plain_text}
+                {articles?.data[1]?.title}
               </Typography>
               <Box
                 sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}
               >
-                <Typography>OPINION</Typography>
+                <Typography>
+                  {articles?.data[1]?.categories[0]?.name}
+                </Typography>
                 <FlareRounded
                   fontSize="small"
                   sx={{ color: "rgb(163,80,59)" }}
@@ -117,9 +125,7 @@ export const TopContainer = ({ articles }) => {
                   sx={{ color: "rgb(163,80,59)" }}
                 />
                 <Typography>
-                  {formatDateToDayMonth(
-                    articles[1]?.properties?.createdTime?.created_time
-                  )}
+                  {formatDateToDayMonth(articles?.data[1]?.date)}
                 </Typography>
               </Box>
             </Box>
@@ -128,39 +134,40 @@ export const TopContainer = ({ articles }) => {
                 position: "relative",
                 overflow: "hidden",
                 width: "100%",
-                height: "350px",
+                height: "300px",
                 borderRadius: "2px",
                 my: 2,
               }}
             >
               <Image
                 unoptimized
-                src={`/images/${articles[1]?.properties?.slug?.rich_text[0]?.plain_text}.jpeg`}
+                src={articles?.data[1]?.featured_image}
                 placeholder="blur"
                 blurDataURL="/shynaSignature.png"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
-                alt={articles[1]?.properties?.Name?.title[0]?.plain_text}
-                title={articles[1]?.properties?.Name?.title[0]?.plain_text}
+                alt={articles?.data[1]?.title}
+                title={articles?.data[1]?.title}
                 quality={8}
               />
             </Box>
-            <Typography
-              sx={{
+            <div
+              style={{
+                fontSize: "15px",
+                lineHeight: 1.3,
+                display: "-webkit-box",
+                WebkitLineClamp: 4,
+                WebkitBoxOrient: "vertical",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
-                display: "-webkit-box",
-                WebkitLineClamp: "3",
-                WebkitBoxOrient: "vertical",
-                my: 1,
-                fontSize: "18px",
               }}
-              textAlign="left"
+              className="font-hel-400"
               fontSize="16px"
-            >
-              {articles[1]?.properties?.subHeading?.rich_text[0]?.plain_text}
-            </Typography>
+              dangerouslySetInnerHTML={{
+                __html: articles?.data[1]?.content,
+              }}
+            />
           </Grid>
           {/*Last Sector*/}
           <Grid
@@ -186,7 +193,7 @@ export const TopContainer = ({ articles }) => {
             <Box
               sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 3 }}
             >
-              {articles?.slice(2, 7)?.map((item, key) => (
+              {articles?.data?.slice(2, 7)?.map((item, key) => (
                 <Box key={key} sx={{}}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
                     <Typography
@@ -210,7 +217,7 @@ export const TopContainer = ({ articles }) => {
                       }}
                       className="font-hel-400"
                     >
-                      {item?.properties?.Name?.title[0]?.plain_text}
+                      {item.title}
                     </Typography>
                   </Box>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
@@ -218,9 +225,7 @@ export const TopContainer = ({ articles }) => {
                       sx={{ border: "1px solid #353535", width: "40px" }}
                     ></Box>
                     <Typography sx={{ color: "rgb(155,155,145)" }}>
-                      {`${formatDateToDayMonth(
-                        item?.properties?.createdTime?.created_time
-                      )}`}
+                      {`${formatDateToDayMonth(item?.date)}`}
                     </Typography>
                   </Box>
                 </Box>
