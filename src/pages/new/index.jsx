@@ -1,7 +1,7 @@
 import { SecondContainer } from "@/components/New/Home/SecondContainer";
 import { TopContainer } from "@/components/New/Home/TopContainer";
 import { Layout } from "@/components/New/Layout";
-import { fetchAllArticles } from "@/lib/notion";
+import axios from "axios";
 import React from "react";
 
 const Index = ({ articlesRes }) => {
@@ -9,20 +9,41 @@ const Index = ({ articlesRes }) => {
     <>
       <Layout>
         <TopContainer articles={articlesRes} />
-        <SecondContainer articles={articlesRes} />
+        {/* <SecondContainer articles={articlesRes} /> */}
       </Layout>
     </>
   );
 };
 
-export default Index;
-
 export async function getStaticProps() {
-  let startCursor = undefined;
-  const articles = await fetchAllArticles(startCursor, 9);
-  const articlesRes = articles?.results;
+  try {
+    const response = await axios.get(
+      "https://dev.snowchildstudio.com/wp-json/custom/v1/posts",
+      {
+        params: {
+          page: 1,
+          per_page: 10,
+        },
+        timeout: 10000,
+      }
+    );
 
-  return {
-    props: { articlesRes },
-  };
+    const articlesRes = response.data;
+
+    return {
+      props: {
+        articlesRes,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+
+    return {
+      props: {
+        articlesRes: [],
+      },
+    };
+  }
 }
+
+export default Index;
