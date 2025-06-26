@@ -9,7 +9,7 @@ const Index = ({ articlesRes }) => {
     <>
       <Layout>
         <TopContainer articles={articlesRes} />
-        {/* <SecondContainer articles={articlesRes} /> */}
+        <SecondContainer articles={articlesRes} />
       </Layout>
     </>
   );

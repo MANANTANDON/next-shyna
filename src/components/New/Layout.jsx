@@ -5,9 +5,14 @@ import { Footer } from "./Footer/Footer";
 
 export const Layout = ({ children }) => {
   return (
-    <Box sx={{ bgcolor: "#353535", m: -1 }}>
+    <Box
+      sx={{
+        bgcolor: "#353535",
+        m: -1,
+      }}
+    >
       <Container maxWidth="xl">
-        <Box sx={{ mx: -3 }}>
+        <Box sx={{ mx: { xs: -2, md: -3 } }}>
           <Header />
           {children}
           <Footer />

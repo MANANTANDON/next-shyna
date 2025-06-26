@@ -13,7 +13,8 @@ export const TopContainer = ({ articles }) => {
         <Grid container>
           {/* First Sector*/}
           <Grid
-            xs={3}
+            xs={12}
+            md={3}
             sx={{
               bgcolor: "rgb(227,225,214)",
               borderTopLeftRadius: "9px",
@@ -94,7 +95,8 @@ export const TopContainer = ({ articles }) => {
           </Grid>
           {/* Middle Sector*/}
           <Grid
-            xs={6}
+            xs={12}
+            md={6}
             sx={{
               bgcolor: "rgb(227,225,214)",
               borderTopLeftRadius: "9px",
@@ -171,7 +173,8 @@ export const TopContainer = ({ articles }) => {
           </Grid>
           {/*Last Sector*/}
           <Grid
-            xs={3}
+            xs={12}
+            md={3}
             sx={{
               bgcolor: "rgb(227,225,214)",
               borderTopRightRadius: "9px",
