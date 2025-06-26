@@ -19,12 +19,20 @@ export const SecondContainer = ({ articles }) => {
           {/* Left Container */}
           <Grid
             xs={12}
-            md={5}
+            md={4}
             sx={{ borderRight: "0.5px solid #353535", p: 2 }}
           >
             <Box sx={{ borderBottom: "1.5px solid #353535", p: 1.5 }}>
               <Typography
-                sx={{ fontSize: "40px", lineHeight: "45px" }}
+                sx={{
+                  fontSize: "35px",
+                  lineHeight: "45px",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: "2",
+                  WebkitBoxOrient: "vertical",
+                }}
                 className="font-700"
               >
                 {articles?.data[7]?.title}
@@ -90,7 +98,7 @@ export const SecondContainer = ({ articles }) => {
             />
           </Grid>
           {/* Right Container */}
-          <Grid xs={12} md={7} sx={{ borderLeft: "0.5px solid #353535", p: 2 }}>
+          <Grid xs={12} md={8} sx={{ borderLeft: "0.5px solid #353535", p: 2 }}>
             <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
               <Typography
                 sx={{ fontSize: "50px", lineHeight: "50px" }}

@@ -52,7 +52,7 @@ export const Header = () => {
           textAlign="center"
           sx={{ fontSize: { xs: "30px", md: "60px" }, color: "#353535" }}
         >
-          Agents of Inclusion{/* Shyna co. */}
+          Shyna co.
         </Typography>
       </Grid>
       <Grid
