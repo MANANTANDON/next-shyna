@@ -8,14 +8,15 @@ export const Header = () => {
     <Grid container>
       <Grid
         item
-        xs={2.5}
+        xs={12}
+        md={2.5}
         sx={{
           bgcolor: "rgb(227,225,214)",
           p: 1,
           border: "0.5px solid  #353535",
           borderBottomLeftRadius: "7px",
           borderBottomRightRadius: "7px",
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -36,7 +37,8 @@ export const Header = () => {
       </Grid>
       <Grid
         item
-        xs={7}
+        xs={12}
+        md={7}
         sx={{
           bgcolor: "rgb(227,225,214)",
           p: 1,
@@ -48,21 +50,22 @@ export const Header = () => {
         <Typography
           className="font-700"
           textAlign="center"
-          sx={{ fontSize: "60px", color: "#353535" }}
+          sx={{ fontSize: { xs: "30px", md: "60px" }, color: "#353535" }}
         >
           Agents of Inclusion{/* Shyna co. */}
         </Typography>
       </Grid>
       <Grid
         item
-        xs={2.5}
+        xs={12}
+        md={2.5}
         sx={{
           bgcolor: "rgb(227,225,214)",
           px: 5,
           border: "0.5px solidrgb(27, 21, 21)",
           borderBottomLeftRadius: "7px",
           borderBottomRightRadius: "7px",
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
           justifyContent: "flex-end",
           gap: 2,

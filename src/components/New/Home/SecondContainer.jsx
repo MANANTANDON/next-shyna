@@ -16,18 +16,25 @@ export const SecondContainer = ({ articles }) => {
         }}
       >
         <Grid container>
-          <Grid xs={5} sx={{ borderRight: "0.5px solid #353535", p: 2 }}>
+          {/* Left Container */}
+          <Grid
+            xs={12}
+            md={5}
+            sx={{ borderRight: "0.5px solid #353535", p: 2 }}
+          >
             <Box sx={{ borderBottom: "1.5px solid #353535", p: 1.5 }}>
               <Typography
-                sx={{ fontSize: "40px", lineHeight: "35px" }}
+                sx={{ fontSize: "40px", lineHeight: "45px" }}
                 className="font-700"
               >
-                {articles[7]?.properties?.Name?.title[0]?.plain_text}
+                {articles?.data[7]?.title}
               </Typography>
               <Box
                 sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}
               >
-                <Typography>OPINION</Typography>
+                <Typography>
+                  {articles?.data[7]?.categories[0]?.name}
+                </Typography>
                 <FlareRounded
                   fontSize="small"
                   sx={{ color: "rgb(163,80,59)" }}
@@ -38,9 +45,7 @@ export const SecondContainer = ({ articles }) => {
                   sx={{ color: "rgb(163,80,59)" }}
                 />
                 <Typography>
-                  {formatDateToDayMonth(
-                    articles[7]?.properties?.createdTime?.created_time
-                  )}
+                  {formatDateToDayMonth(articles?.data[7]?.date)}
                 </Typography>
               </Box>
             </Box>
@@ -56,41 +61,51 @@ export const SecondContainer = ({ articles }) => {
             >
               <Image
                 unoptimized
-                src={`/images/${articles[7]?.properties?.slug?.rich_text[0]?.plain_text}.jpeg`}
+                src={articles?.data[7]?.featured_image}
                 placeholder="blur"
                 blurDataURL="/shynaSignature.png"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
-                alt={articles[7]?.properties?.Name?.title[0]?.plain_text}
-                title={articles[7]?.properties?.Name?.title[0]?.plain_text}
+                alt={articles?.data[7]?.title}
+                title={articles?.data[7]?.title}
                 quality={8}
               />
             </Box>
-            <Typography
-              sx={{
-                my: 1,
-                fontSize: "18px",
+            <div
+              style={{
+                fontSize: "15px",
+                lineHeight: 1.3,
+                display: "-webkit-box",
+                WebkitLineClamp: 5,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
-              textAlign="left"
+              className="font-hel-400"
               fontSize="16px"
-            >
-              {articles[7]?.properties?.subHeading?.rich_text[0]?.plain_text}
-            </Typography>
+              dangerouslySetInnerHTML={{
+                __html: articles?.data[7]?.content,
+              }}
+            />
           </Grid>
-          <Grid xs={7} sx={{ borderLeft: "0.5px solid #353535", p: 2 }}>
+          {/* Right Container */}
+          <Grid xs={12} md={7} sx={{ borderLeft: "0.5px solid #353535", p: 2 }}>
             <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
               <Typography
-                sx={{ fontSize: "50px" }}
+                sx={{ fontSize: "50px", lineHeight: "50px" }}
                 className="font-700"
                 textAlign="center"
               >
-                {articles[8]?.properties?.Name?.title[0]?.plain_text}
+                {articles?.data[8]?.title}
               </Typography>
               <Box
                 sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}
               >
-                <Typography>OPINION</Typography>
+                <Typography>
+                  {" "}
+                  {articles?.data[8]?.categories[0]?.name}
+                </Typography>
                 <FlareRounded
                   fontSize="small"
                   sx={{ color: "rgb(163,80,59)" }}
@@ -101,52 +116,53 @@ export const SecondContainer = ({ articles }) => {
                   sx={{ color: "rgb(163,80,59)" }}
                 />
                 <Typography>
-                  {formatDateToDayMonth(
-                    articles[8]?.properties?.createdTime?.created_time
-                  )}
+                  {formatDateToDayMonth(articles?.data[8]?.date)}
                 </Typography>
               </Box>
             </Box>
             <Grid container>
-              <Grid xs={4}>
+              <Grid xs={12} md={5}>
                 <Box
                   sx={{
                     position: "relative",
                     overflow: "hidden",
                     width: "100%",
-                    height: "100%",
+                    height: { xs: "250px", md: "100%" },
                     borderRadius: "2px",
                     my: 2,
                   }}
                 >
                   <Image
                     unoptimized
-                    src={`/images/${articles[8]?.properties?.slug?.rich_text[0]?.plain_text}.jpeg`}
+                    src={articles?.data[8]?.featured_image}
                     placeholder="blur"
                     blurDataURL="/shynaSignature.png"
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
-                    alt={articles[8]?.properties?.Name?.title[0]?.plain_text}
-                    title={articles[8]?.properties?.Name?.title[0]?.plain_text}
+                    alt={articles?.data[8]?.title}
+                    title={articles?.data[8]?.title}
                     quality={8}
                   />
                 </Box>{" "}
               </Grid>
-              <Grid xs={7}>
-                <Typography
-                  sx={{
-                    my: 1,
-                    fontSize: "18px",
+              <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>
+                <div
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: 1.3,
+                    display: "-webkit-box",
+                    WebkitLineClamp: 15,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
-                  textAlign="left"
+                  className="font-hel-400"
                   fontSize="16px"
-                >
-                  {
-                    articles[8]?.properties?.subHeading?.rich_text[0]
-                      ?.plain_text
-                  }
-                </Typography>
+                  dangerouslySetInnerHTML={{
+                    __html: articles?.data[8]?.content,
+                  }}
+                />
               </Grid>
             </Grid>
           </Grid>
