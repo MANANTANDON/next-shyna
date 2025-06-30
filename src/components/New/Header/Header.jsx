@@ -24,8 +24,8 @@ export const Header = () => {
         <a href="/">
           <Image
             src="/shynaSignature.png"
-            width={200}
-            height={54}
+            width={150}
+            height={30}
             style={{
               height: "auto",
             }}
@@ -47,13 +47,15 @@ export const Header = () => {
           borderBottomRightRadius: "7px",
         }}
       >
-        <Typography
-          className="font-700"
-          textAlign="center"
-          sx={{ fontSize: { xs: "30px", md: "60px" }, color: "#353535" }}
-        >
-          Shyna co.
-        </Typography>
+        <a href="/">
+          <Typography
+            className="font-700"
+            textAlign="center"
+            sx={{ fontSize: { xs: "30px", md: "45px" }, color: "#353535" }}
+          >
+            Shyna co.
+          </Typography>
+        </a>
       </Grid>
       <Grid
         item
@@ -71,20 +73,28 @@ export const Header = () => {
           gap: 2,
         }}
       >
-        <Typography
-          sx={{
-            border: "2px solid green",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            border: "1.5px solid #353535",
-            borderRadius: "20px",
-            px: 2.5,
-            py: 1,
-          }}
+        <a
+          href="mailto:shyna20012@gmail.com"
+          style={{ textDecoration: "none", color: "inherit" }}
         >
-          <EditOutlined /> Email
-        </Typography>
+          <Typography
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1.5px solid #353535",
+              borderRadius: "20px",
+              px: 2.5,
+              py: 1,
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: "rgba(53, 53, 53, 0.1)",
+              },
+            }}
+          >
+            <EditOutlined sx={{ mr: 1 }} /> Email
+          </Typography>
+        </a>
         <Box
           sx={{
             height: "50px",
