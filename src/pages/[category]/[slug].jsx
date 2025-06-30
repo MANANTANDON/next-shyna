@@ -8,6 +8,15 @@ import Image from "next/image";
 import { Widget } from "@/components/New/Widget/Widget";
 
 function Index({ postData }) {
+  // Add error handling for missing postData
+  if (!postData || !postData.data) {
+    return (
+      <Layout>
+        <Typography>Post not found</Typography>
+      </Layout>
+    );
+  }
+
   return (
     <>
       <Layout>
@@ -40,7 +49,7 @@ function Index({ postData }) {
                 }}
               >
                 <Typography sx={{ fontSize: "14px" }}>
-                  {postData?.data?.categories[0]?.name}
+                  {postData?.data?.categories?.[0]?.name}
                 </Typography>
                 <FlareRounded
                   fontSize="small"
@@ -71,7 +80,6 @@ function Index({ postData }) {
                 lineHeight: 1.3,
               }}
               className="font-hel-400 wp-content"
-              fontSize="16px"
               dangerouslySetInnerHTML={{
                 __html: postData?.data?.content,
               }}
@@ -104,47 +112,101 @@ function Index({ postData }) {
 export async function getStaticPaths() {
   try {
     const response = await axios.get(
-      "https://dev.snowchildstudio.com/wp-json/custom/v1/posts"
+      "https://dev.snowchildstudio.com/wp-json/custom/v1/posts",
+      {
+        timeout: 10000, // Add timeout
+      }
     );
 
     const posts = response.data;
 
-    const paths = posts.map((post) => ({
-      params: {
-        category: post.category,
-        slug: post.slug,
-      },
-    }));
+    // Add validation
+    if (!Array.isArray(posts)) {
+      console.error("Posts response is not an array:", posts);
+      return {
+        paths: [],
+        fallback: "blocking", // Changed to blocking for better error handling
+      };
+    }
+
+    const paths = posts
+      .map((post) => {
+        // Add validation for required fields
+        if (!post.slug) {
+          console.error("Post missing slug:", post);
+          return null;
+        }
+
+        return {
+          params: {
+            category: post.category || "uncategorized", // Provide fallback
+            slug: post.slug,
+          },
+        };
+      })
+      .filter(Boolean); // Remove null entries
+
+    console.log("Generated paths:", paths); // Debug log
 
     return {
       paths,
-      fallback: false,
+      fallback: "blocking", // Changed from false to blocking
     };
   } catch (error) {
     console.error("Error fetching paths:", error);
     return {
       paths: [],
-      fallback: false,
+      fallback: "blocking",
     };
   }
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
+  const { slug, category } = params;
+
+  console.log("getStaticProps called with params:", params); // Debug log
 
   try {
     const response = await axios.get(
-      `https://dev.snowchildstudio.com/wp-json/custom/v1/posts/${slug}`
+      `https://dev.snowchildstudio.com/wp-json/custom/v1/posts/${slug}`,
+      {
+        timeout: 10000, // Add timeout
+      }
     );
+
     const postData = response.data;
+
+    // Add validation
+    if (!postData) {
+      console.error(`No data returned for slug: ${slug}`);
+      return {
+        notFound: true,
+      };
+    }
+
+    console.log("Post data fetched successfully for slug:", slug); // Debug log
 
     return {
       props: {
         postData,
       },
+      revalidate: 60, // Add ISR revalidation
     };
   } catch (error) {
-    console.error(`Error fetching data for slug: ${slug}`, error);
+    console.error(
+      `Error fetching data for slug: ${slug}`,
+      error.response?.status,
+      error.response?.data
+    );
+
+    // Check if it's a 404 from the API
+    if (error.response?.status === 404) {
+      return {
+        notFound: true,
+      };
+    }
+
+    // For other errors, you might want to retry or show an error page
     return {
       notFound: true,
     };
