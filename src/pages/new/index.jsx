@@ -1,4 +1,6 @@
+import { FourthContainer } from "@/components/New/Home/FourthContainer";
 import { SecondContainer } from "@/components/New/Home/SecondContainer";
+import { ThirdContainer } from "@/components/New/Home/ThirdContainer";
 import { TopContainer } from "@/components/New/Home/TopContainer";
 import { Layout } from "@/components/New/Layout";
 import axios from "axios";
@@ -10,6 +12,8 @@ const Index = ({ articlesRes }) => {
       <Layout>
         <TopContainer articles={articlesRes} />
         <SecondContainer articles={articlesRes} />
+        <ThirdContainer articles={articlesRes} />
+        <FourthContainer articles={articlesRes} />
       </Layout>
     </>
   );
@@ -22,7 +26,7 @@ export async function getStaticProps() {
       {
         params: {
           page: 1,
-          per_page: 10,
+          per_page: 15,
         },
         timeout: 10000,
       }
