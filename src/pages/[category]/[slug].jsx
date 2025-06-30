@@ -111,14 +111,14 @@ export async function getStaticPaths() {
 
     const paths = posts.map((post) => ({
       params: {
-        category: post.category, // make sure API gives this
+        category: post.category,
         slug: post.slug,
       },
     }));
 
     return {
       paths,
-      fallback: false, // or 'blocking' if you want to render new ones at runtime
+      fallback: false,
     };
   } catch (error) {
     console.error("Error fetching paths:", error);

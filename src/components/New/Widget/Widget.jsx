@@ -36,8 +36,6 @@ export const Widget = () => {
     fetchArticles();
   }, []);
 
-  console.log(articlesRes, "SEXY ASS");
-
   return (
     <>
       <Typography
