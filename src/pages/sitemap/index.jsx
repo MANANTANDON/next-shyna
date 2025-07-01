@@ -1,9 +1,8 @@
 import React from "react";
-import { Layout } from "@/components/Layout";
 import { ArticleRounded, Home } from "@mui/icons-material";
-// import { LocationBreadcrumb } from "@/components/extras/LocationBreadcrumb";
 import { Box, Container, Typography } from "@mui/material";
 import Head from "next/head";
+import { Layout } from "@/components/New/Layout";
 
 function Index() {
   return (
@@ -38,7 +37,15 @@ function Index() {
       </Head>
       <Layout>
         <Container maxWidth="md">
-          <Box sx={{ bgcolor: "#fff", p: 2, my: 5, height: "60vh" }}>
+          <Box
+            sx={{
+              bgcolor: "rgb(227, 225, 214)",
+              p: 2,
+              my: 5,
+              height: "60vh",
+              borderRadius: "7px",
+            }}
+          >
             <Typography
               variant="h1"
               sx={{
@@ -61,7 +68,7 @@ function Index() {
                     alignItems: "center",
                     gap: 0.8,
                     "&:hover": {
-                      color: "#6087b5",
+                      color: "#353535",
                     },
                   }}
                 >
@@ -79,7 +86,7 @@ function Index() {
                     alignItems: "center",
                     gap: 0.8,
                     "&:hover": {
-                      color: "#6087b5",
+                      color: "#353535",
                     },
                   }}
                 >
