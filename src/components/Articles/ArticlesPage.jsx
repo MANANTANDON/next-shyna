@@ -1,63 +1,98 @@
-import { Box, Typography, Container, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
-import { NewsCard } from "../Cards/NewsCard";
-import { NewNewsCard } from "../Cards/NewNewsCard";
 
 export const ArticlesPage = ({ articles }) => {
   return (
-    <Container maxWidth="lg">
-      <Box
+    <Box
+      sx={{
+        my: 2,
+        mx: 0,
+        bgcolor: "rgb(227, 225, 214)",
+        p: 2,
+        borderRadius: "7px",
+      }}
+    >
+      <Typography
         sx={{
-          pt: { xs: 0, md: 2 },
-          pb: 5,
-          px: { xs: 0, md: 2 },
-          borderRadius: "10px",
-          my: 2,
+          fontSize: { xs: "32px", md: "52px" },
+          mb: 2,
+          px: 1,
+          borderBottom: { xs: "1px solid #353535", md: "none" },
         }}
+        className="font-700"
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 1,
-            width: "fit-content",
-          }}
-        >
-          <Typography
-            fontWeight="bolder"
-            variant="h1"
-            fontSize="30px"
+        Articles
+      </Typography>
+      <Grid container>
+        {articles?.data?.map((item, key) => (
+          <Grid
+            xs={12}
+            md={3}
+            key={key}
             sx={{
-              my: 2,
-              "&:hover": {
-                cursor: "pointer",
-                color: "#6087b5",
-              },
+              p: { xs: 1, md: 2.5 },
+              borderTop: { xs: "none", md: "0.5px solid #353535" },
+              borderLeft: { xs: "none", md: "0.5px solid #353535" },
+              borderRight: { xs: "none", md: "0.5px solid #353535" },
+              borderBottom: "1px solid #353535",
             }}
           >
-            ARTICLES
-          </Typography>
-        </Box>
-        <Grid
-          container
-          gap={4.2}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "left",
-            borderTop: "2px dashed #CBDBF0",
-            borderBottom: "2px dashed #CBDBF0",
-            py: 3,
-          }}
-        >
-          {articles?.map((item, key) => (
-            <Grid item xs={12} sm={5.72} md={3.71} lg={3.76} key={key}>
-              <NewNewsCard data={item} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </Container>
+            <a href={`/opinion/${item?.slug}`}>
+              <Box
+                sx={{
+                  position: "relative",
+                  height: "200px",
+                  width: "100%",
+                  overflow: "hidden",
+                  borderRadius: "5px",
+                  mt: { xs: 2, md: 0 },
+                  mb: 2,
+                }}
+              >
+                <Image
+                  src={item?.featured_image}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                  alt={item?.title}
+                />
+              </Box>
+            </a>
+            <a href={`/opinion/${item?.slug}`}>
+              <Typography
+                className="font-700"
+                sx={{
+                  fontSize: "20px",
+                  lineHeight: "25px",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: "2",
+                  WebkitBoxOrient: "vertical",
+                  height: "54px",
+                }}
+              >
+                {item?.title}
+              </Typography>
+            </a>
+            <Typography
+              sx={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                WebkitLineClamp: "2",
+                WebkitBoxOrient: "vertical",
+                fontSize: "14px",
+                my: 1,
+              }}
+              className="font-hel-400"
+            >
+              {item?.excerpt}
+            </Typography>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 };

@@ -196,6 +196,25 @@ export const FourthContainer = ({ articles }) => {
           </Grid>
         </Grid>
       </Box>
+      <Box
+        sx={{
+          borderRadius: "9px",
+          bgcolor: "rgb(227, 225, 214)",
+          borderTop: "1px solid #353535",
+          py: 3,
+          my: 1,
+        }}
+      >
+        <a href="/articles">
+          <Typography
+            className="font-700i"
+            textAlign="center"
+            sx={{ fontSize: "40px" }}
+          >
+            ~ More Articles ~
+          </Typography>
+        </a>
+      </Box>
     </>
   );
 };

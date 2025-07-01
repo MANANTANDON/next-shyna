@@ -1,8 +1,9 @@
 import { ArticlesPage } from "@/components/Articles/ArticlesPage";
-import { Layout } from "@/components/Layout";
+import { Layout } from "@/components/New/Layout";
 import { INIT_URL } from "@/constant";
 import { formatDateToDayMonth } from "@/hooks/formatDate";
 import { fetchAllArticles } from "@/lib/notion";
+import axios from "axios";
 import Head from "next/head";
 import React from "react";
 
@@ -62,15 +63,13 @@ export default function Articles({ articlesRes }) {
               url: `${INIT_URL}articles`,
               numberOfItems: articlesRes.length,
               itemListOrder: "https://schema.org/ItemListOrderAscending",
-              itemListElement: articlesRes.map((item, key) => ({
+              itemListElement: articlesRes?.data?.map((item, key) => ({
                 "@type": "ListItem",
                 position: `${key + 1}`,
-                url: `${INIT_URL}${item?.properties?.slug?.rich_text[0]?.plain_text}`,
-                name: `${item?.properties?.Name?.title[0]?.plain_text}`,
-                description: `${item?.properties?.subHeading?.rich_text[0]?.plain_text}`,
-                publish: formatDateToDayMonth(
-                  item?.properties?.createdTime?.created_time
-                ),
+                url: `${INIT_URL}opinion/${item?.slug}`,
+                name: `${item?.title}`,
+                description: `${item?.excerpt}`,
+                publish: formatDateToDayMonth(item?.date),
               })),
             }),
           }}
@@ -85,11 +84,32 @@ export default function Articles({ articlesRes }) {
 }
 
 export async function getStaticProps() {
-  let startCursor = undefined;
-  const articles = await fetchAllArticles(startCursor, 20);
-  const articlesRes = articles?.results;
+  try {
+    const response = await axios.get(
+      "https://dev.snowchildstudio.com/wp-json/custom/v1/posts",
+      {
+        params: {
+          page: 1,
+          per_page: 20,
+        },
+        timeout: 10000,
+      }
+    );
 
-  return {
-    props: { articlesRes },
-  };
+    const articlesRes = response.data;
+
+    return {
+      props: {
+        articlesRes,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+
+    return {
+      props: {
+        articlesRes: [],
+      },
+    };
+  }
 }

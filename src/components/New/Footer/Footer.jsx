@@ -13,10 +13,17 @@ export const Footer = () => {
             gap: { xs: 2, md: 0 },
             alignItems: "center",
             justifyContent: "space-between",
+            mx: 1,
             p: 2,
           }}
         >
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: { xs: "center", md: "flex-start" },
+              flexDirection: "column",
+            }}
+          >
             <Typography sx={{ color: "#999991" }} fontSize="14px">
               All right reserved
             </Typography>

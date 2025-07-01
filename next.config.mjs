@@ -11,6 +11,7 @@ const nextConfig = {
       "dev.newsarenaindia.com",
       "devqa.newsarenaindia.com",
       "prod-files-secure.s3.us-west-2.amazonaws.com",
+      "dev.snowchildstudio.com",
     ], // Add your image domains here
   },
 };

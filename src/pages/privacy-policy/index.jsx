@@ -1,4 +1,4 @@
-import { Layout } from "@/components/Layout";
+import { Layout } from "@/components/New/Layout";
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 
@@ -9,7 +9,7 @@ export default function Index() {
         <Container maxWidth="md">
           <Box
             sx={{
-              bgcolor: "#fff",
+              bgcolor: "rgb(227, 225, 214)",
               p: 2,
               borderRadius: 2,
               mt: 2,
