@@ -8,9 +8,10 @@ import Image from "next/image";
 import { Widget } from "@/components/New/Widget/Widget";
 import Head from "next/head";
 import { INIT_URL } from "@/constant";
+import { SharingButton } from "@/components/Sharing/SharingButton";
 
 function Index({ postData }) {
-  // Add error handling for missing postData
+  const slug = `${INIT_URL}opinion/${postData?.data?.slug}`;
   if (!postData || !postData.data) {
     return (
       <Layout>
@@ -110,22 +111,35 @@ function Index({ postData }) {
               <Box
                 sx={{
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: { xs: "flex-start", md: "center" },
+                  flexDirection: { xs: "column", md: "row" },
                   gap: 1.5,
                   mt: 2,
                   color: "rgb(155,155,145)",
                 }}
               >
-                <Typography sx={{ fontSize: "14px" }}>
-                  {postData?.data?.categories?.[0]?.name}
-                </Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography sx={{ fontSize: "14px" }}>
-                  {formatDateToDayMonth(postData?.data?.date)}
-                </Typography>
+                <Box sx={{ display: "flex", gap: 1.5 }}>
+                  <Typography sx={{ fontSize: "14px" }}>
+                    {postData?.data?.categories?.[0]?.name}
+                  </Typography>
+                  <FlareRounded
+                    fontSize="small"
+                    sx={{ color: "rgb(163,80,59)" }}
+                  />
+                  <Typography sx={{ fontSize: "14px" }}>
+                    {formatDateToDayMonth(postData?.data?.date)}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <SharingButton slug={slug} text={postData?.data?.title} />
+                </Box>
               </Box>
             </Box>
             <Box sx={{ my: 2 }}>
@@ -152,6 +166,29 @@ function Index({ postData }) {
                 __html: postData?.data?.content,
               }}
             />
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                borderTop: "1px solid #353535",
+                pt: 2,
+              }}
+            >
+              <Typography>Share This Article</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <SharingButton slug={slug} text={postData?.data?.title} />
+              </Box>
+            </Box>
           </Grid>
           <Grid
             item

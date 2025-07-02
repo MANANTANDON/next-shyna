@@ -1,33 +1,39 @@
-import { EditOutlined } from "@mui/icons-material";
-import { Box, Grid, Typography } from "@mui/material";
+import { EditOutlined, EmailRounded, LinkedIn } from "@mui/icons-material";
+import { Box, Grid, IconButton, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export const Header = () => {
   const socials = (
     <>
-      <a
-        href="mailto:shyna20012@gmail.com"
-        style={{ textDecoration: "none", color: "inherit" }}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 1.5,
+        }}
       >
-        <Typography
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            border: "1.5px solid #353535",
-            borderRadius: "20px",
-            px: 2.5,
-            py: 1,
-            cursor: "pointer",
-            "&:hover": {
-              backgroundColor: "rgba(53, 53, 53, 0.1)",
-            },
-          }}
+        <a
+          href="mailto:shyna20012@gmail.com"
+          style={{ textDecoration: "none", color: "inherit" }}
         >
-          <EditOutlined sx={{ mr: 1 }} /> Email
-        </Typography>
-      </a>
+          <IconButton sx={{ border: "1px solid #353535" }}>
+            <EmailRounded sx={{ color: "#353535" }} />
+          </IconButton>
+        </a>
+        <Link
+          href="https://in.linkedin.com/in/shyna-gupta-053016210"
+          target="_blank"
+          className="links"
+          aria-label="Shyna Gupta LinkeIn Link"
+        >
+          <IconButton sx={{ border: "1px solid #353535" }}>
+            <LinkedIn sx={{ color: "#353535" }} />
+          </IconButton>
+        </Link>
+      </Box>
       <Box
         sx={{
           height: "50px",

@@ -1,27 +1,10 @@
 "use client";
 
-import { UIColor } from "@/constant";
-import {
-  Facebook,
-  IosShareRounded,
-  LinkedIn,
-  WhatsApp,
-  X,
-} from "@mui/icons-material";
-import { Box, IconButton, useMediaQuery } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Facebook, LinkedIn, WhatsApp, X } from "@mui/icons-material";
+import { Box } from "@mui/material";
+import React from "react";
 
 export const SharingButton = ({ slug, text }) => {
-  const [isClient, setIsClient] = useState(false);
-  const isLaptop = useMediaQuery("(max-width:1024px)");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsClient(true);
-    }
-  }, []);
-
-  // if (!isClient || !navigator?.share || !isLaptop) {
   return (
     <>
       <Box
@@ -43,7 +26,7 @@ export const SharingButton = ({ slug, text }) => {
           }}
           target="_blank"
         >
-          <WhatsApp fontSize="small" sx={{ color: "#6087B5" }} />
+          <WhatsApp fontSize="small" sx={{ color: "#353535" }} />
         </a>
         <a
           href={`https://www.linkedin.com/shareArticle?url=${slug}&title=${text}`}
@@ -56,7 +39,7 @@ export const SharingButton = ({ slug, text }) => {
           }}
           target="_blank"
         >
-          <LinkedIn fontSize="small" sx={{ color: "#6087B5" }} />
+          <LinkedIn fontSize="small" sx={{ color: "#353535" }} />
         </a>
         <a
           href={`https://www.facebook.com/sharer.php?u=${slug}`}
@@ -69,7 +52,7 @@ export const SharingButton = ({ slug, text }) => {
           }}
           target="_blank"
         >
-          <Facebook fontSize="small" sx={{ color: "#6087B5" }} />
+          <Facebook fontSize="small" sx={{ color: "#353535" }} />
         </a>
         <a
           href={`https://twitter.com/share?url=${slug}&text=${text}`}
@@ -82,7 +65,7 @@ export const SharingButton = ({ slug, text }) => {
           }}
           target="_blank"
         >
-          <X fontSize="small" sx={{ color: "#6087B5" }} />
+          <X fontSize="small" sx={{ color: "#353535" }} />
         </a>
       </Box>
     </>
