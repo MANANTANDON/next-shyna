@@ -98,7 +98,7 @@ export default function Home({ articlesRes }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const response = await axios.get(
       "https://dev.snowchildstudio.com/wp-json/custom/v1/posts",
@@ -117,7 +117,6 @@ export async function getStaticProps() {
       props: {
         articlesRes,
       },
-      revalidate: 1, //regenerate the page every 1 second
     };
   } catch (error) {
     console.error("Error fetching articles:", error);
@@ -126,7 +125,6 @@ export async function getStaticProps() {
       props: {
         articlesRes: [],
       },
-      revalidate: 1,
     };
   }
 }
