@@ -117,7 +117,7 @@ export async function getStaticProps() {
       props: {
         articlesRes,
       },
-      revalidate: 60, // Revalidate every 60 seconds (1 minute)
+      revalidate: 1, //regenerate the page every 1 second
     };
   } catch (error) {
     console.error("Error fetching articles:", error);
@@ -126,7 +126,7 @@ export async function getStaticProps() {
       props: {
         articlesRes: [],
       },
-      revalidate: 60, // Revalidate every 60 seconds (1 minute)
+      revalidate: 1,
     };
   }
 }
