@@ -3,6 +3,7 @@ import { FlareRounded } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import { DateAndTime } from "../Extras/DateAndTime";
 
 export const SecondContainer = ({ articles }) => {
   return (
@@ -35,31 +36,16 @@ export const SecondContainer = ({ articles }) => {
                     display: "-webkit-box",
                     WebkitLineClamp: "2",
                     WebkitBoxOrient: "vertical",
+                    "&:hover": {
+                      color: "#00000099",
+                    },
                   }}
                   className="font-700"
                 >
                   {articles?.data[7]?.title}
                 </Typography>
               </a>
-              <Box
-                sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}
-              >
-                <Typography>
-                  {articles?.data[7]?.categories[0]?.name}
-                </Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography>Shyna Gupta</Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography>
-                  {formatDateToDayMonth(articles?.data[7]?.date)}
-                </Typography>
-              </Box>
+              <DateAndTime articles={articles?.data[7]} type="main" />
             </Box>
             <a href={`/opinion/${articles?.data[7]?.slug}`}>
               <Box
@@ -116,35 +102,22 @@ export const SecondContainer = ({ articles }) => {
             <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
               <a href={`/opinion/${articles?.data[8]?.slug}`}>
                 <Typography
-                  sx={{ fontSize: "45px", lineHeight: "50px" }}
+                  sx={{
+                    fontSize: "45px",
+                    lineHeight: "50px",
+                    "&:hover": {
+                      color: "#00000099",
+                    },
+                  }}
                   className="font-700"
                   textAlign="center"
                 >
                   {articles?.data[8]?.title}
                 </Typography>
               </a>
-              <Box
-                sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}
-              >
-                <Typography>
-                  {" "}
-                  {articles?.data[8]?.categories[0]?.name}
-                </Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography>Shyna Gupta</Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography>
-                  {formatDateToDayMonth(articles?.data[8]?.date)}
-                </Typography>
-              </Box>
+              <DateAndTime articles={articles?.data[8]} type="main" />
             </Box>
-            <Grid container>
+            <Grid container sx={{ overflow: "hidden" }}>
               <Grid xs={12} md={5}>
                 <a href={`/opinion/${articles?.data[8]?.slug}`}>
                   <Box
