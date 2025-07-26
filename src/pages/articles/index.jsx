@@ -83,7 +83,7 @@ export default function Articles({ articlesRes }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const response = await axios.get(
       "https://dev.snowchildstudio.com/wp-json/custom/v1/posts",

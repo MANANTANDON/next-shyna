@@ -50,7 +50,6 @@ export const DateAndTime = ({ articles, type }) => {
           display: "flex",
           alignItems: "center",
           gap: 1.5,
-          mt: 2,
           color: "#00000090",
         }}
       >

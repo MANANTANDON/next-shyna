@@ -36,6 +36,7 @@ export const TopContainer = ({ articles }) => {
                     display: "-webkit-box",
                     WebkitLineClamp: "2",
                     WebkitBoxOrient: "vertical",
+                    mb: 1,
                     "&:hover": {
                       color: "#00000099",
                     },
@@ -56,6 +57,12 @@ export const TopContainer = ({ articles }) => {
                   height: "230px",
                   borderRadius: "2px",
                   my: 1,
+                  cursor: "pointer",
+                  "&:hover": {
+                    "& img": {
+                      transform: "scale(1.1)",
+                    },
+                  },
                 }}
               >
                 <Image
@@ -69,6 +76,9 @@ export const TopContainer = ({ articles }) => {
                   alt={articles?.data[0]?.title}
                   title={articles?.data[0]?.title}
                   quality={8}
+                  style={{
+                    transition: "transform 0.4s ease",
+                  }}
                 />
               </Box>
             </a>
@@ -131,6 +141,15 @@ export const TopContainer = ({ articles }) => {
                   height: "300px",
                   borderRadius: "2px",
                   my: 2,
+                  cursor: "pointer",
+                  "&:hover": {
+                    "& img": {
+                      transform: "scale(1.1)",
+                    },
+                    "&::after": {
+                      opacity: 1,
+                    },
+                  },
                 }}
               >
                 <Image
@@ -144,6 +163,9 @@ export const TopContainer = ({ articles }) => {
                   alt={articles?.data[1]?.title}
                   title={articles?.data[1]?.title}
                   quality={8}
+                  style={{
+                    transition: "transform 0.4s ease",
+                  }}
                 />
               </Box>
             </a>
