@@ -54,6 +54,12 @@ export const ThirdContainer = ({ articles }) => {
                       height: { xs: "250px", md: "100%" },
                       borderRadius: "2px",
                       my: 2,
+                      cursor: "pointer",
+                      "&:hover": {
+                        "& img": {
+                          transform: "scale(1.1)",
+                        },
+                      },
                     }}
                   >
                     <Image
@@ -67,8 +73,11 @@ export const ThirdContainer = ({ articles }) => {
                       alt={articles?.data[9]?.title}
                       title={articles?.data[9]?.title}
                       quality={8}
+                      style={{
+                        transition: "transform 0.4s ease",
+                      }}
                     />
-                  </Box>{" "}
+                  </Box>
                 </a>
               </Grid>
               <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>
@@ -130,6 +139,12 @@ export const ThirdContainer = ({ articles }) => {
                       height: { xs: "250px", md: "100%" },
                       borderRadius: "2px",
                       my: 2,
+                      cursor: "pointer",
+                      "&:hover": {
+                        "& img": {
+                          transform: "scale(1.1)",
+                        },
+                      },
                     }}
                   >
                     <Image
@@ -143,8 +158,11 @@ export const ThirdContainer = ({ articles }) => {
                       alt={articles?.data[10]?.title}
                       title={articles?.data[10]?.title}
                       quality={8}
+                      style={{
+                        transition: "transform 0.4s ease",
+                      }}
                     />
-                  </Box>{" "}
+                  </Box>
                 </a>
               </Grid>
               <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>

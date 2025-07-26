@@ -9,6 +9,7 @@ import { Widget } from "@/components/New/Widget/Widget";
 import Head from "next/head";
 import { INIT_URL } from "@/constant";
 import { SharingButton } from "@/components/Sharing/SharingButton";
+import { DateAndTime } from "@/components/New/Extras/DateAndTime";
 
 function Index({ postData }) {
   const slug = `${INIT_URL}opinion/${postData?.data?.slug}`;
@@ -118,18 +119,7 @@ function Index({ postData }) {
                   color: "rgb(155,155,145)",
                 }}
               >
-                <Box sx={{ display: "flex", gap: 1.5 }}>
-                  <Typography sx={{ fontSize: "14px" }}>
-                    {postData?.data?.categories?.[0]?.name}
-                  </Typography>
-                  <FlareRounded
-                    fontSize="small"
-                    sx={{ color: "rgb(163,80,59)" }}
-                  />
-                  <Typography sx={{ fontSize: "14px" }}>
-                    {formatDateToDayMonth(postData?.data?.date)}
-                  </Typography>
-                </Box>
+                <DateAndTime articles={postData?.data} />
                 <Box
                   sx={{
                     display: "flex",

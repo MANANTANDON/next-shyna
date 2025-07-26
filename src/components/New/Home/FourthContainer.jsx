@@ -54,6 +54,12 @@ export const FourthContainer = ({ articles }) => {
                       height: { xs: "250px", md: "100%" },
                       borderRadius: "2px",
                       my: 2,
+                      cursor: "pointer",
+                      "&:hover": {
+                        "& img": {
+                          transform: "scale(1.1)",
+                        },
+                      },
                     }}
                   >
                     <Image
@@ -67,8 +73,11 @@ export const FourthContainer = ({ articles }) => {
                       alt={articles?.data[11]?.title}
                       title={articles?.data[11]?.title}
                       quality={8}
+                      style={{
+                        transition: "transform 0.4s ease",
+                      }}
                     />
-                  </Box>{" "}
+                  </Box>
                 </a>
               </Grid>
               <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>
@@ -132,6 +141,12 @@ export const FourthContainer = ({ articles }) => {
                       height: { xs: "250px", md: "100%" },
                       borderRadius: "2px",
                       my: 2,
+                      cursor: "pointer",
+                      "&:hover": {
+                        "& img": {
+                          transform: "scale(1.1)",
+                        },
+                      },
                     }}
                   >
                     <Image
@@ -145,8 +160,11 @@ export const FourthContainer = ({ articles }) => {
                       alt={articles?.data[12]?.title}
                       title={articles?.data[12]?.title}
                       quality={8}
+                      style={{
+                        transition: "transform 0.4s ease",
+                      }}
                     />
-                  </Box>{" "}
+                  </Box>
                 </a>
               </Grid>
               <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>

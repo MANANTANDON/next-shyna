@@ -56,6 +56,12 @@ export const SecondContainer = ({ articles }) => {
                   height: "210px",
                   borderRadius: "2px",
                   my: 2,
+                  cursor: "pointer",
+                  "&:hover": {
+                    "& img": {
+                      transform: "scale(1.1)",
+                    },
+                  },
                 }}
               >
                 <Image
@@ -69,6 +75,9 @@ export const SecondContainer = ({ articles }) => {
                   alt={articles?.data[7]?.title}
                   title={articles?.data[7]?.title}
                   quality={8}
+                  style={{
+                    transition: "transform 0.4s ease",
+                  }}
                 />
               </Box>
             </a>
@@ -128,6 +137,12 @@ export const SecondContainer = ({ articles }) => {
                       height: { xs: "250px", md: "100%" },
                       borderRadius: "2px",
                       my: 2,
+                      cursor: "pointer",
+                      "&:hover": {
+                        "& img": {
+                          transform: "scale(1.1)",
+                        },
+                      },
                     }}
                   >
                     <Image
@@ -141,8 +156,11 @@ export const SecondContainer = ({ articles }) => {
                       alt={articles?.data[8]?.title}
                       title={articles?.data[8]?.title}
                       quality={8}
+                      style={{
+                        transition: "transform 0.4s ease",
+                      }}
                     />
-                  </Box>{" "}
+                  </Box>
                 </a>
               </Grid>
               <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>
