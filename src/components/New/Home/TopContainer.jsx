@@ -4,6 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { MoreArticles } from "../More Articles/MoreArticles";
+import { DateAndTime } from "../Extras/DateAndTime";
 
 export const TopContainer = ({ articles }) => {
   //Custom Design
@@ -35,33 +36,16 @@ export const TopContainer = ({ articles }) => {
                     display: "-webkit-box",
                     WebkitLineClamp: "2",
                     WebkitBoxOrient: "vertical",
+                    "&:hover": {
+                      color: "#00000099",
+                    },
                   }}
                   className="font-700"
                 >
                   {articles?.data[0]?.title}
                 </Typography>
               </a>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1.5,
-                  mt: 2,
-
-                  color: "rgb(155,155,145)",
-                }}
-              >
-                <Typography sx={{ fontSize: "14px" }}>
-                  {articles?.data[0]?.categories[0]?.name}
-                </Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography sx={{ fontSize: "14px" }}>
-                  {formatDateToDayMonth(articles?.data[0]?.date)}
-                </Typography>
-              </Box>
+              <DateAndTime articles={articles?.data[0]} />
             </Box>
             <a href={`/opinion/${articles?.data[0]?.slug}`}>
               <Box
@@ -127,31 +111,16 @@ export const TopContainer = ({ articles }) => {
                     display: "-webkit-box",
                     WebkitLineClamp: "2",
                     WebkitBoxOrient: "vertical",
+                    "&:hover": {
+                      color: "#00000099",
+                    },
                   }}
                   className="font-700"
                 >
                   {articles?.data[1]?.title}
                 </Typography>
               </a>
-              <Box
-                sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}
-              >
-                <Typography>
-                  {articles?.data[1]?.categories[0]?.name}
-                </Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography>Shyna Gupta</Typography>
-                <FlareRounded
-                  fontSize="small"
-                  sx={{ color: "rgb(163,80,59)" }}
-                />
-                <Typography>
-                  {formatDateToDayMonth(articles?.data[1]?.date)}
-                </Typography>
-              </Box>
+              <DateAndTime type="main" articles={articles?.data[1]} />
             </Box>
             <a href={`/opinion/${articles?.data[1]?.slug}`}>
               <Box
