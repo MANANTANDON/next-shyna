@@ -1,7 +1,11 @@
-import { EditOutlined, EmailRounded, LinkedIn } from "@mui/icons-material";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import {
+  EmailRounded,
+  Instagram,
+  LinkedIn,
+  YouTube,
+} from "@mui/icons-material";
+import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 export const Header = () => {
@@ -16,23 +20,33 @@ export const Header = () => {
         }}
       >
         <a
-          href="mailto:shyna20012@gmail.com"
-          style={{ textDecoration: "none", color: "inherit" }}
+          href="https://www.instagram.com/shynaa.co/"
+          target="_blank"
+          aria-label="Shyna Gupta Instagram Link"
         >
-          <IconButton sx={{ border: "1px solid #353535" }}>
-            <EmailRounded sx={{ color: "#353535" }} />
-          </IconButton>
+          <Instagram />
         </a>
-        <Link
+        <a
           href="https://in.linkedin.com/in/shyna-gupta-053016210"
           target="_blank"
-          className="links"
           aria-label="Shyna Gupta LinkeIn Link"
         >
-          <IconButton sx={{ border: "1px solid #353535" }}>
-            <LinkedIn sx={{ color: "#353535" }} />
-          </IconButton>
-        </Link>
+          <LinkedIn />
+        </a>
+        <a
+          href="https://www.youtube.com/@ShynaaG"
+          target="_blank"
+          aria-label="Shyna Gupta Youtube Link"
+        >
+          <YouTube />
+        </a>
+        <a
+          href="mailto:shyna20012@gmail.com"
+          target="_blank"
+          aria-label="Shyna Gupta Email Link"
+        >
+          <EmailRounded />
+        </a>
       </Box>
       <Box
         sx={{
@@ -142,3 +156,20 @@ export const Header = () => {
     </Grid>
   );
 };
+
+{
+  /* <Link
+          href="mailto:shyna20012@gmail.com"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <EmailRounded sx={{ color: "#353535" }} />
+        </Link>
+        <Link
+          href="https://in.linkedin.com/in/shyna-gupta-053016210"
+          target="_blank"
+          className="links"
+          aria-label="Shyna Gupta LinkeIn Link"
+        >
+          <LinkedIn sx={{ color: "#353535" }} />
+        </Link> */
+}
