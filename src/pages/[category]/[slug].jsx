@@ -104,7 +104,10 @@ function Index({ postData }) {
           >
             <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
               <Typography
-                sx={{ fontSize: "28px", lineHeight: "35px" }}
+                sx={{
+                  fontSize: "28px",
+                  lineHeight: "35px",
+                }}
                 className="font-700"
               >
                 {postData?.data?.title}
