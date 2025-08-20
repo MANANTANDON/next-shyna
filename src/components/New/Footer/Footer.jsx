@@ -28,13 +28,20 @@ export const Footer = () => {
               All right reserved
             </Typography>
             <Typography sx={{ color: "#353535" }} fontSize="14px">
-              © SnowChild Studios
+              ©{" "}
+              <Box
+                component={"a"}
+                href="https://snowchildstudio.com/"
+                target="_blank"
+              >
+                SnowChild Studios
+              </Box>
             </Typography>
           </Box>
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
             <a href="/terms-and-condition">
               <Typography sx={{ color: "#353535" }} fontSize="14px">
-                Terms and contidion
+                Terms and condition
               </Typography>
             </a>
             <a href="/privacy-policy">
