@@ -2,7 +2,6 @@ import { ArticlesPage } from "@/components/Articles/ArticlesPage";
 import { Layout } from "@/components/New/Layout";
 import { INIT_URL } from "@/constant";
 import { formatDateToDayMonth } from "@/hooks/formatDate";
-import { fetchAllArticles } from "@/lib/notion";
 import axios from "axios";
 import Head from "next/head";
 import React from "react";
