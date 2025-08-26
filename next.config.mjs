@@ -4,15 +4,23 @@ const nextConfig = {
   images: {
     minimumCacheTTL: 60,
     disableStaticImages: true,
-    domains: [
-      "newsarenaindia.com",
-      "api.newsarenaindia.com",
-      "devapi.newsarenaindia.com",
-      "dev.newsarenaindia.com",
-      "devqa.newsarenaindia.com",
-      "prod-files-secure.s3.us-west-2.amazonaws.com",
-      "dev.snowchildstudio.com",
-    ], // Add your image domains here
+    domains: ["dev.snowchildstudio.com"],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap.xml",
+      },
+      {
+        source: "/pages-sitemap.xml",
+        destination: "/api/pages-sitemap.xml",
+      },
+      {
+        source: "/latest-news-sitemap.xml",
+        destination: "/api/latest-news-sitemap.xml",
+      },
+    ];
   },
 };
 
