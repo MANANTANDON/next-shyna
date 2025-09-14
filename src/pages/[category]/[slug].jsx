@@ -244,8 +244,6 @@ export async function getStaticPaths() {
       })
       .filter(Boolean); // Remove null entries
 
-    console.log("Generated paths:", paths); // Debug log
-
     return {
       paths,
       fallback: "blocking", // Changed from false to blocking
@@ -261,8 +259,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug, category } = params;
-
-  console.log("getStaticProps called with params:", params); // Debug log
 
   try {
     const response = await axios.get(
@@ -281,8 +277,6 @@ export async function getStaticProps({ params }) {
         notFound: true,
       };
     }
-
-    console.log("Post data fetched successfully for slug:", slug); // Debug log
 
     return {
       props: {
