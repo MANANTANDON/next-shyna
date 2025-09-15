@@ -2,8 +2,6 @@ import axios from "axios";
 import React from "react";
 import { Layout } from "@/components/New/Layout";
 import { Box, Grid, Typography } from "@mui/material";
-import { FlareRounded } from "@mui/icons-material";
-import { formatDateToDayMonth } from "@/hooks/formatDate";
 import Image from "next/image";
 import { Widget } from "@/components/New/Widget/Widget";
 import Head from "next/head";
@@ -13,6 +11,7 @@ import { DateAndTime } from "@/components/New/Extras/DateAndTime";
 
 function Index({ postData }) {
   const slug = `${INIT_URL}opinion/${postData?.data?.slug}`;
+
   if (!postData || !postData.data) {
     return (
       <Layout>
@@ -25,15 +24,9 @@ function Index({ postData }) {
     <>
       <Head>
         <title>{postData?.data?.title}</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/shyna.ico" />
-        <meta
-          http-equiv="Content-Type"
-          content="text/html; charset=utf-8"
-        ></meta>
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
 
         <meta property="og:site_name" content="Shyna" />
         <meta property="og:type" content="article" />
@@ -60,7 +53,6 @@ function Index({ postData }) {
           property="og:image"
           content={postData?.data?.featured_image}
         />
-
         <meta
           name="title"
           content={postData?.data?.meta?.title || postData?.data?.title}
@@ -83,14 +75,16 @@ function Index({ postData }) {
           property="article:modified_time"
           content={postData?.data?.modified_gmt}
         />
-        <meta itemprop="name" content={postData?.data?.title} />
+        <meta itemProp="name" content={postData?.data?.title} />
         <meta
-          itemprop="description"
+          itemProp="description"
           content={postData?.data?.excerpt || postData?.data?.title}
         />
       </Head>
+
       <Layout>
         <Grid container sx={{ mt: 2 }}>
+          {/* Main Content */}
           <Grid
             item
             xs={12}
@@ -112,6 +106,7 @@ function Index({ postData }) {
               >
                 {postData?.data?.title}
               </Typography>
+
               <Box
                 sx={{
                   display: "flex",
@@ -135,6 +130,7 @@ function Index({ postData }) {
                 </Box>
               </Box>
             </Box>
+
             <Box sx={{ my: 2 }}>
               <Image
                 src={postData?.data?.featured_image}
@@ -149,17 +145,16 @@ function Index({ postData }) {
                 quality={8}
               />
             </Box>
+
             <div
-              style={{
-                fontSize: "16px",
-                lineHeight: 1.3,
-              }}
+              style={{ fontSize: "16px", lineHeight: 1.3 }}
               className="font-hel-400 wp-content"
               dangerouslySetInnerHTML={{
                 __html: postData?.data?.content,
               }}
             />
 
+            {/* Share Section */}
             <Box
               sx={{
                 display: "flex",
@@ -183,6 +178,8 @@ function Index({ postData }) {
               </Box>
             </Box>
           </Grid>
+
+          {/* Sidebar */}
           <Grid
             item
             xs={12}
@@ -207,101 +204,34 @@ function Index({ postData }) {
   );
 }
 
-export async function getStaticPaths() {
-  try {
-    const response = await axios.get(
-      "https://dev.snowchildstudio.com/wp-json/custom/v1/posts",
-      {
-        timeout: 10000, // Add timeout
-      }
-    );
-
-    const posts = response.data;
-
-    // Add validation
-    if (!Array.isArray(posts)) {
-      console.error("Posts response is not an array:", posts);
-      return {
-        paths: [],
-        fallback: "blocking", // Changed to blocking for better error handling
-      };
-    }
-
-    const paths = posts
-      .map((post) => {
-        // Add validation for required fields
-        if (!post.slug) {
-          console.error("Post missing slug:", post);
-          return null;
-        }
-
-        return {
-          params: {
-            category: post.category || "uncategorized", // Provide fallback
-            slug: post.slug,
-          },
-        };
-      })
-      .filter(Boolean); // Remove null entries
-
-    return {
-      paths,
-      fallback: "blocking", // Changed from false to blocking
-    };
-  } catch (error) {
-    console.error("Error fetching paths:", error);
-    return {
-      paths: [],
-      fallback: "blocking",
-    };
-  }
-}
-
-export async function getStaticProps({ params }) {
-  const { slug, category } = params;
+export async function getServerSideProps({ params }) {
+  const { slug } = params;
 
   try {
     const response = await axios.get(
       `https://dev.snowchildstudio.com/wp-json/custom/v1/posts/${slug}`,
-      {
-        timeout: 10000, // Add timeout
-      }
+      { timeout: 10000 }
     );
 
     const postData = response.data;
 
-    // Add validation
     if (!postData) {
-      console.error(`No data returned for slug: ${slug}`);
-      return {
-        notFound: true,
-      };
+      return { notFound: true };
     }
 
     return {
       props: {
         postData,
       },
-      revalidate: 60, // Add ISR revalidation
     };
   } catch (error) {
-    console.error(
-      `Error fetching data for slug: ${slug}`,
-      error.response?.status,
-      error.response?.data
-    );
+    console.error("Error fetching SSR data:", error.message);
 
-    // Check if it's a 404 from the API
     if (error.response?.status === 404) {
-      return {
-        notFound: true,
-      };
+      return { notFound: true };
     }
 
-    // For other errors, you might want to retry or show an error page
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 }
 
