@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import * as gtag from "@/lib/gtag"; // <-- Make sure gtag.js is in src/lib/
+import * as gtag from "@/lib/gtag";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();

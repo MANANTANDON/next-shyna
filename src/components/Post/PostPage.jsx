@@ -1,170 +1,115 @@
-import { IMG_URI, INIT_URL } from "@/constant";
-import { formatDateToDayMonth } from "@/hooks/formatDate";
-import { Box, Typography } from "@mui/material";
-import Head from "next/head";
-import Image from "next/image";
+import { Box, Container, Typography } from "@mui/material";
 import React from "react";
+import { DateAndTime } from "../New/Extras/DateAndTime";
 import { SharingButton } from "../Sharing/SharingButton";
+import Image from "next/image";
 
-export const PostPage = ({ data }) => {
-  const slug = `${INIT_URL}${data?.data?.slug}`;
-  const imgUrl = `${IMG_URI}${data?.data?.featureImg}`;
-
+export const PostPage = ({ postData, slug }) => {
   return (
     <>
-      <Head>
-        <title>{data?.data?.meta?.title || data?.data?.title}</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
-        <link rel="icon" href="/shyna.ico" />
-        <meta
-          http-equiv="Content-Type"
-          content="text/html; charset=utf-8"
-        ></meta>
+      <Box>
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              p: 2,
+              mx: { xs: -2, md: 0 },
+            }}
+          >
+            <Box sx={{ border: "1.5px solid #353535", p: 2 }}>
+              <Typography
+                sx={{
+                  fontSize: { xs: "24px", md: "32px" },
+                  lineHeight: { xs: "30px", md: "38px" },
+                }}
+                className="sf-semibold"
+              >
+                {postData?.data?.title}
+              </Typography>
 
-        <meta property="og:site_name" content="Shyna" />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:title"
-          content={data?.data?.meta?.title || data?.data?.title}
-        />
-        <meta
-          name="description"
-          content={data?.data?.meta?.description || data?.data?.title}
-        />
-        <meta
-          property="og:description"
-          content={data?.data?.meta?.description || data?.data?.title}
-        />
-        <link rel="canonical" href={`${INIT_URL}/${data?.data?.slug}`} />
-        <meta name="tweetmeme-title" content={slug} />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: { xs: "flex-start", md: "center" },
+                  flexDirection: { xs: "column", md: "row" },
+                  justifyContent: "space-between",
+                  gap: { xs: 2, md: 1.5 },
+                  mt: { xs: 1, md: 4 },
+                  color: "rgb(155,155,145)",
+                }}
+              >
+                <DateAndTime articles={postData?.data} />
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <SharingButton slug={slug} text={postData?.data?.title} />
+                </Box>
+              </Box>
+            </Box>
 
-        <meta name="image" property="og:image" content={imgUrl} />
+            <Box sx={{ my: 2, borderBottom: "1px solid #353535", pb: 2 }}>
+              <Image
+                src={postData?.data?.featured_image}
+                alt={postData?.data?.title}
+                title={postData?.data?.title}
+                layout="responsive"
+                width={16}
+                height={9}
+                placeholder="blur"
+                blurDataURL="/shynaSignature.png"
+                unoptimized
+                quality={8}
+              />
+            </Box>
 
-        <meta
-          name="title"
-          content={data?.data?.meta?.title || data?.data?.title}
-        />
-        <meta name="twitter:image" content={imgUrl} />
+            <Container maxWidth="md">
+              <Box
+                sx={{
+                  mx: { xs: -2, md: 0 },
+                  fontSize: { xs: "17px", md: "18px" },
+                  lineHeight: { xs: "25px" },
+                  textAlign: "justify",
+                }}
+              >
+                <div
+                  style={{}}
+                  className="sf-regular wp-content"
+                  dangerouslySetInnerHTML={{
+                    __html: postData?.data?.content,
+                  }}
+                />
+              </Box>
+            </Container>
 
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="675" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:alt" content={data?.data?.title} />
-        <meta property="og:url" content={slug} />
-        <meta
-          property="article:published_time"
-          content={data?.data?.createdAt}
-        />
-        <meta
-          property="article:modified_time"
-          content={data?.data?.updatedAt}
-        />
-        <meta
-          itemprop="name"
-          content={data?.data?.meta?.title || data?.data?.title}
-        />
-        <meta
-          itemprop="description"
-          content={data?.data?.meta?.description || data?.data?.title}
-        />
-      </Head>
-      <Box
-        sx={{
-          bgcolor: "white",
-          p: 2,
-          my: 2,
-          borderRadius: "5px",
-        }}
-      >
-        {/* HEADING */}
-        <Typography
-          fontSize="35px"
-          fontWeight="bold"
-          lineHeight="45px"
-          sx={{ mt: 5, mb: 2 }}
-          textAlign="center"
-          variant="h1"
-        >
-          {data?.data?.title}
-        </Typography>
-        {/*SUBHEADING*/}
-        <Typography
-          fontSize="16px"
-          textAlign="center"
-          sx={{ color: "grey", mt: 1 }}
-        >
-          {data?.data?.meta?.subheading}
-        </Typography>
-        {/* BY USER */}
-        <Typography
-          textAlign="center"
-          sx={{ mt: 1, color: "#6087B5" }}
-        >{`Shyna Gupta | ${formatDateToDayMonth(
-          data?.data?.createdAt
-        )} `}</Typography>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            mb: 2,
-            mt: 1,
-          }}
-        >
-          <SharingButton
-            slug={slug}
-            text={data?.data?.meta?.title || data?.data?.title}
-          />
-        </Box>
-
-        {/*IMAGE*/}
-        <Box
-          sx={{
-            position: "relative",
-            overflow: "hidden",
-            height: { xs: "200px", sm: "500px" },
-            width: "100%",
-            borderRadius: "10px",
-          }}
-        >
-          <Image
-            src={`${IMG_URI}/${data?.data?.featureImg}`}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            alt={data?.data?.meta?.alt}
-            title={data?.data?.meta?.title}
-          />
-        </Box>
-        {/* CONTENT */}
-        <Box sx={{ mt: 2 }}>
-          <div
-            className="blogRootContainer"
-            dangerouslySetInnerHTML={{ __html: data?.data?.content }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            mb: 2,
-            mt: 5,
-          }}
-        >
-          <Typography>Share This Article</Typography>
-          <SharingButton
-            slug={slug}
-            text={data?.data?.meta?.title || data?.data?.title}
-          />
-        </Box>
+            {/* Share Section */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                borderTop: "1px solid #353535",
+                pt: 2,
+              }}
+            >
+              <Typography sx={{ mb: 2 }}>Share This Article</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <SharingButton slug={slug} text={postData?.data?.title} />
+              </Box>
+            </Box>
+          </Box>
+        </Container>
       </Box>
     </>
   );

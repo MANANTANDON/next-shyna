@@ -7,6 +7,7 @@ export const Widget = () => {
   const [articlesRes, setArticlesRes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchArticles = async () => {
       try {
@@ -16,12 +17,11 @@ export const Widget = () => {
           {
             params: {
               page: 1,
-              per_page: 15,
+              per_page: 6,
             },
             timeout: 10000,
           }
         );
-
         setArticlesRes(response.data);
         setError(null);
       } catch (error) {
@@ -32,7 +32,6 @@ export const Widget = () => {
         setLoading(false);
       }
     };
-
     fetchArticles();
   }, []);
 
@@ -48,30 +47,40 @@ export const Widget = () => {
       >
         More Articles
       </Typography>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 3 }}>
-        {articlesRes?.data?.slice(0, 7)?.map((item, key) => (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          mt: 3,
+        }}
+      >
+        {articlesRes?.data?.slice(0, 6)?.map((item, key) => (
           <Box key={key} sx={{}}>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+            <Box sx={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
               <Typography
                 sx={{
                   fontSize: "40px",
                   pb: 1.5,
+                  flexShrink: 0,
                 }}
                 className="font-700i"
               >
                 0{key + 1}
               </Typography>
-              <a href={`/opinion/${item?.slug}`}>
+              <a href={`/opinion/${item?.slug}`} style={{ flex: 1 }}>
                 <Typography
                   sx={{
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    display: "-webkit-box",
-                    WebkitLineClamp: "2",
-                    WebkitBoxOrient: "vertical",
                     fontSize: "18px",
                     lineHeight: "30px",
-                    height: "68px",
+                    width: "100%",
+                    boxSizing: "border-box",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    minHeight: "60px",
                   }}
                   className="font-hel-400"
                 >

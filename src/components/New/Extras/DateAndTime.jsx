@@ -16,7 +16,7 @@ export const DateAndTime = ({ articles, type }) => {
             color: "#00000090",
           }}
         >
-          <Typography sx={{ fontSize: "14px" }}>
+          <Typography sx={{ fontSize: "14px" }} className="sf-regular">
             {articles?.categories[0]?.name}
           </Typography>
           <FlareRounded fontSize="small" sx={{ color: "rgb(163,80,59)" }} />
@@ -53,11 +53,11 @@ export const DateAndTime = ({ articles, type }) => {
           color: "#00000090",
         }}
       >
-        <Typography sx={{ fontSize: "14px" }}>
+        <Typography sx={{ fontSize: "14px" }} className="sf-regular">
           {articles?.categories[0]?.name}
         </Typography>
         <FlareRounded fontSize="small" sx={{ color: "rgb(163,80,59)" }} />
-        <Typography sx={{ fontSize: "14px" }}>
+        <Typography sx={{ fontSize: "14px" }} className="sf-regular">
           {formatDateToDayMonth(articles?.date)}
         </Typography>
       </Box>

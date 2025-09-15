@@ -8,6 +8,7 @@ import Head from "next/head";
 import { INIT_URL } from "@/constant";
 import { SharingButton } from "@/components/Sharing/SharingButton";
 import { DateAndTime } from "@/components/New/Extras/DateAndTime";
+import { PostPage } from "@/components/Post/PostPage";
 
 function Index({ postData }) {
   const slug = `${INIT_URL}opinion/${postData?.data?.slug}`;
@@ -83,122 +84,27 @@ function Index({ postData }) {
       </Head>
 
       <Layout>
-        <Grid container sx={{ mt: 2 }}>
-          {/* Main Content */}
-          <Grid
+        <Box sx={{ bgcolor: "rgb(227,225,214)", mt: 2, borderRadius: "9px" }}>
+          <PostPage postData={postData} slug={slug} />
+        </Box>
+        {/* <Grid container sx={{ mt: 2 }}> */}
+        {/* Main Content */}
+
+        {/* Sidebar */}
+        {/* <Grid
             item
             xs={12}
-            md={8.5}
-            sx={{
-              bgcolor: "rgb(227,225,214)",
-              borderTopRightRadius: "9px",
-              p: 2,
-              border: "0.5px solid #353535",
-            }}
-          >
-            <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
-              <Typography
-                sx={{
-                  fontSize: "28px",
-                  lineHeight: "35px",
-                }}
-                className="font-700"
-              >
-                {postData?.data?.title}
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: { xs: "flex-start", md: "center" },
-                  flexDirection: { xs: "column", md: "row" },
-                  gap: 1.5,
-                  mt: 2,
-                  color: "rgb(155,155,145)",
-                }}
-              >
-                <DateAndTime articles={postData?.data} />
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <SharingButton slug={slug} text={postData?.data?.title} />
-                </Box>
-              </Box>
-            </Box>
-
-            <Box sx={{ my: 2 }}>
-              <Image
-                src={postData?.data?.featured_image}
-                alt={postData?.data?.title}
-                title={postData?.data?.title}
-                layout="responsive"
-                width={16}
-                height={9}
-                placeholder="blur"
-                blurDataURL="/shynaSignature.png"
-                unoptimized
-                quality={8}
-              />
-            </Box>
-
-            <div
-              style={{ fontSize: "16px", lineHeight: 1.3 }}
-              className="font-hel-400 wp-content"
-              dangerouslySetInnerHTML={{
-                __html: postData?.data?.content,
-              }}
-            />
-
-            {/* Share Section */}
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                borderTop: "1px solid #353535",
-                pt: 2,
-              }}
-            >
-              <Typography>Share This Article</Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <SharingButton slug={slug} text={postData?.data?.title} />
-              </Box>
-            </Box>
-          </Grid>
-
-          {/* Sidebar */}
-          <Grid
-            item
-            xs={12}
-            md={3.5}
+            md={2}
             sx={{
               bgcolor: "rgb(227,225,214)",
               borderTopLeftRadius: "9px",
               p: 2,
               border: "0.5px solid #353535",
-              position: "sticky",
-              top: "20px",
-              alignSelf: "flex-start",
-              maxHeight: "100vh",
-              overflowY: "auto",
             }}
           >
             <Widget />
-          </Grid>
-        </Grid>
+          </Grid> */}
+        {/* </Grid> */}
       </Layout>
     </>
   );
