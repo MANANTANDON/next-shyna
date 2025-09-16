@@ -75,7 +75,6 @@ export const PostPage = ({ postData, slug }) => {
                 }}
               >
                 <div
-                  style={{}}
                   className="sf-regular wp-content"
                   dangerouslySetInnerHTML={{
                     __html: postData?.data?.content,

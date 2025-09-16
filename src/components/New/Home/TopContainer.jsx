@@ -1,5 +1,3 @@
-import { formatDateToDayMonth } from "@/hooks/formatDate";
-import { FlareRounded } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -25,27 +23,27 @@ export const TopContainer = ({ articles }) => {
               border: "0.5px solid #353535",
             }}
           >
-            <Box sx={{ borderBottom: "1.5px solid #353535", p: 1.5 }}>
-              <a href={`/opinion/${articles?.data[0]?.slug}`}>
-                <Typography
-                  sx={{
-                    fontSize: "30px",
-                    lineHeight: "35px",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    display: "-webkit-box",
-                    WebkitLineClamp: "2",
-                    WebkitBoxOrient: "vertical",
-                    mb: 1,
-                    "&:hover": {
-                      color: "#00000099",
-                    },
-                  }}
-                  className="font-700"
-                >
-                  {articles?.data[0]?.title}
-                </Typography>
-              </a>
+            <Box sx={{ borderBottom: "1.5px solid #353535", pt: 1, pb: 2 }}>
+              <Typography
+                component={"a"}
+                href={`/opinion/${articles?.data[0]?.slug}`}
+                sx={{
+                  fontSize: "24px",
+                  lineHeight: "32px",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: "2",
+                  WebkitBoxOrient: "vertical",
+                  mb: 1,
+                  "&:hover": {
+                    color: "#00000099",
+                  },
+                }}
+                className="sf-semibold"
+              >
+                {articles?.data[0]?.title}
+              </Typography>
               <DateAndTime articles={articles?.data[0]} />
             </Box>
             <a href={`/opinion/${articles?.data[0]?.slug}`}>
@@ -56,7 +54,7 @@ export const TopContainer = ({ articles }) => {
                   width: "100%",
                   height: "230px",
                   borderRadius: "2px",
-                  my: 1,
+                  mt: 2,
                   cursor: "pointer",
                   "&:hover": {
                     "& img": {
@@ -82,22 +80,23 @@ export const TopContainer = ({ articles }) => {
                 />
               </Box>
             </a>
-            <div
-              style={{
-                fontSize: "15px",
-                lineHeight: 1.3,
-                display: "-webkit-box",
-                WebkitLineClamp: 10,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-              className="font-hel-400"
-              fontSize="16px"
-              dangerouslySetInnerHTML={{
-                __html: articles?.data[0]?.content,
-              }}
-            />
+            <Box>
+              <div
+                style={{
+                  fontSize: "16px",
+                  lineHeight: 1.3,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 11,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+                className="sf-regular"
+                dangerouslySetInnerHTML={{
+                  __html: articles?.data[0]?.content,
+                }}
+              />
+            </Box>
           </Grid>
           {/* Middle Sector*/}
           <Grid
@@ -106,7 +105,7 @@ export const TopContainer = ({ articles }) => {
             sx={{
               bgcolor: "rgb(227,225,214)",
               borderTopLeftRadius: "9px",
-              p: 3,
+              p: 2,
               border: "0.5px solid #353535",
             }}
           >
@@ -114,8 +113,8 @@ export const TopContainer = ({ articles }) => {
               <a href={`/opinion/${articles?.data[1]?.slug}`}>
                 <Typography
                   sx={{
-                    fontSize: "35px",
-                    lineHeight: "40px",
+                    fontSize: "28px",
+                    lineHeight: "34px",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     display: "-webkit-box",
@@ -125,12 +124,12 @@ export const TopContainer = ({ articles }) => {
                       color: "#00000099",
                     },
                   }}
-                  className="font-700"
+                  className="sf-semibold"
                 >
                   {articles?.data[1]?.title}
                 </Typography>
               </a>
-              <DateAndTime type="main" articles={articles?.data[1]} />
+              <DateAndTime articles={articles?.data[1]} />
             </Box>
             <a href={`/opinion/${articles?.data[1]?.slug}`}>
               <Box
@@ -140,7 +139,7 @@ export const TopContainer = ({ articles }) => {
                   width: "100%",
                   height: "300px",
                   borderRadius: "2px",
-                  my: 2,
+                  mt: 2,
                   cursor: "pointer",
                   "&:hover": {
                     "& img": {
@@ -171,16 +170,15 @@ export const TopContainer = ({ articles }) => {
             </a>
             <div
               style={{
-                fontSize: "15px",
+                fontSize: "16px",
                 lineHeight: 1.3,
                 display: "-webkit-box",
-                WebkitLineClamp: 5,
+                WebkitLineClamp: 7,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
               }}
-              className="font-hel-400"
-              fontSize="16px"
+              className="sf-regular"
               dangerouslySetInnerHTML={{
                 __html: articles?.data[1]?.content,
               }}

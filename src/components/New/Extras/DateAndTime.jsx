@@ -4,32 +4,6 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 
 export const DateAndTime = ({ articles, type }) => {
-  if (type === "main") {
-    return (
-      <>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 1.5,
-            mt: 2,
-            color: "#00000090",
-          }}
-        >
-          <Typography sx={{ fontSize: "14px" }} className="sf-regular">
-            {articles?.categories[0]?.name}
-          </Typography>
-          <FlareRounded fontSize="small" sx={{ color: "rgb(163,80,59)" }} />
-          <Typography>Shyna Gupta</Typography>
-          <FlareRounded fontSize="small" sx={{ color: "rgb(163,80,59)" }} />
-          <Typography sx={{ fontSize: "14px" }}>
-            {formatDateToDayMonth(articles?.date)}
-          </Typography>
-        </Box>
-      </>
-    );
-  }
-
   if (type === "secondary") {
     return (
       <>
@@ -50,6 +24,7 @@ export const DateAndTime = ({ articles, type }) => {
           display: "flex",
           alignItems: "center",
           gap: 1.5,
+          mt: 1.5,
           color: "#00000090",
         }}
       >

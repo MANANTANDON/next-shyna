@@ -7,7 +7,7 @@ export const MoreArticles = ({ articles }) => {
     <>
       <a href="/articles">
         <Typography
-          className="font-700"
+          className="sf-medium"
           sx={{
             fontSize: "30px",
             borderBottom: "1.5px solid #353535",
@@ -38,14 +38,13 @@ export const MoreArticles = ({ articles }) => {
                     display: "-webkit-box",
                     WebkitLineClamp: "2",
                     WebkitBoxOrient: "vertical",
-                    fontSize: "18px",
+                    fontSize: "22px",
                     lineHeight: "30px",
-                    height: "68px",
                     "&:hover": {
                       color: "#00000099",
                     },
                   }}
-                  className="font-hel-400"
+                  className="sf-semibold"
                 >
                   {item?.title}
                 </Typography>
