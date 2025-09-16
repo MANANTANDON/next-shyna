@@ -87,24 +87,6 @@ function Index({ postData }) {
         <Box sx={{ bgcolor: "rgb(227,225,214)", mt: 2, borderRadius: "9px" }}>
           <PostPage postData={postData} slug={slug} />
         </Box>
-        {/* <Grid container sx={{ mt: 2 }}> */}
-        {/* Main Content */}
-
-        {/* Sidebar */}
-        {/* <Grid
-            item
-            xs={12}
-            md={2}
-            sx={{
-              bgcolor: "rgb(227,225,214)",
-              borderTopLeftRadius: "9px",
-              p: 2,
-              border: "0.5px solid #353535",
-            }}
-          >
-            <Widget />
-          </Grid> */}
-        {/* </Grid> */}
       </Layout>
     </>
   );

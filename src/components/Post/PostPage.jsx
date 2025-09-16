@@ -72,7 +72,6 @@ export const PostPage = ({ postData, slug }) => {
                   mx: { xs: -2, md: 0 },
                   fontSize: { xs: "17px", md: "18px" },
                   lineHeight: { xs: "25px" },
-                  textAlign: "justify",
                 }}
               >
                 <div

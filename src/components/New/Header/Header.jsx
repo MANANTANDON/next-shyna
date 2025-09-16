@@ -76,7 +76,8 @@ export const Header = () => {
         sx={{
           bgcolor: "rgb(227,225,214)",
           p: 1,
-          border: "0.5px solid  #353535",
+          borderLeft: "0.5px solid  #353535",
+          borderRight: "0.5px solid  #353535",
           borderBottomLeftRadius: "7px",
           borderBottomRightRadius: "7px",
           display: { xs: "none", md: "flex" },
@@ -105,7 +106,8 @@ export const Header = () => {
         sx={{
           bgcolor: "rgb(227,225,214)",
           p: 1,
-          border: "0.5px solid  #353535",
+          borderLeft: "0.5px solid #353535",
+          borderRight: "0.5px solid #353535",
           borderBottomLeftRadius: "7px",
           borderBottomRightRadius: "7px",
           display: "flex",
@@ -116,7 +118,7 @@ export const Header = () => {
         <Box>
           <a href="/">
             <Typography
-              className="font-700"
+              className="sf-medium"
               textAlign="center"
               sx={{ fontSize: { xs: "30px", md: "45px" }, color: "#353535" }}
             >
@@ -126,7 +128,7 @@ export const Header = () => {
         </Box>
         <Box
           sx={{
-            display: { xs: "flex", sm: "none" },
+            display: { xs: "flex", md: "none" },
             alignItems: "center",
             justifyContent: "center",
             gap: 2,
@@ -142,7 +144,8 @@ export const Header = () => {
         sx={{
           bgcolor: "rgb(227,225,214)",
           px: 5,
-          border: "0.5px solidrgb(27, 21, 21)",
+          borderLeft: "0.5px solid #353535",
+          borderRight: "0.5px solid #353535",
           borderBottomLeftRadius: "7px",
           borderBottomRightRadius: "7px",
           display: { xs: "none", md: "flex" },
@@ -156,20 +159,3 @@ export const Header = () => {
     </Grid>
   );
 };
-
-{
-  /* <Link
-          href="mailto:shyna20012@gmail.com"
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <EmailRounded sx={{ color: "#353535" }} />
-        </Link>
-        <Link
-          href="https://in.linkedin.com/in/shyna-gupta-053016210"
-          target="_blank"
-          className="links"
-          aria-label="Shyna Gupta LinkeIn Link"
-        >
-          <LinkedIn sx={{ color: "#353535" }} />
-        </Link> */
-}
