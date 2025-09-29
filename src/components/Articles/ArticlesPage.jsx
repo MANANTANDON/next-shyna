@@ -99,6 +99,7 @@ export const ArticlesPage = ({ articles }) => {
                       objectFit="cover"
                       objectPosition="center"
                       alt={item?.title}
+                      unoptimized
                     />
                   </Box>
 

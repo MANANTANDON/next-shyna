@@ -1,5 +1,3 @@
-import { formatDateToDayMonth } from "@/hooks/formatDate";
-import { FlareRounded } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -29,8 +27,8 @@ export const SecondContainer = ({ articles }) => {
               <a href={`/opinion/${articles?.data[7]?.slug}`}>
                 <Typography
                   sx={{
-                    fontSize: "35px",
-                    lineHeight: "40px",
+                    fontSize: "24px",
+                    lineHeight: "32px",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     display: "-webkit-box",
@@ -40,7 +38,7 @@ export const SecondContainer = ({ articles }) => {
                       color: "#00000099",
                     },
                   }}
-                  className="font-700"
+                  className="sf-semibold"
                 >
                   {articles?.data[7]?.title}
                 </Typography>

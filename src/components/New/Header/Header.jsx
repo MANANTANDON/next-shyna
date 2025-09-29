@@ -58,6 +58,7 @@ export const Header = () => {
         }}
       >
         <Image
+          unoptimized
           src="/manan.jpg"
           alt="Shyna Gupta"
           layout="fill"

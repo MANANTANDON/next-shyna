@@ -1,8 +1,10 @@
-import { Box, Grid, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import { MoreArticles } from "../More Articles/MoreArticles";
 import { DateAndTime } from "../Extras/DateAndTime";
+import { HeadingOne } from "@/components/Typographies/HeadingOne";
+import { ImgComponent } from "@/components/Typographies/ImgComponent";
+import { PostContentOne } from "@/components/Typographies/PostContentOne";
 
 export const TopContainer = ({ articles }) => {
   //Custom Design
@@ -24,79 +26,15 @@ export const TopContainer = ({ articles }) => {
             }}
           >
             <Box sx={{ borderBottom: "1.5px solid #353535", pt: 1, pb: 2 }}>
-              <Typography
-                component={"a"}
-                href={`/opinion/${articles?.data[0]?.slug}`}
-                sx={{
-                  fontSize: "24px",
-                  lineHeight: "32px",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  display: "-webkit-box",
-                  WebkitLineClamp: "2",
-                  WebkitBoxOrient: "vertical",
-                  mb: 1,
-                  "&:hover": {
-                    color: "#00000099",
-                  },
-                }}
-                className="sf-semibold"
-              >
-                {articles?.data[0]?.title}
-              </Typography>
+              {/* Title of the Article */}
+              <HeadingOne post={articles?.data[0]} type="one" />
+              {/* deets of the post */}
               <DateAndTime articles={articles?.data[0]} />
             </Box>
-            <a href={`/opinion/${articles?.data[0]?.slug}`}>
-              <Box
-                sx={{
-                  position: "relative",
-                  overflow: "hidden",
-                  width: "100%",
-                  height: "230px",
-                  borderRadius: "2px",
-                  mt: 2,
-                  cursor: "pointer",
-                  "&:hover": {
-                    "& img": {
-                      transform: "scale(1.1)",
-                    },
-                  },
-                }}
-              >
-                <Image
-                  unoptimized
-                  src={articles?.data[0]?.featured_image}
-                  placeholder="blur"
-                  blurDataURL="/shynaSignature.png"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  alt={articles?.data[0]?.title}
-                  title={articles?.data[0]?.title}
-                  quality={8}
-                  style={{
-                    transition: "transform 0.4s ease",
-                  }}
-                />
-              </Box>
-            </a>
-            <Box>
-              <div
-                style={{
-                  fontSize: "16px",
-                  lineHeight: 1.3,
-                  display: "-webkit-box",
-                  WebkitLineClamp: 11,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-                className="sf-regular"
-                dangerouslySetInnerHTML={{
-                  __html: articles?.data[0]?.content,
-                }}
-              />
-            </Box>
+            {/* post img */}
+            <ImgComponent post={articles?.data[0]} h="230px" w="100%" />
+            {/* post content */}
+            <PostContentOne post={articles?.data[0]} lines={11} />
           </Grid>
           {/* Middle Sector*/}
           <Grid
@@ -110,79 +48,15 @@ export const TopContainer = ({ articles }) => {
             }}
           >
             <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
-              <a href={`/opinion/${articles?.data[1]?.slug}`}>
-                <Typography
-                  sx={{
-                    fontSize: "28px",
-                    lineHeight: "34px",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    display: "-webkit-box",
-                    WebkitLineClamp: "2",
-                    WebkitBoxOrient: "vertical",
-                    "&:hover": {
-                      color: "#00000099",
-                    },
-                  }}
-                  className="sf-semibold"
-                >
-                  {articles?.data[1]?.title}
-                </Typography>
-              </a>
+              {/* title of the post */}
+              <HeadingOne post={articles?.data[1]} type="two" />
+              {/* deets of the article*/}
               <DateAndTime articles={articles?.data[1]} />
             </Box>
-            <a href={`/opinion/${articles?.data[1]?.slug}`}>
-              <Box
-                sx={{
-                  position: "relative",
-                  overflow: "hidden",
-                  width: "100%",
-                  height: "300px",
-                  borderRadius: "2px",
-                  mt: 2,
-                  cursor: "pointer",
-                  "&:hover": {
-                    "& img": {
-                      transform: "scale(1.1)",
-                    },
-                    "&::after": {
-                      opacity: 1,
-                    },
-                  },
-                }}
-              >
-                <Image
-                  unoptimized
-                  src={articles?.data[1]?.featured_image}
-                  placeholder="blur"
-                  blurDataURL="/shynaSignature.png"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  alt={articles?.data[1]?.title}
-                  title={articles?.data[1]?.title}
-                  quality={8}
-                  style={{
-                    transition: "transform 0.4s ease",
-                  }}
-                />
-              </Box>
-            </a>
-            <div
-              style={{
-                fontSize: "16px",
-                lineHeight: 1.3,
-                display: "-webkit-box",
-                WebkitLineClamp: 7,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-              className="sf-regular"
-              dangerouslySetInnerHTML={{
-                __html: articles?.data[1]?.content,
-              }}
-            />
+            {/* post image */}
+            <ImgComponent post={articles?.data[1]} h="300px" w="100%" />
+            {/* post content */}
+            <PostContentOne post={articles?.data[1]} lines={7} />
           </Grid>
           {/*Last Sector*/}
           <Grid

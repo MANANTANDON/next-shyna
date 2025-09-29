@@ -9,7 +9,7 @@ export const DateAndTime = ({ articles, type }) => {
       <>
         <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
           <Box sx={{ border: "1px solid #353535", width: "40px" }}></Box>
-          <Typography sx={{ color: "#00000090" }}>
+          <Typography sx={{ color: "#00000090" }} className="sf-medium">
             {`${formatDateToDayMonth(articles?.date)}`}
           </Typography>
         </Box>
@@ -28,11 +28,11 @@ export const DateAndTime = ({ articles, type }) => {
           color: "#00000090",
         }}
       >
-        <Typography sx={{ fontSize: "14px" }} className="sf-regular">
+        <Typography sx={{ fontSize: "14px" }} className="sf-medium">
           {articles?.categories[0]?.name}
         </Typography>
-        <FlareRounded fontSize="small" sx={{ color: "rgb(163,80,59)" }} />
-        <Typography sx={{ fontSize: "14px" }} className="sf-regular">
+        <FlareRounded fontSize="small" sx={{ color: "rgba(147, 86, 71, 1)" }} />
+        <Typography sx={{ fontSize: "14px" }} className="sf-medium">
           {formatDateToDayMonth(articles?.date)}
         </Typography>
       </Box>
