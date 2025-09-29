@@ -1,9 +1,10 @@
-import { formatDateToDayMonth } from "@/hooks/formatDate";
-import { FlareRounded } from "@mui/icons-material";
-import { Box, Grid, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import { DateAndTime } from "../Extras/DateAndTime";
+import { HeadingTwo } from "@/components/Typographies/HeadingTwo";
+import { ImgComponent } from "@/components/Typographies/ImgComponent";
+import { PostContentOne } from "@/components/Typographies/PostContentOne";
+import { HeadingOne } from "@/components/Typographies/HeadingOne";
 
 export const ThirdContainer = ({ articles }) => {
   return (
@@ -26,77 +27,24 @@ export const ThirdContainer = ({ articles }) => {
             }}
           >
             <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
-              <a href={`/opinion/${articles?.data[9]?.slug}`}>
-                <Typography
-                  sx={{
-                    fontSize: "45px",
-                    lineHeight: "50px",
-                    "&:hover": {
-                      color: "#00000099",
-                    },
-                  }}
-                  className="font-700"
-                  textAlign="center"
-                >
-                  {articles?.data[9]?.title}
-                </Typography>
-              </a>
+              {/* post title */}
+              <HeadingTwo post={articles?.data[9]} type="two" />
+              {/* post deets */}
               <DateAndTime type="main" articles={articles?.data[9]} />
             </Box>
-            <Grid container>
+            <Grid container sx={{ mt: 2 }}>
               <Grid xs={12} md={5}>
-                <a href={`/opinion/${articles?.data[9]?.slug}`}>
-                  <Box
-                    sx={{
-                      position: "relative",
-                      overflow: "hidden",
-                      width: "100%",
-                      height: { xs: "250px", md: "100%" },
-                      borderRadius: "2px",
-                      my: 2,
-                      cursor: "pointer",
-                      "&:hover": {
-                        "& img": {
-                          transform: "scale(1.1)",
-                        },
-                      },
-                    }}
-                  >
-                    <Image
-                      unoptimized
-                      src={articles?.data[9]?.featured_image}
-                      placeholder="blur"
-                      blurDataURL="/shynaSignature.png"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                      alt={articles?.data[9]?.title}
-                      title={articles?.data[9]?.title}
-                      quality={8}
-                      style={{
-                        transition: "transform 0.4s ease",
-                      }}
-                    />
-                  </Box>
-                </a>
+                {/* post image */}
+                <ImgComponent
+                  post={articles?.data[9]}
+                  h={{ xs: "250px", md: "100%" }}
+                  w="100%"
+                  mt={0}
+                />
               </Grid>
               <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>
-                <div
-                  style={{
-                    fontSize: "15px",
-                    lineHeight: 1.3,
-                    display: "-webkit-box",
-                    WebkitLineClamp: 14,
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                  className="font-hel-400"
-                  fontSize="16px"
-                  dangerouslySetInnerHTML={{
-                    __html: articles?.data[9]?.content,
-                  }}
-                />
+                {/* post content */}
+                <PostContentOne post={articles?.data[9]} lines={14} />
               </Grid>
             </Grid>
           </Grid>
@@ -111,77 +59,20 @@ export const ThirdContainer = ({ articles }) => {
             }}
           >
             <Box sx={{ border: "1.5px solid #353535", p: 1.5 }}>
-              <a href={`/opinion/${articles?.data[10]?.slug}`}>
-                <Typography
-                  sx={{
-                    fontSize: "45px",
-                    lineHeight: "50px",
-                    "&:hover": {
-                      color: "#00000099",
-                    },
-                  }}
-                  className="font-700"
-                  textAlign="center"
-                >
-                  {articles?.data[10]?.title}
-                </Typography>
-              </a>
+              <HeadingOne post={articles?.data[10]} type={"two"} />
               <DateAndTime type="main" articles={articles?.data[10]} />
             </Box>
-            <Grid container sx={{ overflow: "hidden" }}>
+            <Grid container sx={{ overflow: "hidden", mt: 2 }}>
               <Grid xs={12} md={5}>
-                <a href={`/opinion/${articles?.data[10]?.slug}`}>
-                  <Box
-                    sx={{
-                      position: "relative",
-                      overflow: "hidden",
-                      width: "100%",
-                      height: { xs: "250px", md: "100%" },
-                      borderRadius: "2px",
-                      my: 2,
-                      cursor: "pointer",
-                      "&:hover": {
-                        "& img": {
-                          transform: "scale(1.1)",
-                        },
-                      },
-                    }}
-                  >
-                    <Image
-                      unoptimized
-                      src={articles?.data[10]?.featured_image}
-                      placeholder="blur"
-                      blurDataURL="/shynaSignature.png"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                      alt={articles?.data[10]?.title}
-                      title={articles?.data[10]?.title}
-                      quality={8}
-                      style={{
-                        transition: "transform 0.4s ease",
-                      }}
-                    />
-                  </Box>
-                </a>
+                <ImgComponent
+                  post={articles?.data[10]}
+                  h={{ xs: "250px", md: "100%" }}
+                  width="100%"
+                  mt={0}
+                />
               </Grid>
               <Grid item xs={12} md={7} sx={{ pl: { xs: 0, md: 3 } }}>
-                <div
-                  style={{
-                    fontSize: "15px",
-                    lineHeight: 1.3,
-                    display: "-webkit-box",
-                    WebkitLineClamp: 14,
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                  className="font-hel-400"
-                  fontSize="16px"
-                  dangerouslySetInnerHTML={{
-                    __html: articles?.data[10]?.content,
-                  }}
-                />
+                <PostContentOne post={articles?.data[10]} lines={14} />
               </Grid>
             </Grid>
           </Grid>

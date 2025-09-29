@@ -32,9 +32,9 @@ export const TopContainer = ({ articles }) => {
               <DateAndTime articles={articles?.data[0]} />
             </Box>
             {/* post img */}
-            <ImgComponent post={articles?.data[0]} h="230px" w="100%" />
+            <ImgComponent post={articles?.data[0]} h="230px" w="100%" mt={2} />
             {/* post content */}
-            <PostContentOne post={articles?.data[0]} lines={11} />
+            <PostContentOne post={articles?.data[0]} lines={10} />
           </Grid>
           {/* Middle Sector*/}
           <Grid
@@ -54,7 +54,7 @@ export const TopContainer = ({ articles }) => {
               <DateAndTime articles={articles?.data[1]} />
             </Box>
             {/* post image */}
-            <ImgComponent post={articles?.data[1]} h="300px" w="100%" />
+            <ImgComponent post={articles?.data[1]} h="300px" w="100%" mt={2} />
             {/* post content */}
             <PostContentOne post={articles?.data[1]} lines={7} />
           </Grid>

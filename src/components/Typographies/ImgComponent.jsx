@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
-export const ImgComponent = ({ post, h, w }) => {
+export const ImgComponent = ({ post, h, w, mt }) => {
   return (
     <>
       <a href={`/opinion/${post?.slug}`}>
@@ -13,7 +13,7 @@ export const ImgComponent = ({ post, h, w }) => {
             width: w,
             height: h,
             borderRadius: "2px",
-            mt: 2,
+            mt: mt,
             cursor: "pointer",
             "&:hover": {
               "& img": {

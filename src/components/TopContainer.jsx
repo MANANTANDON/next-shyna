@@ -18,7 +18,7 @@ import Link from "next/link";
 import React from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
-export const TopContainer = ({ info }) => {
+export const TopContainer = () => {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {

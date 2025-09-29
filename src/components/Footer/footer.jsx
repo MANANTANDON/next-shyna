@@ -51,7 +51,6 @@ export const Footer = () => {
                     marginLeft: "10px",
                   }}
                 >
-                  {" "}
                   Privacy Policy{" "}
                 </a>
               </span>
@@ -70,21 +69,6 @@ export const Footer = () => {
                   Sitemap{" "}
                 </a>
               </span>
-              {/* •
-              <span>
-                <a
-                  href="/privacy-policy"
-                  style={{
-                    color: "#3E73B9",
-                    borderBottom: "1px dotted #3E73B9",
-                    paddingBottom: "2px",
-                    marginLeft: "10px",
-                  }}
-                >
-                  {" "}
-                  rss feed{" "}
-                </a>
-              </span> */}
             </Typography>
             <Box sx={{ mt: 4 }}>
               <a href="/" aria-label="Home">
