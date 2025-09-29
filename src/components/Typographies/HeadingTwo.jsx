@@ -1,15 +1,15 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-export const HeadingTwo = ({ post }) => {
+export const HeadingTwo = ({ post, fontSize, lineHeight }) => {
   return (
     <>
       <Typography
         component={"a"}
         href={`/opinion/${post?.slug}`}
         sx={{
-          fontSize: "22px",
-          lineHeight: "30px",
+          fontSize: fontSize || "22px",
+          lineHeight: lineHeight || "30px",
           overflow: "hidden",
           textOverflow: "ellipsis",
           display: "-webkit-box",

@@ -1,7 +1,8 @@
 import { Box, Grid, Typography } from "@mui/material";
-import Image from "next/image";
 import React from "react";
 import { DateAndTime } from "../New/Extras/DateAndTime";
+import { ImgComponent } from "../Typographies/ImgComponent";
+import Image from "next/image";
 
 export const ArticlesPage = ({ articles }) => {
   return (
@@ -21,7 +22,7 @@ export const ArticlesPage = ({ articles }) => {
           px: 1,
           borderBottom: { xs: "1px solid #353535", md: "none" },
         }}
-        className="font-700"
+        className="sf-medium"
       >
         Articles
       </Typography>
@@ -86,7 +87,6 @@ export const ArticlesPage = ({ articles }) => {
                       overflow: "hidden",
                       borderRadius: "5px",
                       mt: { xs: 2, md: 0 },
-                      mb: 2,
                       transition: "transform 0.2s ease",
                       "&:hover": {
                         transform: "scale(1.02)",
@@ -103,10 +103,12 @@ export const ArticlesPage = ({ articles }) => {
                     />
                   </Box>
 
+                  <DateAndTime articles={item} />
+
                   <Typography
-                    className="font-700"
+                    className="sf-semibold"
                     sx={{
-                      fontSize: "20px",
+                      fontSize: "18px",
                       lineHeight: "25px",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
@@ -114,7 +116,7 @@ export const ArticlesPage = ({ articles }) => {
                       WebkitLineClamp: "2",
                       WebkitBoxOrient: "vertical",
                       height: "54px",
-                      mb: 0.5,
+                      my: 1,
                       "&:hover": {
                         color: "#00000099",
                         transition: "color 0.2s ease",
@@ -123,7 +125,7 @@ export const ArticlesPage = ({ articles }) => {
                   >
                     {item?.title}
                   </Typography>
-                  <DateAndTime articles={item} />
+
                   <Typography
                     sx={{
                       overflow: "hidden",
@@ -136,7 +138,7 @@ export const ArticlesPage = ({ articles }) => {
                       lineHeight: 1.4,
                       mt: 0.5,
                     }}
-                    className="font-hel-400"
+                    className="sf-regular"
                   >
                     {item?.excerpt}
                   </Typography>
