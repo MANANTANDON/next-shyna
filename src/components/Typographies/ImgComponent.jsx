@@ -27,7 +27,11 @@ export const ImgComponent = ({ post, h, w, mt }) => {
         >
           <Image
             unoptimized
-            src={post?.featured_image}
+            src={
+              post?.featured_image === null
+                ? "/shynaSignature.png"
+                : post.featured_image
+            }
             placeholder="blur"
             blurDataURL="/shynaSignature.png"
             layout="fill"
