@@ -53,7 +53,11 @@ export const PostPage = ({ postData, slug }) => {
 
             <Box sx={{ my: 2, borderBottom: "1px solid #353535", pb: 2 }}>
               <Image
-                src={postData?.data?.featured_image}
+                src={
+                  postData?.data?.featured_image === null
+                    ? "/shynaSignature.png"
+                    : postData?.data?.featured_image
+                }
                 alt={postData?.data?.title}
                 title={postData?.data?.title}
                 layout="responsive"
