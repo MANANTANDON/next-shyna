@@ -4,7 +4,7 @@ import {
   LinkedIn,
   YouTube,
 } from "@mui/icons-material";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
@@ -69,85 +69,13 @@ export const Header = () => {
     </>
   );
   return (
-    <Grid container>
-      <Grid
-        item
-        xs={12}
-        md={2.5}
-        sx={{
-          bgcolor: "rgb(227,225,214)",
-          p: 1,
-          borderLeft: "0.5px solid  #353535",
-          borderRight: "0.5px solid  #353535",
-          borderBottomLeftRadius: "7px",
-          borderBottomRightRadius: "7px",
-          display: { xs: "none", md: "flex" },
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+    <div className="bg-[rgb(227,225,214)] py-4 lg:py-6 flex items-center justify-center">
+      <a
+        href="/"
+        className="font-gothic text-[#353535] text-4xl md:text-5xl lg:text-6xl w-fit"
       >
-        <a href="/">
-          <Image
-            src="/shynaSignature.png"
-            width={150}
-            height={30}
-            style={{
-              height: "auto",
-            }}
-            alt="shynagutpa.com"
-            title="shynagupta.com"
-            unoptimized
-          />
-        </a>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        md={7}
-        sx={{
-          bgcolor: "rgb(227,225,214)",
-          p: 1,
-          borderLeft: "0.5px solid #353535",
-          borderRight: "0.5px solid #353535",
-          borderBottomLeftRadius: "7px",
-          borderBottomRightRadius: "7px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <a href="/">
-          <Typography
-            className="sf-medium"
-            textAlign="center"
-            sx={{
-              fontSize: { xs: "30px", md: "45px" },
-              color: "#353535",
-            }}
-          >
-            Agents Of Inclusion
-          </Typography>
-        </a>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        md={2.5}
-        sx={{
-          bgcolor: "rgb(227,225,214)",
-          px: 5,
-          borderLeft: "0.5px solid #353535",
-          borderRight: "0.5px solid #353535",
-          borderBottomLeftRadius: "7px",
-          borderBottomRightRadius: "7px",
-          display: { xs: "none", md: "flex" },
-          alignItems: "center",
-          justifyContent: "flex-end",
-          gap: 2,
-        }}
-      >
-        {socials}
-      </Grid>
-    </Grid>
+        Agents of Inclusion
+      </a>
+    </div>
   );
 };
