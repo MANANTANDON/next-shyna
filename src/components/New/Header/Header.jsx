@@ -113,30 +113,21 @@ export const Header = () => {
           borderBottomRightRadius: "7px",
           display: "flex",
           alignItems: "center",
-          justifyContent: { xs: "space-between", md: "center" },
+          justifyContent: "center",
         }}
       >
-        <Box>
-          <a href="/">
-            <Typography
-              className="sf-medium"
-              textAlign="center"
-              sx={{ fontSize: { xs: "30px", md: "45px" }, color: "#353535" }}
-            >
-              Shyna co.
-            </Typography>
-          </a>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "flex", md: "none" },
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 2,
-          }}
-        >
-          {socials}
-        </Box>
+        <a href="/">
+          <Typography
+            className="sf-medium"
+            textAlign="center"
+            sx={{
+              fontSize: { xs: "30px", md: "45px" },
+              color: "#353535",
+            }}
+          >
+            Agents Of Inclusion
+          </Typography>
+        </a>
       </Grid>
       <Grid
         item

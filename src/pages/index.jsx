@@ -108,7 +108,7 @@ export async function getServerSideProps() {
           per_page: 15,
         },
         timeout: 10000,
-      }
+      },
     );
 
     const articlesRes = response.data;
