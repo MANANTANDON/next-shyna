@@ -1,16 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { Layout } from "@/components/New/Layout";
-import { Box, Grid, Typography } from "@mui/material";
-import Image from "next/image";
-import { Widget } from "@/components/New/Widget/Widget";
+import { Box, Typography } from "@mui/material";
 import Head from "next/head";
 import { INIT_URL } from "@/constant";
-import { SharingButton } from "@/components/Sharing/SharingButton";
-import { DateAndTime } from "@/components/New/Extras/DateAndTime";
 import { PostPage } from "@/components/Post/PostPage";
 
-function Index({ postData }) {
+function Index({ postData, articlesRes }) {
   const slug = `${INIT_URL}opinion/${postData?.data?.slug}`;
 
   if (!postData || !postData.data) {
@@ -83,10 +79,8 @@ function Index({ postData }) {
         />
       </Head>
 
-      <Layout>
-        <Box sx={{ bgcolor: "rgb(227,225,214)", mt: 2, borderRadius: "9px" }}>
-          <PostPage postData={postData} slug={slug} />
-        </Box>
+      <Layout articles={articlesRes}>
+        <PostPage postData={postData?.data} slug={slug} />
       </Layout>
     </>
   );
@@ -96,9 +90,22 @@ export async function getServerSideProps({ params }) {
   const { slug } = params;
 
   try {
+    const responseOne = await axios.get(
+      "https://dev.snowchildstudio.com/wp-json/custom/v1/posts",
+      {
+        params: {
+          page: 1,
+          per_page: 50,
+        },
+        timeout: 10000,
+      },
+    );
+
+    const articlesRes = responseOne.data;
+
     const response = await axios.get(
       `https://dev.snowchildstudio.com/wp-json/custom/v1/posts/${slug}`,
-      { timeout: 10000 }
+      { timeout: 10000 },
     );
 
     const postData = response.data;
@@ -110,6 +117,7 @@ export async function getServerSideProps({ params }) {
     return {
       props: {
         postData,
+        articlesRes,
       },
     };
   } catch (error) {

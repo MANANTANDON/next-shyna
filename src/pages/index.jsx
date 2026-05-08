@@ -1,11 +1,16 @@
-import { FourthContainer } from "@/components/New/Home/FourthContainer";
+// REACT IMPORTS
+import React from "react";
+
+// NEXT JS IMPORTS
+import Head from "next/head";
+
+//API IMPORTS
+import axios from "axios";
+
+//FILE IMPORTS
 import { SecondContainer } from "@/components/New/Home/SecondContainer";
-import { ThirdContainer } from "@/components/New/Home/ThirdContainer";
 import { TopContainer } from "@/components/New/Home/TopContainer";
 import { Layout } from "@/components/New/Layout";
-import axios from "axios";
-import Head from "next/head";
-import React from "react";
 
 export default function Home({ articlesRes }) {
   const structuredData = {
@@ -88,11 +93,9 @@ export default function Home({ articlesRes }) {
           }}
         />
       </Head>
-      <Layout>
+      <Layout articles={articlesRes}>
         <TopContainer articles={articlesRes} />
         <SecondContainer articles={articlesRes} />
-        <ThirdContainer articles={articlesRes} />
-        <FourthContainer articles={articlesRes} />
       </Layout>
     </>
   );
@@ -105,7 +108,7 @@ export async function getServerSideProps() {
       {
         params: {
           page: 1,
-          per_page: 15,
+          per_page: 50,
         },
         timeout: 10000,
       },
@@ -129,4 +132,4 @@ export async function getServerSideProps() {
   }
 }
 
-//made by 4d616e616e
+//developed by 4d616e616e

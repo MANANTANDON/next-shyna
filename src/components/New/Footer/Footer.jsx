@@ -1,83 +1,47 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
 
 export const Footer = () => {
   return (
-    <>
-      <Box sx={{ bgcolor: "rgb(227,225,214)", py: 2, mt: 2 }}>
-        <Box
-          sx={{
-            border: "1px solid #353535",
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            gap: { xs: 2, md: 0 },
-            alignItems: "center",
-            justifyContent: "space-between",
-            mx: 1,
-            p: 2,
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: { xs: "center", md: "flex-start" },
-              flexDirection: "column",
-            }}
-          >
-            <Typography
-              sx={{ color: "#999991" }}
-              fontSize="14px"
-              className="sf-medium"
+    <footer className="mt-10 p-2">
+      <div className="mx-1 flex flex-col items-center justify-between gap-2 p-2 md:flex-row md:gap-0">
+        <div className="flex flex-col items-center md:items-start">
+          <p className="sf-medium text-[14px] text-[#999991]">
+            All right reserved
+          </p>
+          <p className="sf-medium text-[14px] text-[#353535]">
+            ©{" "}
+            <a
+              href="https://snowchildstudio.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline"
             >
-              All right reserved
-            </Typography>
-            <Typography
-              sx={{ color: "#353535" }}
-              fontSize="14px"
-              className="sf-medium"
-            >
-              ©{" "}
-              <Box
-                component={"a"}
-                href="https://snowchildstudio.com/"
-                target="_blank"
-              >
-                SnowChild Studios
-              </Box>
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-            <Typography
-              component={"a"}
-              href="/terms-and-condition"
-              sx={{ color: "#353535" }}
-              fontSize="14px"
-              className="sf-medium"
-            >
-              Terms and condition
-            </Typography>
+              SnowChild Studios
+            </a>
+          </p>
+        </div>
 
-            <Typography
-              component={"a"}
-              href="/privacy-policy"
-              sx={{ color: "#353535" }}
-              fontSize="14px"
-              className="sf-medium"
-            >
-              Privacy Policy
-            </Typography>
-            <Typography
-              component={"a"}
-              href="/sitemap"
-              sx={{ color: "#353535" }}
-              fontSize="14px"
-              className="sf-medium"
-            >
-              Sitemap
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-    </>
+        <div className="flex items-center gap-5">
+          <a
+            href="/terms-and-condition"
+            className="sf-medium text-[14px] text-[#353535] hover:underline"
+          >
+            Terms and condition
+          </a>
+          <a
+            href="/privacy-policy"
+            className="sf-medium text-[14px] text-[#353535] hover:underline"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/sitemap"
+            className="sf-medium text-[14px] text-[#353535] hover:underline"
+          >
+            Sitemap
+          </a>
+        </div>
+      </div>
+    </footer>
   );
 };
