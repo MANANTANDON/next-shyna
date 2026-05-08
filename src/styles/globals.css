@@ -262,16 +262,23 @@ a {
   color: #3e73b9;
 }
 
-.wp-content img {
-  width: 100%;
-  height: auto;
+.post-content {
+  color: #18181b; /* zinc-900 */
 }
 
-.wp-content figure {
-  margin: 0px;
+.post-content p {
+  margin-bottom: 1.25rem;
 }
 
-.prose {
-  max-width: 100% !important;
-  text-align: left !important;
+.post-content a {
+  color: #ff0054;
+  text-decoration: underline;
+}
+
+.post-content blockquote {
+  border-left: 3px solid #d4d4d8;
+  padding-left: 1rem;
+  color: #71717a;
+  margin: 1.5rem 0;
+  font-style: italic;
 }
