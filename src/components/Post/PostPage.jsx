@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import { useFormatText } from "@/hooks/useFormatText";
+import { calculateReadingTime } from "@/hooks/calculateReadingTime";
 
 export const PostPage = ({ postData, slug }) => {
   const formatDate = (date) => {
@@ -8,18 +10,6 @@ export const PostPage = ({ postData, slug }) => {
       day: "numeric",
       year: "numeric",
     });
-  };
-
-  const formatText = (excerpt) => {
-    if (!excerpt) return "";
-    return excerpt
-      .replace(/&hellip;/g, "...")
-      .replace(/&amp;/g, "&")
-      .replace(/&#8217;/g, "'")
-      .replace(/&#8220;/g, '"')
-      .replace(/&#8221;/g, '"')
-      .replace(/<[^>]*>/g, "")
-      .trim();
   };
 
   const formatContent = (content) => {
@@ -40,14 +30,15 @@ export const PostPage = ({ postData, slug }) => {
     <>
       <div className="flex flex-col items-center mt-10 md:mt-20">
         <h1 className="sfpro-text text-2xl/7 md:text-5xl/13 font-extrabold tracking-tight w-full max-w-200 whitespace-normal wrap-break-word px-4 lg:px-0">
-          {formatText(postData?.title)}
+          {useFormatText(postData?.title)}
         </h1>
         <h1 className="sfpro-text text-sm md:text-base font-medium tracking-tight w-full max-w-200 whitespace-normal wrap-break-word px-4 lg:px-0 text-zinc-600 mt-2">
-          {formatText(postData?.excerpt)}
+          {useFormatText(postData?.excerpt)}
         </h1>
         <div className="w-full max-w-200 px-4 lg:px-0 text-zinc-500 flex items-center justify-between my-5">
           <div className="text-sm font-semibold tracking-tight">
-            Shyna Gupta • {formatDate(postData?.date)}
+            Shyna Gupta • {formatDate(postData?.date)} •{" "}
+            {calculateReadingTime(postData?.content)}
           </div>
           <div className="sfpro-text cursor-pointer">􀈂</div>
         </div>

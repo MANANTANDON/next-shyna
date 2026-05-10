@@ -8,9 +8,9 @@ import Head from "next/head";
 import axios from "axios";
 
 //FILE IMPORTS
-import { SecondContainer } from "@/components/New/Home/SecondContainer";
-import { TopContainer } from "@/components/New/Home/TopContainer";
-import { Layout } from "@/components/New/Layout";
+import { SecondContainer } from "@/components/Home/SecondContainer";
+import { TopContainer } from "@/components/Home/TopContainer";
+import { Layout } from "@/components/Layout";
 
 export default function Home({ articlesRes }) {
   const structuredData = {

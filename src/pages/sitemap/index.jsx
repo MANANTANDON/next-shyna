@@ -2,7 +2,7 @@ import React from "react";
 import { ArticleRounded, Home } from "@mui/icons-material";
 import { Box, Container, Typography } from "@mui/material";
 import Head from "next/head";
-import { Layout } from "@/components/New/Layout";
+import { Layout } from "@/components/Layout";
 
 function Index() {
   return (

@@ -1,4 +1,4 @@
-import { Layout } from "@/components/New/Layout";
+import { Layout } from "@/components/Layout";
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 

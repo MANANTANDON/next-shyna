@@ -1,3 +1,5 @@
+import { calculateReadingTime } from "@/hooks/calculateReadingTime";
+import { useFormatText } from "@/hooks/useFormatText";
 import Image from "next/image";
 import React from "react";
 
@@ -37,10 +39,12 @@ export const TopNewsCardTwo = ({ post }) => {
               WebkitBoxOrient: "vertical",
             }}
           >
-            {post?.title}
+            {useFormatText(post?.title)}
           </a>
           <div className="flex items-center justify-between text-zinc-500 mt-2">
-            <div className="text-xs font-normal">{formattedDate}</div>
+            <div className="text-xs font-normal">
+              {formattedDate} • {calculateReadingTime(post?.content)}
+            </div>
             <div className="text-sm font-medium cursor-pointer">􀍠</div>
           </div>
         </div>

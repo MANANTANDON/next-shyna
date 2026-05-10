@@ -1,10 +1,10 @@
 import axios from "axios";
 import React from "react";
-import { Layout } from "@/components/New/Layout";
-import { Box, Typography } from "@mui/material";
+import { Layout } from "@/components/Layout";
 import Head from "next/head";
 import { INIT_URL } from "@/constant";
 import { PostPage } from "@/components/Post/PostPage";
+import { MoreArticlesContainer } from "@/components/Post/MoreArticlesContainer";
 
 function Index({ postData, articlesRes }) {
   const slug = `${INIT_URL}opinion/${postData?.data?.slug}`;
@@ -12,7 +12,7 @@ function Index({ postData, articlesRes }) {
   if (!postData || !postData.data) {
     return (
       <Layout>
-        <Typography>Post not found</Typography>
+        <div>Post not found</div>
       </Layout>
     );
   }
@@ -81,6 +81,7 @@ function Index({ postData, articlesRes }) {
 
       <Layout articles={articlesRes}>
         <PostPage postData={postData?.data} slug={slug} />
+        <MoreArticlesContainer articles={articlesRes} />
       </Layout>
     </>
   );

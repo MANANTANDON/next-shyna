@@ -1,7 +1,8 @@
 import React from "react";
 import { MoreNews } from "@/components/Cards/MoreNews";
+import { BackTopTop } from "../Misc/BackTopTop";
 
-export const SecondContainer = ({ articles }) => {
+export const MoreArticlesContainer = ({ articles }) => {
   const posts = articles?.data || [];
 
   if (posts.length < 2) {
@@ -14,10 +15,11 @@ export const SecondContainer = ({ articles }) => {
         More Articles
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {posts.slice(6).map((item, key) => (
+        {posts.slice(0, 12).map((item, key) => (
           <MoreNews post={item} key={key} />
         ))}
       </div>
+      <BackTopTop />
     </div>
   );
 };

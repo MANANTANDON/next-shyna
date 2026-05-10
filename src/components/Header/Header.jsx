@@ -1,3 +1,4 @@
+import { useFormatText } from "@/hooks/useFormatText";
 import {
   EmailRounded,
   Instagram,
@@ -9,7 +10,7 @@ import Marquee from "react-fast-marquee";
 
 const socials = (
   <>
-    <div className="flex items-center gap-2 md:gap-5">
+    <div className="flex items-center gap-3 md:gap-5">
       <a
         href="https://www.instagram.com/shynaa.co/"
         target="_blank"
@@ -89,7 +90,7 @@ export const Header = ({ articles }) => {
 
   return (
     <>
-      <div className="pt-5 pb-2 bg-[#FF0054]">
+      <div className="pt-3 md:pt-5 pb-2 bg-[#FF0054]">
         <div className="max-w-7xl mx-auto px-2 md:px-10 ">
           <div className="sfpro-text flex items-center justify-between">
             <div className="font-black text-sm md:text-base">
@@ -103,7 +104,7 @@ export const Header = ({ articles }) => {
             <div>{socials}</div>
           </div>
 
-          <div className="py-4 lg:py-6 flex items-center justify-center">
+          <div className="pt-8 pb-4 lg:pt-6 lg:pb-6 flex items-center justify-center">
             <a
               href="/"
               className="fg text-4xl md:text-5xl lg:text-7xl w-fit font-black"
@@ -118,7 +119,7 @@ export const Header = ({ articles }) => {
         <div className="bg-[#FF0054] text-zinc-100 flex items-center gap-10 py-1 text-sm md:text-base">
           {posts.slice(10).map((item, key) => (
             <a href="" key={key} style={{ color: "#FFFFFF" }}>
-              <span>• {item?.title}</span>
+              <span>• {useFormatText(item?.title)}</span>
             </a>
           ))}
         </div>

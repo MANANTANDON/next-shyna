@@ -1,3 +1,5 @@
+import { calculateReadingTime } from "@/hooks/calculateReadingTime";
+import { useFormatText } from "@/hooks/useFormatText";
 import Image from "next/image";
 import React from "react";
 
@@ -17,7 +19,7 @@ export const MoreNews = ({ post }) => {
           href={`/opinion/${post?.slug}`}
           className="min-w-0 flex-1 text-left wrap-break-word font-bold tracking-tight hover:cursor-pointer"
         >
-          {post?.title}
+          {useFormatText(post?.title)}
         </a>
 
         <a href={`/opinion/${post?.slug}`}>
@@ -37,7 +39,9 @@ export const MoreNews = ({ post }) => {
         </a>
       </div>
       <div className="flex items-center justify-between text-zinc-500 mt-2">
-        <div className="text-xs font-normal">{formattedDate}</div>
+        <div className="text-xs font-normal">
+          {formattedDate} • {calculateReadingTime(post?.content)}
+        </div>
         <div className="text-sm font-medium cursor-pointer">􀍠</div>
       </div>
     </div>

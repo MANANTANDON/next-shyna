@@ -7,6 +7,16 @@
   --foggy-grey: #cbc8b9;
 }
 
+::selection {
+  background-color: #ff0054;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #ff0054;
+  color: white;
+}
+
 @font-face {
   font-family: "IbarraRealNova-Bold";
   src: url("/fonts/IbarraRealNova-Bold.ttf") format("truetype");
